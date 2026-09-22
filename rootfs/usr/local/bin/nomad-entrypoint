@@ -126,6 +126,17 @@ reconcile() {
       api POST /api/ollama/configure-remote "$(jq -nc --arg u "$AI_URL" '{remoteUrl: $u}')" \
         && log "AI server set to $AI_URL" || log "could not set AI server $AI_URL (is it reachable?)"
     fi
+    # Knowledge-base search needs Qdrant, which NOMAD only installs alongside its own
+    # Ollama. With an external AI server nothing installs it, so do it here.
+    if [ "$(echo "SELECT installed FROM services WHERE service_name = 'nomad_qdrant';" | sql)" = "0" ]; then
+      api POST /api/system/services/install '{"service_name":"nomad_qdrant"}' \
+        && log "installing Qdrant for knowledge-base search"
+    elif [ ! -e /config/.kb-indexed ] \
+      && curl -fsS http://127.0.0.1:18080/api/rag/health 2>/dev/null | grep -q '"online":true'; then
+      # First time search is online: index what is already there (NOMAD's own docs, uploads
+      # made before search worked). Afterwards NOMAD indexes new files itself.
+      api POST /api/rag/sync '{}' && touch /config/.kb-indexed && log "knowledge base indexed"
+    fi
   fi
 
   routes=""
