@@ -85,23 +85,26 @@ separate origin gives. The official Kolibri channels are the intended content.
 With `AI_URL` set, NOMAD uses that server for chat, and it never installs Ollama. NOMAD's
 knowledge-base search needs the embedding model **`nomic-embed-text:v1.5`** by that name
 (its index is built for that model's 768 dimensions), so the server has to provide it. For
-llama-swap, a CPU-only entry keeps it off the GPU entirely:
+llama-swap:
 
 ```yaml
   nomic-embed-text-v1.5:
     cmd: |
       llama-server --host 127.0.0.1 --port ${PORT}
       -m /models/nomic-embed-text-v1.5.Q8_0.gguf
-      --embedding --pooling mean -ngl 0 -c 2048 -b 2048 -ub 2048
-    env: ["CUDA_VISIBLE_DEVICES="]
+      --embedding --pooling mean -ngl 999 -c 2048 -b 2048 -ub 2048
     aliases: ["nomic-embed-text:v1.5"]
 ```
+
+On a GPU it takes about 400 MB of VRAM. With `-ngl 0` it runs on the CPU instead, which is
+fine for searching (about 45 ms a query) but about 20 times slower to index a library;
+it does not save host RAM either way.
 
 Qdrant, NOMAD's vector database, is normally installed only together with its own
 Ollama, so with `AI_URL` set this image installs it and runs one indexing pass. NOMAD's
 ingest policy (*Always*, or *Manual* in the knowledge-base panel) then decides whether new
-ZIM libraries are indexed automatically. On a CPU-only embedding model a large library
-takes a long time, so *Manual* is worth considering.
+ZIM libraries are indexed automatically. A full Wikipedia is hours of work even on a GPU,
+so *Manual* is worth considering before downloading one.
 
 **Known limitation with llama.cpp-based servers.** NOMAD cuts text into chunks by
 JavaScript string length, which can split an emoji in half. The half is invalid JSON, and
