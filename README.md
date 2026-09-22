@@ -74,8 +74,6 @@ Not supported, because they cannot run under a sub-path: **IT Tools**, **Excalid
 **Homebox** (hard-coded root paths). Any other catalogue app still installs and works on
 its own port, but that port is only reachable inside the container.
 
-**Knowledge-base search with an external AI server.** NOMAD installs its vector database (Qdrant) only together with its own Ollama, so with `AI_URL` set this image installs Qdrant itself, then indexes what is already there once. NOMAD's ingest policy (Always, or Manual from the knowledge-base panel) decides whether new ZIM libraries are indexed automatically; on a CPU-only embedding model, a large library takes a long time, so consider Manual.
-
 **Kolibri's lesson files.** Kolibri sandboxes lesson content by loading it from a second
 web origin, which by default is the same host on port 8311. Behind one address that port is
 unreachable, so here the content is served from `/learn-content/` on the main address
@@ -98,6 +96,12 @@ llama-swap, a CPU-only entry keeps it off the GPU entirely:
     env: ["CUDA_VISIBLE_DEVICES="]
     aliases: ["nomic-embed-text:v1.5"]
 ```
+
+Qdrant, NOMAD's vector database, is normally installed only together with its own
+Ollama, so with `AI_URL` set this image installs it and runs one indexing pass. NOMAD's
+ingest policy (*Always*, or *Manual* in the knowledge-base panel) then decides whether new
+ZIM libraries are indexed automatically. On a CPU-only embedding model a large library
+takes a long time, so *Manual* is worth considering.
 
 ## Updates
 
