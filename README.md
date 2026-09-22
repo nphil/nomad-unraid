@@ -103,6 +103,13 @@ ingest policy (*Always*, or *Manual* in the knowledge-base panel) then decides w
 ZIM libraries are indexed automatically. On a CPU-only embedding model a large library
 takes a long time, so *Manual* is worth considering.
 
+**Known limitation with llama.cpp-based servers.** NOMAD cuts text into chunks by
+JavaScript string length, which can split an emoji in half. The half is invalid JSON, and
+llama.cpp's strict parser rejects that batch (Ollama tolerates it). The affected file shows
+as failed in the knowledge-base panel; everything else indexes normally. On beastnas this
+hit 1 of NOMAD's 13 help docs (its release notes, which are full of emoji). It is a NOMAD
+bug and belongs upstream.
+
 ## Updates
 
 | What | How |
