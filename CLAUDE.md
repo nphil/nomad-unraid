@@ -20,6 +20,10 @@ Read README.md for the design. Traps that already cost a debugging round:
 - **Alpine's BusyBox `sed` has no `-u`**; GNU `sed` is installed for line-buffered log prefixes.
 - The dind entrypoint only adds its unauthenticated `tcp://0.0.0.0:2375` listener when it
   gets no arguments or only flags. We always pass `dockerd ...` explicitly; keep it that way.
+- **With `AI_URL`, Qdrant must be online before the AI server is saved.** NOMAD installs
+  Qdrant only alongside its own Ollama, and indexes its own docs exactly once, when the AI
+  server is saved; jobs that fail then are never retried. Reconcile installs Qdrant, waits
+  for `/api/rag/health`, and only then saves the URL.
 - Test an image on a real host before pushing: a push to `main` touching the image
   publishes a release.
 

@@ -120,22 +120,34 @@ reconcile() {
   kv_set autoUpdate.windowEnd "${UPDATE_WINDOW#*-}"
 
   # AI: point NOMAD at an existing OpenAI-compatible server instead of installing Ollama.
+  # Order matters. NOMAD installs Qdrant (its vector database) only alongside its own
+  # Ollama, and it indexes its own docs exactly once: when the AI server is saved. So
+  # Qdrant must be installed and online before the AI server is saved, or every doc
+  # fails permanently (NOMAD does not retry those).
   if [ -n "$AI_URL" ]; then
-    current=$(echo "SELECT value FROM kv_store WHERE \`key\` = 'ai.remoteOllamaUrl';" | sql)
-    if [ "$current" != "$AI_URL" ]; then
-      api POST /api/ollama/configure-remote "$(jq -nc --arg u "$AI_URL" '{remoteUrl: $u}')" \
-        && log "AI server set to $AI_URL" || log "could not set AI server $AI_URL (is it reachable?)"
-    fi
-    # Knowledge-base search needs Qdrant, which NOMAD only installs alongside its own
-    # Ollama. With an external AI server nothing installs it, so do it here.
+    rag_online() { curl -fsS http://127.0.0.1:18080/api/rag/health 2>/dev/null | grep -q '"online":true'; }
+    save_ai() { api POST /api/ollama/configure-remote "$(jq -nc --arg u "$AI_URL" '{remoteUrl: $u}')"; }
+
     if [ "$(echo "SELECT installed FROM services WHERE service_name = 'nomad_qdrant';" | sql)" = "0" ]; then
       api POST /api/system/services/install '{"service_name":"nomad_qdrant"}' \
         && log "installing Qdrant for knowledge-base search"
-    elif [ ! -e /config/.kb-indexed ] \
-      && curl -fsS http://127.0.0.1:18080/api/rag/health 2>/dev/null | grep -q '"online":true'; then
-      # First time search is online: index what is already there (NOMAD's own docs, uploads
-      # made before search worked). Afterwards NOMAD indexes new files itself.
-      api POST /api/rag/sync '{}' && touch /config/.kb-indexed && log "knowledge base indexed"
+      for _ in $(seq 36); do rag_online && break; sleep 5; done
+    fi
+
+    current=$(echo "SELECT value FROM kv_store WHERE \`key\` = 'ai.remoteOllamaUrl';" | sql)
+    if [ "$current" != "$AI_URL" ]; then
+      if rag_online; then
+        save_ai && log "AI server set to $AI_URL" && api POST /api/rag/sync '{}' \
+          && touch /config/.kb-indexed && log "knowledge base indexed" \
+          || log "could not set AI server $AI_URL (is it reachable?)"
+      else
+        log "waiting for Qdrant before connecting the AI server"
+      fi
+    elif [ ! -e /config/.kb-indexed ] && rag_online; then
+      # The AI server was saved before search was online (an older version of this image
+      # did that). Save it again so NOMAD re-queues its docs, then index what is there.
+      kv_set rag.docsEmbedded false
+      save_ai && api POST /api/rag/sync '{}' && touch /config/.kb-indexed && log "knowledge base indexed"
     fi
   fi
 
