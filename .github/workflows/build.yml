@@ -1,0 +1,103 @@
+name: build
+
+# One image per NOMAD release, tagged with NOMAD's own version (1.34.1), plus `latest`.
+# A change to this repo alone rebuilds the current NOMAD version as a revision (1.34.1-r2).
+# Each build publishes a GitHub Release, so Unraid's Docker tab shows the update and
+# ShipLog shows the changelog.
+on:
+  schedule:
+    - cron: "17 */6 * * *"      # look for a new NOMAD release four times a day
+  workflow_dispatch:
+    inputs:
+      note:
+        description: "What changed in this repo (release notes for a revision build)"
+        required: false
+  push:
+    branches: [main]
+    paths: ["Dockerfile", "rootfs/**", ".github/workflows/build.yml"]
+
+permissions:
+  contents: write
+  packages: write
+
+concurrency:
+  group: build
+  cancel-in-progress: false
+
+env:
+  UPSTREAM: Crosstalk-Solutions/project-nomad
+  IMAGE: ghcr.io/${{ github.repository }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Decide what to build
+        id: plan
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          up=$(gh api "repos/$UPSTREAM/releases/latest" --jq .tag_name)   # never a prerelease
+          ver=${up#v}
+          ours=$(gh release list -R "$GITHUB_REPOSITORY" --limit 300 --json tagName --jq '.[].tagName' || true)
+          n=$(grep -cE "^v${ver//./\\.}(-r[0-9]+)?$" <<<"$ours" || true)
+          if [ "$GITHUB_EVENT_NAME" = "schedule" ] && [ "$n" -gt 0 ]; then
+            echo "NOMAD $ver already built; nothing to do"; echo "skip=true" >>"$GITHUB_OUTPUT"; exit 0
+          fi
+          if [ "$n" -eq 0 ]; then tag="v$ver"; else tag="v$ver-r$((n + 1))"; fi
+          echo "skip=false" >>"$GITHUB_OUTPUT"
+          echo "ver=$ver" >>"$GITHUB_OUTPUT"
+          echo "tag=$tag" >>"$GITHUB_OUTPUT"
+          echo "Building $tag for NOMAD $ver"
+
+      - uses: actions/checkout@v4
+        if: steps.plan.outputs.skip == 'false'
+
+      - uses: docker/setup-buildx-action@v3
+        if: steps.plan.outputs.skip == 'false'
+
+      - uses: docker/login-action@v3
+        if: steps.plan.outputs.skip == 'false'
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+
+      - uses: docker/build-push-action@v6
+        if: steps.plan.outputs.skip == 'false'
+        with:
+          context: .
+          push: true
+          build-args: NOMAD_VERSION=${{ steps.plan.outputs.ver }}
+          tags: |
+            ${{ env.IMAGE }}:${{ steps.plan.outputs.tag }}
+            ${{ env.IMAGE }}:latest
+          labels: |
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+            org.opencontainers.image.version=${{ steps.plan.outputs.tag }}
+            org.opencontainers.image.revision=${{ github.sha }}
+
+      - name: Publish release
+        if: steps.plan.outputs.skip == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.plan.outputs.tag }}
+          VER: ${{ steps.plan.outputs.ver }}
+          NOTE: ${{ github.event.inputs.note }}
+          HEAD_MSG: ${{ github.event.head_commit.message }}
+        run: |
+          set -euo pipefail
+          {
+            if [ "$TAG" = "v$VER" ]; then
+              echo "**Project NOMAD $VER.** Release notes from upstream:"
+              echo
+              gh api "repos/$UPSTREAM/releases/tags/v$VER" --jq .body
+            else
+              echo "**Packaging update, still Project NOMAD $VER.**"
+              echo
+              printf '%s\n' "${NOTE:-${HEAD_MSG:-Rebuilt from $GITHUB_SHA.}}"
+            fi
+          } >notes.md
+          gh release create "$TAG" -R "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+            --title "NOMAD $VER${TAG#v$VER}" --notes-file notes.md

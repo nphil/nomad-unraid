@@ -1,0 +1,222 @@
+#!/bin/bash
+# Starts a private Docker daemon, runs NOMAD's own stack inside it, and fronts it all with
+# one proxy on :80. Everything NOMAD would normally do to a host happens in here.
+set -uo pipefail
+
+log() { echo "[nomad] $*"; }
+
+: "${PUBLIC_URL:=http://localhost}"
+: "${TZ:=UTC}"
+: "${AI_URL:=}"
+: "${UPDATE_WINDOW:=03:00-05:00}"
+PUBLIC_URL="${PUBLIC_URL%/}"
+export TZ PUBLIC_URL NOMAD_VERSION
+
+RUN=/run/nomad
+COMPOSE="docker compose -p project-nomad -f $RUN/compose.yml"
+APPS=/etc/nomad/apps.json
+mkdir -p /config/mysql /config/redis /config/caddy "$RUN"
+
+# --- secrets: generated once, kept in /config so a recreated container keeps its database
+SECRETS=/config/secrets.env
+if [ ! -s "$SECRETS" ]; then
+  gen() { tr -dc 'A-Za-z0-9' </dev/urandom | head -c 32; }
+  (umask 077; printf 'APP_KEY=%s\nDB_PASSWORD=%s\nDB_ROOT_PASSWORD=%s\n' "$(gen)" "$(gen)" "$(gen)" >"$SECRETS")
+  log "generated new secrets in /config/secrets.env"
+fi
+set -a; . "$SECRETS"; set +a
+
+# --- the disk collector binds / with rslave, which needs / to be a shared mount.
+# This changes propagation inside this container's own mount namespace only.
+mount --make-rshared / 2>/dev/null || log "could not make / shared; NOMAD's disk widgets will stay empty"
+[ -f /data/nomad-disk-info.json ] || echo '{"diskLayout":{"blockdevices":[]},"fsSize":[]}' >/data/nomad-disk-info.json
+
+# --- private Docker daemon. Its own address ranges, so it can never collide with the
+# host's networks or with the LAN it has to reach (llama-swap, for one).
+DOCKER_TLS_CERTDIR='' dockerd-entrypoint.sh dockerd \
+  --host=unix:///var/run/docker.sock \
+  --storage-driver=overlay2 \
+  --log-driver=local --log-level=warn \
+  --shutdown-timeout=60 \
+  --bip=10.213.0.1/24 \
+  --default-address-pool base=10.214.0.0/16,size=24 \
+  > >(sed -u 's/^/[dockerd] /') 2>&1 &
+DOCKERD_PID=$!
+for _ in $(seq 90); do docker info >/dev/null 2>&1 && break; sleep 1; done
+docker info >/dev/null 2>&1 || { log "the private Docker daemon did not start"; exit 1; }
+log "private Docker daemon up ($(docker info --format '{{.Driver}}'))"
+
+# --- NOMAD's stack, pinned to the version this image was built for
+envsubst '${NOMAD_VERSION} ${TZ} ${APP_KEY} ${PUBLIC_URL} ${DB_PASSWORD} ${DB_ROOT_PASSWORD}' \
+  </etc/nomad/compose.yml.tmpl >"$RUN/compose.yml"
+chmod 600 "$RUN/compose.yml"
+if [ "$(cat /config/.nomad-version 2>/dev/null)" != "$NOMAD_VERSION" ]; then
+  log "NOMAD $NOMAD_VERSION: pulling images"
+  $COMPOSE pull --quiet || log "pull failed; starting with the images already here"
+fi
+$COMPOSE up -d --remove-orphans || { log "could not start NOMAD's stack"; exit 1; }
+
+# --- proxy. Starts at once with NOMAD alone; app routes are added by reconcile below.
+write_caddyfile() { # $1 = routes block
+  cat <<EOF
+{
+	auto_https off
+	admin localhost:2019
+	log {
+		level WARN
+	}
+	storage file_system /config/caddy
+	servers {
+		trusted_proxies static private_ranges
+		protocols h1
+	}
+}
+:80 {
+	handle /.nomad-unraid/ok {
+		respond 200
+	}
+$1
+	handle {
+		reverse_proxy 127.0.0.1:18080
+	}
+}
+EOF
+}
+route() { # path port strip -> one Caddyfile route, newline-terminated
+  local verb=handle; [ "$3" = "true" ] && verb=handle_path
+  printf '\tredir %s %s/ 308\n\t%s %s/* {\n\t\treverse_proxy 127.0.0.1:%s\n\t}\n' "$1" "$1" "$verb" "$1" "$2"
+}
+write_caddyfile "" >"$RUN/Caddyfile"
+caddy run --config "$RUN/Caddyfile" --adapter caddyfile > >(sed -u 's/^/[caddy] /') 2>&1 &
+CADDY_PID=$!
+
+# --- wait for NOMAD itself (first start runs its database migrations)
+for _ in $(seq 120); do curl -fsS http://127.0.0.1:18080/api/health >/dev/null 2>&1 && break; sleep 5; done
+if curl -fsS http://127.0.0.1:18080/api/health >/dev/null 2>&1; then
+  echo "$NOMAD_VERSION" >/config/.nomad-version
+  log "NOMAD $NOMAD_VERSION is up at $PUBLIC_URL"
+else
+  log "NOMAD did not report healthy within 10 minutes; see: docker exec <this container> docker logs nomad_admin"
+fi
+
+# --- reconcile: re-applied on start and every 10 minutes, because NOMAD resets its app
+# catalogue entries whenever it boots. Every step is idempotent.
+q() { printf "%s" "$1" | sed "s/'/''/g"; }
+sql() { docker exec -i -e MYSQL_PWD="$DB_ROOT_PASSWORD" nomad_mysql mysql -uroot -N -B nomad; }
+api() { curl -fsS -X "$1" -H 'Content-Type: application/json' -d "$3" "http://127.0.0.1:18080$2" >/dev/null; }
+
+kv_set() {
+  printf "INSERT INTO kv_store (\`key\`, value, created_at, updated_at) VALUES ('%s', '%s', NOW(), NOW())
+    ON DUPLICATE KEY UPDATE updated_at = IF(value <> VALUES(value), NOW(), updated_at), value = VALUES(value);\n" \
+    "$(q "$1")" "$(q "$2")" | sql
+}
+
+reconcile() {
+  # Updates: NOMAD's own version comes from this image (Unraid's Docker tab), so its
+  # self-updater is off. The apps it installs keep updating themselves in the window.
+  kv_set autoUpdate.enabled false
+  kv_set appAutoUpdate.enabled true
+  kv_set autoUpdate.windowStart "${UPDATE_WINDOW%-*}"
+  kv_set autoUpdate.windowEnd "${UPDATE_WINDOW#*-}"
+
+  # AI: point NOMAD at an existing OpenAI-compatible server instead of installing Ollama.
+  if [ -n "$AI_URL" ]; then
+    current=$(echo "SELECT value FROM kv_store WHERE \`key\` = 'ai.remoteOllamaUrl';" | sql)
+    if [ "$current" != "$AI_URL" ]; then
+      api POST /api/ollama/configure-remote "$(jq -nc --arg u "$AI_URL" '{remoteUrl: $u}')" \
+        && log "AI server set to $AI_URL" || log "could not set AI server $AI_URL (is it reachable?)"
+    fi
+  fi
+
+  routes=""
+  while read -r app; do
+    svc=$(jq -r .service <<<"$app"); path=$(jq -r .path <<<"$app"); strip=$(jq -r .strip <<<"$app")
+    exists=$(echo "SELECT COUNT(*) FROM services WHERE service_name = '$(q "$svc")';" | sql)
+    [ "$exists" = "1" ] || continue
+
+    # Command-line setting (appended once).
+    cmd=$(jq -r '.command_append // empty' <<<"$app")
+    if [ -n "$cmd" ]; then
+      echo "UPDATE services SET container_command = TRIM(CONCAT(COALESCE(container_command, ''), ' ', '$(q "$cmd")'))
+            WHERE service_name = '$(q "$svc")' AND LOCATE('$(q "$cmd")', COALESCE(container_command, '')) = 0;" | sql
+    fi
+
+    # Environment settings: replace any existing value of the same variable, then add ours.
+    want_env=$(jq -c --arg pub "$PUBLIC_URL" '[.env // [] | .[] | gsub("\\$\\{PUBLIC_URL\\}"; $pub)]' <<<"$app")
+    if [ "$want_env" != "[]" ]; then
+      have_env=$(echo "SELECT COALESCE(JSON_EXTRACT(container_config, '\$.Env'), JSON_ARRAY()) FROM services WHERE service_name = '$(q "$svc")';" | sql)
+      new_env=$(jq -c --argjson want "$want_env" '
+        ($want | map(split("=")[0])) as $names
+        | [.[] | select((split("=")[0]) as $n | $names | index($n) | not)] + $want' <<<"$have_env")
+      if [ "$(jq -S . <<<"$new_env")" != "$(jq -S . <<<"$have_env")" ]; then
+        echo "UPDATE services SET container_config = JSON_SET(container_config, '\$.Env', CAST('$(q "$new_env")' AS JSON))
+              WHERE service_name = '$(q "$svc")';" | sql
+      fi
+    fi
+
+    # An installed app created before these settings existed gets recreated with them.
+    if docker inspect "$svc" >/dev/null 2>&1; then
+      running=$(docker inspect "$svc" --format '{{json .Config.Env}} {{json .Config.Cmd}}')
+      stale=""
+      while read -r e; do [ -n "$e" ] && [[ "$running" != *"\"$e\""* ]] && stale=1; done < <(jq -r '.[]' <<<"$want_env")
+      [ -n "$cmd" ] && [[ "$running" != *"\"$cmd\""* ]] && stale=1
+      if [ -n "$stale" ]; then
+        api POST /api/system/services/force-reinstall "$(jq -nc --arg s "$svc" '{service_name: $s}')" \
+          && log "$svc was missing its sub-path settings; reinstalling it (its data is kept)"
+      fi
+    fi
+
+    # The link NOMAD shows for the app.
+    want="$PUBLIC_URL$path/"
+    have=$(echo "SELECT COALESCE(custom_url, '') FROM services WHERE service_name = '$(q "$svc")';" | sql)
+    if [ "$have" != "$want" ]; then
+      api PUT /api/system/services/custom-url "$(jq -nc --arg s "$svc" --arg u "$want" '{service_name: $s, custom_url: $u}')" \
+        && log "$svc opens at $want"
+    fi
+
+    # Proxy routes. The main port is NOMAD's link port (else its first published port);
+    # extra routes name the container port and look up where NOMAD publishes it.
+    port=$(echo "SELECT IF(ui_location REGEXP '^[0-9]+\$', ui_location,
+                   JSON_UNQUOTE(JSON_EXTRACT(JSON_EXTRACT(container_config, '\$.HostConfig.PortBindings.*[0].HostPort'), '\$[0]')))
+                  FROM services WHERE service_name = '$(q "$svc")';" | sql)
+    [[ "$port" =~ ^[0-9]+$ ]] && routes+=$(route "$path" "$port" "$strip")$'\n'
+    while read -r extra; do
+      [ -n "$extra" ] || continue
+      xpath=$(jq -r .path <<<"$extra"); xstrip=$(jq -r .strip <<<"$extra"); cport=$(jq -r .container_port <<<"$extra")
+      xport=$(echo "SELECT JSON_UNQUOTE(JSON_EXTRACT(container_config, '\$.HostConfig.PortBindings.\"$(q "$cport")\"[0].HostPort'))
+                    FROM services WHERE service_name = '$(q "$svc")';" | sql)
+      [[ "$xport" =~ ^[0-9]+$ ]] && routes+=$(route "$xpath" "$xport" "$xstrip")$'\n'
+    done < <(jq -c '.extra_routes // [] | .[]' <<<"$app")
+  done < <(jq -c '.apps[]' "$APPS")
+
+  write_caddyfile "$routes" >"$RUN/Caddyfile.new"
+  if ! cmp -s "$RUN/Caddyfile.new" "$RUN/Caddyfile"; then
+    if caddy validate --config "$RUN/Caddyfile.new" --adapter caddyfile >/dev/null 2>&1; then
+      mv "$RUN/Caddyfile.new" "$RUN/Caddyfile"
+      caddy reload --config "$RUN/Caddyfile" --adapter caddyfile >/dev/null 2>&1 && log "app routes updated"
+    else
+      log "generated proxy config did not validate; keeping the previous one"
+    fi
+  fi
+}
+
+reconcile || log "reconcile failed; retrying in 10 minutes"
+( while sleep 600; do reconcile || log "reconcile failed; retrying in 10 minutes"; done ) &
+RECONCILE_PID=$!
+
+# --- clean shutdown. The daemon stops every container itself (MySQL gets its full grace
+# period) and remembers they were running, so all of them come back on the next start.
+# Stopping them one by one with `docker stop` would mark them as deliberately stopped,
+# and apps NOMAD installed would then stay down.
+shutdown() {
+  log "stopping"
+  kill "$RECONCILE_PID" "$CADDY_PID" 2>/dev/null
+  kill -TERM "$DOCKERD_PID" 2>/dev/null
+  wait "$DOCKERD_PID" 2>/dev/null
+  exit "${1:-0}"
+}
+trap 'shutdown 0' TERM INT
+
+wait -n "$DOCKERD_PID" "$CADDY_PID"
+log "a core process exited unexpectedly"
+shutdown 1

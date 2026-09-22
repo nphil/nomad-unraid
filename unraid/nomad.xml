@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>Nomad</Name>
+  <Repository>ghcr.io/nphil/nomad-unraid:latest</Repository>
+  <Registry>https://github.com/nphil/nomad-unraid/pkgs/container/nomad-unraid</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>true</Privileged>
+  <Support>https://github.com/nphil/nomad-unraid/issues</Support>
+  <Project>https://www.projectnomad.us</Project>
+  <Overview>Project NOMAD, the offline knowledge and education server (Wikipedia and other Kiwix libraries, courses, maps, AI search over your library), packaged as one container. NOMAD's own stack and every app it installs run inside it, so the Docker tab shows one app and updates arrive through Check for Updates.</Overview>
+  <Category>Productivity: Tools:</Category>
+  <WebUI>http://[IP]:[PORT:8085]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/nphil/nomad-unraid/main/unraid/nomad.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/nphil/nomad-unraid/main/assets/icon.png</Icon>
+  <ExtraParams>--stop-timeout 120</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>Privileged is required: NOMAD creates a container per app, and this image gives it a private Docker daemon to do that in.</Requires>
+  <Config Name="Web UI port" Target="80" Default="8085" Mode="tcp" Description="The only port this app publishes. Every NOMAD app is reached through it under its own path." Type="Port" Display="always" Required="true" Mask="false">8085</Config>
+  <Config Name="Content (large)" Target="/data" Default="/mnt/user/nomad" Mode="rw" Description="ZIM libraries, maps, courses and uploads. Tens to hundreds of GB; put it on the array." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/nomad</Config>
+  <Config Name="App data" Target="/config" Default="/mnt/user/appdata/nomad" Mode="rw" Description="Database, settings and generated secrets. Small; put it on a fast pool." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/nomad</Config>
+  <Config Name="Private Docker storage" Target="/var/lib/docker" Default="/mnt/user/system/nomad-docker" Mode="rw" Description="Images and containers of NOMAD's private Docker daemon. Rebuildable and busy; fast pool, and keep it out of snapshots and backups." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/system/nomad-docker</Config>
+  <Config Name="Public URL" Target="PUBLIC_URL" Default="http://localhost:8085" Mode="" Description="The address you open NOMAD at, e.g. https://knowledge.example.com. App links are built from it." Type="Variable" Display="always" Required="true" Mask="false">http://localhost:8085</Config>
+  <Config Name="AI server" Target="AI_URL" Default="" Mode="" Description="Optional. An OpenAI-compatible server (llama-swap, LM Studio, Ollama) for NOMAD's AI chat and search, instead of installing Ollama inside. Base URL without /v1." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="App update window" Target="UPDATE_WINDOW" Default="03:00-05:00" Mode="" Description="When the apps NOMAD installed may update themselves (local time). NOMAD itself updates through this container." Type="Variable" Display="advanced" Required="false" Mask="false">03:00-05:00</Config>
+  <Config Name="Time zone" Target="TZ" Default="America/New_York" Mode="" Description="" Type="Variable" Display="advanced" Required="false" Mask="false">America/New_York</Config>
+</Container>

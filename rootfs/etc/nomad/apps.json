@@ -1,0 +1,27 @@
+{
+  "_comment": [
+    "Every NOMAD app that should open under PUBLIC_URL/<path>/ instead of host:port.",
+    "service: NOMAD's service_name. path: where it lives. strip: true when the app has no",
+    "sub-path setting of its own, so the proxy removes the prefix (only works for apps whose",
+    "pages use relative links). env / command_append: the app's own sub-path settings. They",
+    "are re-applied to NOMAD's catalogue on every start (NOMAD resets it when it boots), and",
+    "an installed app missing them is reinstalled; its data lives in /data and survives.",
+    "${PUBLIC_URL} is expanded. extra_routes: further paths into the same app, by the",
+    "container port NOMAD publishes. Ports are always read from NOMAD, never hard-coded here.",
+    "IT Tools is not listed: it hard-codes /assets/ and cannot run under a sub-path."
+  ],
+  "apps": [
+    { "service": "nomad_kiwix_server", "path": "/wiki", "strip": false,
+      "command_append": "--urlRootLocation=/wiki" },
+    { "service": "nomad_kolibri_2", "path": "/learn", "strip": false,
+      "env": [
+        "KOLIBRI_URL_PATH_PREFIX=/learn/",
+        "KOLIBRI_ZIP_CONTENT_ORIGIN=${PUBLIC_URL}/",
+        "KOLIBRI_ZIP_CONTENT_URL_PATH_PREFIX=/learn-content/"
+      ],
+      "extra_routes": [ { "path": "/learn-content", "container_port": "8311/tcp", "strip": false } ] },
+    { "service": "nomad_flatnotes", "path": "/notes", "strip": false,
+      "env": ["FLATNOTES_PATH_PREFIX=/notes"] },
+    { "service": "nomad_cyberchef", "path": "/cyberchef", "strip": true }
+  ]
+}
