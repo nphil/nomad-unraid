@@ -133,10 +133,10 @@ fix as a small, self-checking text patch to `nomad_admin`'s `ollama_service.js`
 (`patch_embed_fallback`, applied right after the stack comes up on every start): it makes
 `_embedWithFallback` skip the native probe once this backend is known not to answer it, and
 remembers that after the first 404. The patch matches on the exact original code and
-touches nothing else; if a future NOMAD release changes that function — including by fixing
-#1279 itself — the patch logs one line and leaves the file alone rather than risk
-corrupting code it no longer recognises. At that point `patch_embed_fallback` and its call
-in `nomad-entrypoint` can simply be deleted.
+touches nothing else; if a future NOMAD release changes that function, including by
+fixing #1279 itself, the patch logs one line and leaves the file alone rather than
+risk corrupting code it no longer recognises. At that point `patch_embed_fallback`
+and its call in `nomad-entrypoint` can simply be deleted.
 
 [1279]: https://github.com/Crosstalk-Solutions/project-nomad/issues/1279
 

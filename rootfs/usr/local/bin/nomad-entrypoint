@@ -105,7 +105,7 @@ patch_embed_fallback() {
     }
 ORIG_EOF
   cat >/tmp/.embed-patched.txt <<'PATCHED_EOF'
-    // nomad-unraid: embed-probe-gate (see github.com/nphil/nomad-unraid) — skip the native
+    // nomad-unraid: embed-probe-gate (see github.com/nphil/nomad-unraid): skip the native
     // /api/embed probe once this backend is known not to speak it, so a non-Ollama AI_URL
     // (llama-swap, LM Studio, vLLM, ...) doesn't 404 on every embedding call.
     async _embedWithFallback(model, input) {
