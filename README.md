@@ -113,6 +113,33 @@ as failed in the knowledge-base panel; everything else indexes normally. On beas
 hit 1 of NOMAD's 13 help docs (its release notes, which are full of emoji). It is a NOMAD
 bug and belongs upstream.
 
+## Patches to NOMAD
+
+NOMAD itself is meant to run completely unmodified (see above), with one narrow exception.
+With `AI_URL` pointed at a non-Ollama server (llama-swap, LM Studio, vLLM, ...), NOMAD's
+admin container calls `POST /api/embed` before every single knowledge-base embedding and
+only falls back to the OpenAI-compatible `/v1/embeddings` after that 404s. Against a real
+Ollama this costs nothing; against everything else it is a guaranteed-failing request plus
+a warn log line on every embedding, for the life of the process.
+
+Fixed upstream ("ai: don't probe the native embed endpoint on a non-Ollama backend", closes
+[crosstalk-solutions/project-nomad#1279][1279]) but only in the `v1.35.0-rc` pre-release
+channel so far. [`build.yml`](.github/workflows/build.yml) only ever builds
+`releases/latest`, which never resolves to a pre-release, so this image can't pick the fix
+up on its own until Crosstalk Solutions cuts a stable release that includes it.
+
+Until then, [`nomad-entrypoint`](rootfs/usr/local/bin/nomad-entrypoint) carries the same
+fix as a small, self-checking text patch to `nomad_admin`'s `ollama_service.js`
+(`patch_embed_fallback`, applied right after the stack comes up on every start): it makes
+`_embedWithFallback` skip the native probe once this backend is known not to answer it, and
+remembers that after the first 404. The patch matches on the exact original code and
+touches nothing else; if a future NOMAD release changes that function — including by fixing
+#1279 itself — the patch logs one line and leaves the file alone rather than risk
+corrupting code it no longer recognises. At that point `patch_embed_fallback` and its call
+in `nomad-entrypoint` can simply be deleted.
+
+[1279]: https://github.com/Crosstalk-Solutions/project-nomad/issues/1279
+
 ## Updates
 
 | What | How |

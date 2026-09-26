@@ -56,6 +56,142 @@ if [ "$(cat /config/.nomad-version 2>/dev/null)" != "$NOMAD_VERSION" ]; then
 fi
 $COMPOSE up -d --remove-orphans || { log "could not start NOMAD's stack"; exit 1; }
 
+# --- targeted hot-fix: NOMAD always tries native POST /api/embed before falling back to
+# /v1/embeddings, which 404s on every single embedding against a non-Ollama AI_URL
+# (llama-swap, LM Studio, vLLM, ...) -- one guaranteed-failing request plus a warn log line
+# per embed, for the life of the process. Fixed upstream ("ai: don't probe the native embed
+# endpoint on a non-Ollama backend", closes crosstalk-solutions/project-nomad#1279) but only
+# in the v1.35.0-rc pre-release channel so far; build.yml only ever builds releases/latest,
+# which never resolves to a pre-release, so this image can't pick the fix up on its own yet.
+# Re-applied idempotently on every start. Matches on the exact original code and backs off
+# with one log line rather than risk corrupting a file NOMAD has since changed -- including
+# by fixing #1279 itself, at which point this whole function stops doing anything and can be
+# deleted. See README.md, "Patches to NOMAD".
+patch_embed_fallback() {
+  local target=/app/app/services/ollama_service.js
+  local marker='nomad-unraid: embed-probe-gate'
+  if docker exec nomad_admin grep -q "$marker" "$target" 2>/dev/null; then
+    log "embed-probe hot-fix already applied"
+    return 0
+  fi
+
+  cat >/tmp/.embed-orig.txt <<'ORIG_EOF'
+    async _embedWithFallback(model, input) {
+        try {
+            const response = await axios.post(`${this.baseUrl}/api/embed`, {
+                model,
+                input,
+                truncate: true,
+                options: { num_ctx: 8192 },
+            }, { timeout: 60000 });
+            if (!Array.isArray(response.data?.embeddings)) {
+                throw new Error('Invalid /api/embed response — missing embeddings array');
+            }
+            return { embeddings: response.data.embeddings };
+        }
+        catch (err) {
+            if (OllamaService_1.isContextLengthError(err))
+                throw err;
+            logger.warn('[OllamaService] /api/embed failed, falling back to /v1/embeddings: %s', err instanceof Error ? err.message : String(err));
+            const results = await this.openai.embeddings.create({
+                model,
+                input,
+                encoding_format: 'float',
+                truncate: true,
+                options: { num_ctx: 8192 },
+            });
+            return { embeddings: results.data.map((e) => e.embedding) };
+        }
+    }
+ORIG_EOF
+  cat >/tmp/.embed-patched.txt <<'PATCHED_EOF'
+    // nomad-unraid: embed-probe-gate (see github.com/nphil/nomad-unraid) — skip the native
+    // /api/embed probe once this backend is known not to speak it, so a non-Ollama AI_URL
+    // (llama-swap, LM Studio, vLLM, ...) doesn't 404 on every embedding call.
+    async _embedWithFallback(model, input) {
+        if (this.isOllamaNative !== false) {
+            try {
+                const response = await axios.post(`${this.baseUrl}/api/embed`, {
+                    model,
+                    input,
+                    truncate: true,
+                    options: { num_ctx: 8192 },
+                }, { timeout: 60000 });
+                if (!Array.isArray(response.data?.embeddings)) {
+                    throw new Error('Invalid /api/embed response — missing embeddings array');
+                }
+                return { embeddings: response.data.embeddings };
+            }
+            catch (err) {
+                if (OllamaService_1.isContextLengthError(err))
+                    throw err;
+                if (err?.response?.status === 404) {
+                    this.isOllamaNative = false;
+                    logger.info('[OllamaService] /api/embed 404d; this backend is not Ollama-native, skipping the native probe for future embed calls.');
+                }
+                logger.warn('[OllamaService] /api/embed failed, falling back to /v1/embeddings: %s', err instanceof Error ? err.message : String(err));
+            }
+        }
+        const results = await this.openai.embeddings.create({
+            model,
+            input,
+            encoding_format: 'float',
+            truncate: true,
+            options: { num_ctx: 8192 },
+        });
+        return { embeddings: results.data.map((e) => e.embedding) };
+    }
+PATCHED_EOF
+  cat >/tmp/.embed-patcher.js <<'JS_EOF'
+const fs = require("fs");
+const target = "/app/app/services/ollama_service.js";
+const original = fs.readFileSync("/tmp/.embed-orig.txt", "utf8");
+const patched = fs.readFileSync("/tmp/.embed-patched.txt", "utf8");
+const marker = "nomad-unraid: embed-probe-gate";
+const src = fs.readFileSync(target, "utf8");
+if (src.indexOf(marker) !== -1) {
+  console.log("ALREADY_PATCHED");
+  process.exit(0);
+}
+const idx1 = src.indexOf(original);
+const idx2 = src.lastIndexOf(original);
+if (idx1 === -1 || idx1 !== idx2) {
+  const count = src.split(original).length - 1;
+  console.log("SHAPE_MISMATCH:" + count);
+  process.exit(0);
+}
+const next = src.slice(0, idx1) + patched + src.slice(idx1 + original.length);
+fs.writeFileSync(target + ".tmp", next, "utf8");
+fs.renameSync(target + ".tmp", target);
+console.log("PATCHED");
+JS_EOF
+
+  docker cp /tmp/.embed-orig.txt nomad_admin:/tmp/.embed-orig.txt
+  docker cp /tmp/.embed-patched.txt nomad_admin:/tmp/.embed-patched.txt
+  docker cp /tmp/.embed-patcher.js nomad_admin:/tmp/.embed-patcher.js
+  rm -f /tmp/.embed-orig.txt /tmp/.embed-patched.txt /tmp/.embed-patcher.js
+
+  local result
+  result=$(docker exec nomad_admin node /tmp/.embed-patcher.js 2>&1)
+  docker exec nomad_admin rm -f /tmp/.embed-orig.txt /tmp/.embed-patched.txt /tmp/.embed-patcher.js
+
+  case "$result" in
+    PATCHED)
+      log "applied the embed-probe hot-fix to nomad_admin (upstream #1279); restarting it to load the new code"
+      docker restart nomad_admin >/dev/null \
+        && log "nomad_admin restarted" \
+        || log "nomad_admin restart failed; the hot-fix is on disk but not loaded yet"
+      ;;
+    SHAPE_MISMATCH:*)
+      log "embed-probe hot-fix skipped: _embedWithFallback no longer matches the code this patch expects (NOMAD likely changed it, maybe fixed crosstalk-solutions/project-nomad#1279 itself) -- check before re-adding this patch"
+      ;;
+    *)
+      log "embed-probe hot-fix skipped: unexpected result: $result"
+      ;;
+  esac
+}
+patch_embed_fallback
+
 # --- proxy. Starts at once with NOMAD alone; app routes are added by reconcile below.
 write_caddyfile() { # $1 = routes block
   cat <<EOF
