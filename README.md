@@ -50,7 +50,8 @@ docker run -d --name nomad --privileged --stop-timeout 120 -p 8085:80 \
 | `PUBLIC_URL` | `http://localhost` | The address you open NOMAD at. App links are built from it. |
 | `AI_URL` | *(empty)* | An OpenAI-compatible server, base URL without `/v1`. Empty means NOMAD's own AI setup. |
 | `UPDATE_WINDOW` | `03:00-05:00` | When installed apps may update themselves, local time. |
-| `TZ` | `UTC` | Time zone, which the update window uses. |
+| `EMBED_WINDOW` | `02:00-05:00` | When NOMAD may index knowledge-base libraries on the AI server, local time. `always` turns the limit off. See [Batch indexing](#batch-indexing). |
+| `TZ` | `UTC` | Time zone, which both windows use. |
 
 `--privileged` is required: the private Docker daemon needs it. For comparison, NOMAD's
 normal install hands the admin container the host's Docker socket, which is the same
@@ -103,8 +104,58 @@ it does not save host RAM either way.
 Qdrant, NOMAD's vector database, is normally installed only together with its own
 Ollama, so with `AI_URL` set this image installs it and runs one indexing pass. NOMAD's
 ingest policy (*Always*, or *Manual* in the knowledge-base panel) then decides whether new
-ZIM libraries are indexed automatically. A full Wikipedia is hours of work even on a GPU,
-so *Manual* is worth considering before downloading one.
+ZIM libraries are indexed automatically. A full Wikipedia is far more work than a night
+can hold (see below), so *Manual* is worth considering before downloading one.
+
+### Batch indexing
+
+NOMAD indexes a ZIM library as an endless chain of small jobs: 50 articles per job, the
+next job queued the moment one finishes. Left alone that keeps the AI server's GPU busy
+day and night for as long as there is something left to index. This image therefore
+pauses NOMAD's indexing queue (`file-embeddings`) outside `EMBED_WINDOW` and resumes it
+inside, by default 02:00 to 05:00 in `TZ`. A batch that is running when the window closes
+finishes, then indexing stops until the next window and carries on from the same article.
+Knowledge-base **search is not affected**: a query is embedded on the spot and never waits
+in the queue. Only new content waits for the window, and that includes a document you
+upload, until the next window or until you ask for it (below).
+
+`EMBED_WINDOW` is `HH:MM-HH:MM` in local time and may cross midnight (`22:00-02:00`); the
+start is included and the end is not. `always` disables the limit. A value that cannot be
+read is logged and replaced by the default. The state is decided on every start, so a
+restart never leaves indexing paused for good.
+
+`nomad-embed` is the tool for the rest. Run it as `docker exec Nomad nomad-embed ...`.
+
+| Command | What it does |
+| --- | --- |
+| `status` | Paused or running, job counts, progress per library, parked libraries, Qdrant point count. |
+| `now [MINUTES]` | Index outside the window for a while (default 60). `now off` ends it. The way to index an uploaded document right away. |
+| `pause`, `resume` | One-off switch for the queue. The gate puts it back as the window says within a minute, unless `EMBED_WINDOW=always`. Use `now` to stay open. |
+| `dedupe [--apply]` | Dry run by default. Per library, keeps the waiting job that is furthest along and drops the others. Never touches a running job. |
+| `exclude NAME [--apply]` | Dry run by default. Takes a library's waiting jobs out of the queue and remembers where it stopped. A running job queues its next batch when it ends, so run it again afterwards. |
+| `include NAME` | Puts a parked library back in the queue, continuing from the article it stopped at. |
+
+Duplicate chains can appear when a job stalls and the retry and the original both go on:
+two chains then index the same articles, and every pass writes the same text into Qdrant
+again under a new id. `dedupe` stops that; points already written twice stay.
+
+**Scale.** The English Wikipedia (`wikipedia_en_all_maxi`) is 124 GB with about 8.4 million
+real pages, but NOMAD counts 18.98 million entries because redirects are included, so its
+progress bar would stall near 44%. NOMAD's job chain re-opens the 124 GB file for every
+50-article job (about 100 seconds) and walks it again from the start, so on beastnas a
+whole Wikipedia cannot finish this way: indexing ran at roughly 2 chunks a second, and a
+3-hour window fits about 40 jobs, around 2,000 articles a night. Qdrant needs about 5.4 KB
+per chunk. All the other libraries together come to about 5 million chunks and 30 GB,
+which is a matter of weeks of nights. Keep the full Wikipedia out: choose *Manual* ingest,
+or `nomad-embed exclude wikipedia_en_all_maxi`.
+
+**Reset & Rebuild.** The knowledge-base panel's *Reset & Rebuild* button drops the whole
+collection and queues every file again, including the full Wikipedia. Run
+`nomad-embed exclude wikipedia_en_all_maxi --apply` right after pressing it (the queue is
+paused outside the window, so nothing starts before you can).
+
+A job that is running when the window closes finishes its batch first, which can take
+many minutes while Qdrant is busy, and NOMAD fails any job that runs over 30 minutes.
 
 **Known limitation with llama.cpp-based servers.** NOMAD cuts text into chunks by
 JavaScript string length, which can split an emoji in half. The half is invalid JSON, and

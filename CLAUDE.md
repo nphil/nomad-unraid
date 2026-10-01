@@ -24,6 +24,11 @@ Read README.md for the design. Traps that already cost a debugging round:
   Qdrant only alongside its own Ollama, and indexes its own docs exactly once, when the AI
   server is saved; jobs that fail then are never retried. Reconcile installs Qdrant, waits
   for `/api/rag/health`, and only then saves the URL.
+- **Indexing is gated by pausing a BullMQ queue, not by patching NOMAD.** `nomad-embed gate`
+  (started by the entrypoint) pauses `file-embeddings` outside `EMBED_WINDOW`; the pause flag
+  lives in Redis and `bullmq` only exists inside `nomad_admin`, so the tool runs node there.
+  Alpine's `date` ignores `TZ` unless `tzdata` is installed (the Dockerfile does that;
+  `nomad-embed` asks node when it is missing, for containers built before). Queued jobs sit in `paused`, not `wait`, so `wait=0` means nothing while paused.
 - Test an image on a real host before pushing: a push to `main` touching the image
   publishes a release.
 

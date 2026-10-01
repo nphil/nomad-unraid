@@ -13,7 +13,7 @@ LABEL org.opencontainers.image.source="https://github.com/nphil/nomad-unraid" \
 ARG NOMAD_VERSION
 ENV NOMAD_VERSION=${NOMAD_VERSION}
 
-RUN apk add --no-cache bash curl jq caddy tini gettext sed
+RUN apk add --no-cache bash curl jq caddy tini gettext sed tzdata
 
 COPY rootfs/ /
 RUN chmod +x /usr/local/bin/*

@@ -9,8 +9,9 @@ log() { echo "[nomad] $*"; }
 : "${TZ:=UTC}"
 : "${AI_URL:=}"
 : "${UPDATE_WINDOW:=03:00-05:00}"
+: "${EMBED_WINDOW:=02:00-05:00}"
 PUBLIC_URL="${PUBLIC_URL%/}"
-export TZ PUBLIC_URL NOMAD_VERSION
+export TZ PUBLIC_URL NOMAD_VERSION EMBED_WINDOW
 
 RUN=/run/nomad
 COMPOSE="docker compose -p project-nomad -f $RUN/compose.yml"
@@ -235,6 +236,14 @@ else
   log "NOMAD did not report healthy within 10 minutes; see: docker exec <this container> docker logs nomad_admin"
 fi
 
+# --- embedding batch window. NOMAD embeds ZIM libraries in a never-ending chain of jobs that
+# keeps the AI server's GPU busy day and night. nomad-embed pauses that BullMQ queue outside
+# EMBED_WINDOW and resumes it inside (knowledge-base search does not use the queue). It
+# decides the state on its first pass, retries until NOMAD is reachable, and is restarted
+# if it ever exits. Started before reconcile so a first indexing pass cannot slip through.
+( while :; do nomad-embed gate; log "the embedding gate exited; restarting it in 30 seconds"; sleep 30; done ) &
+EMBED_GATE_PID=$!
+
 # --- reconcile: re-applied on start and every 10 minutes, because NOMAD resets its app
 # catalogue entries whenever it boots. Every step is idempotent.
 q() { printf "%s" "$1" | sed "s/'/''/g"; }
@@ -371,7 +380,7 @@ RECONCILE_PID=$!
 # and apps NOMAD installed would then stay down.
 shutdown() {
   log "stopping"
-  kill "$RECONCILE_PID" "$CADDY_PID" 2>/dev/null
+  kill "$RECONCILE_PID" "$EMBED_GATE_PID" "$CADDY_PID" 2>/dev/null
   kill -TERM "$DOCKERD_PID" 2>/dev/null
   wait "$DOCKERD_PID" 2>/dev/null
   exit "${1:-0}"

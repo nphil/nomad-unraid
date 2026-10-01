@@ -1,0 +1,300 @@
+#!/bin/bash
+# Batch gate and operator tool for NOMAD's knowledge-base embedding queue.
+#
+# NOMAD embeds ZIM libraries in a never-ending chain of small jobs in the BullMQ queue
+# `file-embeddings`, which keeps the AI server's GPU busy around the clock. This script
+# pauses that queue outside EMBED_WINDOW and resumes it inside, using BullMQ's own
+# pause/resume (run inside nomad_admin, which has bullmq installed). NOMAD's code is
+# not touched. Knowledge-base search does not use the queue, so it works at any time.
+#
+#   nomad-embed status            what is queued, ZIM progress, Qdrant size
+#   nomad-embed pause | resume    one-off; the gate re-applies the window within a minute
+#   nomad-embed now [MINUTES|off] index outside the window for a while (default 60)
+#   nomad-embed dedupe [--apply]  drop redundant duplicate waiting jobs (dry run by default)
+#   nomad-embed exclude NAME [--apply]  park a library: take its queued jobs out of the queue
+#                                 (dry run by default); its offset is remembered
+#   nomad-embed include NAME      put a parked library back, continuing where it stopped
+#   nomad-embed gate              the loop the entrypoint runs
+#   nomad-embed in-window [WINDOW [HH:MM]]   window arithmetic, exit 0 open / 1 closed / 2 invalid
+set -uo pipefail
+
+log() { echo "[nomad] $*"; }
+
+DEFAULT_WINDOW=02:00-05:00
+QUEUE=${NOMAD_EMBED_QUEUE:-file-embeddings}
+STATE_DIR=${NOMAD_EMBED_STATE_DIR:-/run/nomad}
+HOLD_FILE=$STATE_DIR/embed-hold-until
+INTERVAL=${NOMAD_EMBED_INTERVAL:-60}
+# How to reach node and redis-cli; overridable so tests can point at throwaway containers.
+read -ra NODE <<<"${NOMAD_EMBED_NODE:-docker exec nomad_admin node}"
+read -ra REDIS_CLI <<<"${NOMAD_EMBED_REDIS_CLI:-docker exec nomad_redis redis-cli}"
+
+# --- window arithmetic ---------------------------------------------------------------
+hm_to_min() { # HH:MM -> minutes since midnight; fails on anything else
+  [[ $1 =~ ^([01]?[0-9]|2[0-3]):([0-5][0-9])$ ]] || return 1
+  echo $((10#${BASH_REMATCH[1]} * 60 + 10#${BASH_REMATCH[2]}))
+}
+
+# Exit 0 when HH:MM $2 is inside window $1, 1 when outside, 2 when the window is invalid.
+# `always` is open all day. The start is inclusive and the end exclusive; a window whose
+# start is later than its end wraps midnight (22:00-02:00). Start equal to end is invalid.
+window_state() {
+  local w=${1,,} now s e
+  w=${w//[[:space:]]/}
+  [ "$w" = always ] && return 0
+  [[ $w =~ ^([0-9:]+)-([0-9:]+)$ ]] || return 2
+  s=$(hm_to_min "${BASH_REMATCH[1]}") || return 2
+  e=$(hm_to_min "${BASH_REMATCH[2]}") || return 2
+  now=$(hm_to_min "$2") || return 2
+  [ "$s" -eq "$e" ] && return 2
+  if [ "$s" -lt "$e" ]; then
+    [ "$now" -ge "$s" ] && [ "$now" -lt "$e" ]
+  else
+    [ "$now" -ge "$s" ] || [ "$now" -lt "$e" ]
+  fi
+}
+
+# Local time as HH:MM. NOMAD_EMBED_NOW fakes it for tests. The image ships tzdata; on an
+# older container without it `date` would silently answer in UTC, so ask node instead.
+local_hm() {
+  if [ -n "${NOMAD_EMBED_NOW:-}" ]; then echo "$NOMAD_EMBED_NOW"
+  elif [ -z "${TZ:-}" ] || [ "$TZ" = UTC ] || [ -e "/usr/share/zoneinfo/$TZ" ]; then date +%H:%M
+  else
+    "${NODE[@]}" -p "new Date().toLocaleTimeString('en-GB',{timeZone:'$TZ',hourCycle:'h23',hour:'2-digit',minute:'2-digit'})" 2>/dev/null \
+      || date +%H:%M
+  fi
+}
+
+# The window in force: EMBED_WINDOW, or the default if it is not a valid window.
+effective_window() {
+  local w=${EMBED_WINDOW:-$DEFAULT_WINDOW}
+  window_state "$w" 00:00; [ $? -eq 2 ] && w=$DEFAULT_WINDOW
+  echo "$w"
+}
+
+# --- node side: everything that talks to BullMQ --------------------------------------
+read -r -d '' JS <<'JS_EOF'
+import { Queue } from 'bullmq';
+
+const [name, cmd, ...rest] = process.argv.slice(1);
+const apply = rest.includes('--apply');
+const q = new Queue(name, {
+  connection: {
+    host: process.env.REDIS_HOST || 'redis',
+    port: Number(process.env.REDIS_PORT) || 6379,
+    db: Number(process.env.REDIS_DB) || 0,
+  },
+});
+const base = (p) => String(p).split('/').pop();
+const offsetOf = (j) => j.data?.batchOffset ?? 0;
+const isZim = (j) => typeof j.data?.filePath === 'string' && j.data.filePath.endsWith('.zim');
+const pending = (states) => q.getJobs(states, 0, -1, true);
+
+async function status() {
+  const paused = await q.isPaused();
+  const c = await q.getJobCounts('waiting', 'active', 'delayed', 'paused', 'failed', 'completed');
+  console.log(`Queue ${name}: ${paused ? 'PAUSED (no new work starts)' : 'running'}`);
+  console.log(`Jobs: active ${c.active}, waiting ${c.waiting}, held by pause ${c.paused}, delayed ${c.delayed}, failed ${c.failed}`);
+  const jobs = (await pending(['active', 'waiting', 'paused', 'delayed']));
+  const byFile = new Map();
+  for (const j of jobs.filter(isZim)) {
+    const e = byFile.get(j.data.filePath) ?? { chains: 0, active: 0, max: 0, total: 0 };
+    e.chains++;
+    if (await j.isActive()) e.active++;
+    e.max = Math.max(e.max, offsetOf(j));
+    e.total = Math.max(e.total, j.data.totalArticles ?? 0);
+    byFile.set(j.data.filePath, e);
+  }
+  const other = jobs.filter((j) => !isZim(j)).length;
+  for (const [f, e] of [...byFile].sort((a, b) => a[0].localeCompare(b[0]))) {
+    const pct = e.total ? ((100 * e.max) / e.total).toFixed(2) + '%' : '?';
+    console.log(`  ${base(f)}: ${e.max} of ${e.total || '?'} articles (${pct}), ${e.chains} job${e.chains === 1 ? '' : 's'} (${e.active} running)`);
+  }
+  for (const [f, json] of Object.entries(await redis.hgetall(PARKED))) {
+    const d = JSON.parse(json);
+    console.log(`  PARKED ${base(f)}: stopped at ${d.batchOffset ?? 0} of ${d.totalArticles ?? '?'} articles (nomad-embed include to continue)`);
+  }
+  if (other) console.log(`  ${other} other file job${other === 1 ? '' : 's'} (documents, not ZIM libraries)`);
+  try {
+    const list = await (await fetch('http://nomad_qdrant:6333/collections', { signal: AbortSignal.timeout(5000) })).json();
+    for (const { name: n } of list.result.collections) {
+      const info = await (await fetch(`http://nomad_qdrant:6333/collections/${n}`, { signal: AbortSignal.timeout(5000) })).json();
+      console.log(`Qdrant ${n}: ${info.result.points_count.toLocaleString('en-US')} points`);
+    }
+  } catch (e) {
+    console.log(`Qdrant: not reachable (${e.message})`);
+  }
+}
+
+// Parked libraries live in a Redis hash next to the queue: file path -> the data of the job
+// that would have run next, so `include` can continue from the same article.
+const PARKED = `${name}:parked`;
+const redis = await q.client;
+const keep = (d) => Object.fromEntries(['filePath', 'fileName', 'batchOffset', 'totalArticles', 'isFinalBatch', 'chunksSoFar', 'collection']
+  .filter((k) => d[k] !== undefined).map((k) => [k, d[k]]));
+
+async function exclude() {
+  const needle = rest.find((a) => !a.startsWith('--'));
+  if (!needle || needle.length < 4) { console.error('usage: nomad-embed exclude NAME [--apply] (at least 4 characters of the file name)'); process.exitCode = 2; return; }
+  const match = (j) => String(j.data?.filePath).includes(needle);
+  const idle = (await pending(['waiting', 'paused', 'delayed'])).filter(match);
+  const running = (await pending(['active'])).filter(match);
+  const byFile = new Map();
+  for (const j of idle) byFile.set(j.data.filePath, [...(byFile.get(j.data.filePath) ?? []), j]);
+  for (const [f, js] of byFile) {
+    js.sort((a, b) => offsetOf(b) - offsetOf(a));
+    const prev = JSON.parse((await redis.hget(PARKED, f)) ?? 'null');
+    console.log(`${base(f)}: ${js.length} queued job${js.length === 1 ? '' : 's'}, furthest at offset ${offsetOf(js[0])}` +
+      (apply ? '' : ' (dry run: add --apply to park it)'));
+    if (!apply) continue;
+    if (!prev || (prev.batchOffset ?? 0) < offsetOf(js[0])) await redis.hset(PARKED, f, JSON.stringify(keep(js[0].data)));
+    let gone = 0;
+    for (const j of js) { try { await j.remove(); gone++; } catch (e) { console.log(`  could not remove job ${j.id}: ${e.message}`); } }
+    console.log(`  parked at offset ${offsetOf(js[0])}; removed ${gone} job${gone === 1 ? '' : 's'}`);
+  }
+  for (const j of running) console.log(`${base(j.data.filePath)}: job ${j.id} is RUNNING (offset ${offsetOf(j)}); it queues its next batch when it finishes. Run exclude again after it has.`);
+  if (!idle.length && !running.length) console.log(`nothing queued matches "${needle}"`);
+}
+
+async function include() {
+  const needle = rest.find((a) => !a.startsWith('--'));
+  if (!needle || needle.length < 4) { console.error('usage: nomad-embed include NAME (at least 4 characters of the file name)'); process.exitCode = 2; return; }
+  const all = await redis.hgetall(PARKED);
+  const live = await pending(['active', 'waiting', 'paused', 'delayed']);
+  let n = 0;
+  for (const [f, json] of Object.entries(all).filter(([f]) => f.includes(needle))) {
+    if (live.some((j) => j.data?.filePath === f)) { console.log(`${base(f)}: already queued, left as it is`); continue; }
+    const data = JSON.parse(json);
+    await q.add('embed-file', data, { attempts: 30, backoff: { type: 'fixed', delay: 60000 }, removeOnComplete: { count: 50 }, removeOnFail: { count: 20 } });
+    await redis.hdel(PARKED, f);
+    console.log(`${base(f)}: queued again at offset ${data.batchOffset ?? 0}`); n++;
+  }
+  if (!n && !Object.keys(all).some((f) => f.includes(needle))) console.log(`no parked library matches "${needle}"`);
+}
+
+async function dedupe() {
+  // Every ZIM job chain runs from article 0 upward, so a job waiting at a lower offset than
+  // another waiting job for the same file only repeats work the other chain already did.
+  // Keep the highest offset per file. Active jobs are never touched.
+  const waiting = (await pending(['waiting', 'paused', 'delayed'])).filter(isZim);
+  const active = (await pending(['active'])).filter(isZim);
+  const groups = new Map();
+  for (const j of waiting) groups.set(j.data.filePath, [...(groups.get(j.data.filePath) ?? []), j]);
+  let drop = 0, failed = 0;
+  for (const [f, js] of [...groups].sort((a, b) => a[0].localeCompare(b[0]))) {
+    js.sort((a, b) => offsetOf(b) - offsetOf(a) || Number(a.id) - Number(b.id));
+    const [keep, ...rest] = js;
+    const act = active.filter((j) => j.data.filePath === f).map(offsetOf);
+    console.log(`${base(f)}: keep job ${keep.id} at offset ${offsetOf(keep)}` +
+      (act.length ? ` (running chain${act.length > 1 ? 's' : ''} at ${act.join(', ')}; run dedupe again once idle)` : ''));
+    for (const j of rest) {
+      drop++;
+      if (!apply) { console.log(`  would remove job ${j.id} at offset ${offsetOf(j)}`); continue; }
+      try { await j.remove(); console.log(`  removed job ${j.id} at offset ${offsetOf(j)}`); }
+      catch (e) { failed++; console.log(`  could not remove job ${j.id}: ${e.message}`); }
+    }
+  }
+  console.log(apply ? `Removed ${drop - failed} duplicate job${drop - failed === 1 ? '' : 's'}${failed ? `, ${failed} failed` : ''}.`
+                    : `Dry run: ${drop} duplicate job${drop === 1 ? '' : 's'} would be removed. Add --apply to remove them.`);
+}
+
+try {
+  if (cmd === 'status') await status();
+  else if (cmd === 'dedupe') await dedupe();
+  else if (cmd === 'exclude') await exclude();
+  else if (cmd === 'include') await include();
+  else if (cmd === 'pause') { const was = await q.isPaused(); if (!was) await q.pause(); console.log(was ? 'already paused' : 'paused'); }
+  else if (cmd === 'resume') { const was = await q.isPaused(); if (was) await q.resume(); console.log(was ? 'resumed' : 'already running'); }
+  else { console.error(`unknown command ${cmd}`); process.exitCode = 2; }
+} catch (e) {
+  console.error(`${cmd} failed: ${e.message}`);
+  process.exitCode = 1;
+}
+await q.close();
+process.exit();
+JS_EOF
+
+bull() { "${NODE[@]}" --input-type=module -e "$JS" -- "$QUEUE" "$@"; }
+
+# Cheap check of the pause flag straight from Redis (no node start). Prints paused,
+# running, or unknown when Redis cannot be reached yet.
+queue_state() {
+  local v
+  v=$("${REDIS_CLI[@]}" hexists "bull:$QUEUE:meta" paused 2>/dev/null | tr -d '\r') || { echo unknown; return; }
+  case "$v" in 1) echo paused ;; 0) echo running ;; *) echo unknown ;; esac
+}
+
+# --- the gate loop --------------------------------------------------------------------
+hold_active() {
+  local deadline; deadline=$(cat "$HOLD_FILE" 2>/dev/null) || return 1
+  [[ $deadline =~ ^[0-9]+$ ]] && [ "$deadline" -gt "$(date +%s)" ]
+}
+
+gate() {
+  local raw=${EMBED_WINDOW:-$DEFAULT_WINDOW} window have want want_state failing=""
+  window=$(effective_window)
+  if [ "$window" != "$raw" ]; then
+    log "EMBED_WINDOW '$raw' is not HH:MM-HH:MM or 'always'; using $DEFAULT_WINDOW"
+  fi
+  if [ "${window,,}" = always ]; then
+    log "embedding batch window: always (the $QUEUE queue is never paused)"
+  else
+    log "embedding batch window: $window ${TZ:-UTC}; the $QUEUE queue is paused outside it"
+  fi
+  while :; do
+    if hold_active; then want=resume
+    elif window_state "$window" "$(local_hm)"; then want=resume
+    else want=pause; fi
+    have=$(queue_state)
+    if [ "$have" = unknown ]; then
+      [ -n "$failing" ] || log "embedding gate: waiting for NOMAD's queue (Redis not answering yet)"
+      failing=1
+    else
+      want_state=running; [ "$want" = pause ] && want_state=paused
+      if [ "$have" != "$want_state" ]; then
+        if bull "$want" >/dev/null 2>&1; then
+          [ -n "$failing" ] && log "embedding gate: NOMAD's queue is reachable"
+          failing=""
+          if [ "$want" = resume ]; then log "embedding window open: resumed the $QUEUE queue"
+          else log "embedding window closed: paused the $QUEUE queue (running batches finish first)"; fi
+        else
+          [ -n "$failing" ] || log "embedding gate: could not $want the $QUEUE queue (is nomad_admin up?); retrying"
+          failing=1
+        fi
+      else
+        [ -n "$failing" ] && log "embedding gate: NOMAD's queue is reachable"
+        failing=""
+      fi
+    fi
+    sleep "$INTERVAL"
+  done
+}
+
+# --- commands -------------------------------------------------------------------------
+case "${1:-help}" in
+  status)
+    w=$(effective_window)
+    if window_state "$w" "$(local_hm)"; then open=open; else open=closed; fi
+    echo "Batch window: $w ${TZ:-UTC}, $open now (EMBED_WINDOW=${EMBED_WINDOW:-unset})"
+    if hold_active; then echo "Manual hold: indexing allowed until $(date -d "@$(cat "$HOLD_FILE")" '+%H:%M' 2>/dev/null || cat "$HOLD_FILE")"; fi
+    bull status
+    ;;
+  pause|resume) bull "$1" ;;
+  dedupe|exclude|include) c=$1; shift; bull "$c" "$@" ;;
+  now)
+    case "${2:-60}" in
+      off|0) rm -f "$HOLD_FILE"; echo "hold cleared; the gate applies the window again within a minute" ;;
+      *[!0-9]*) echo "usage: nomad-embed now [MINUTES|off]" >&2; exit 2 ;;
+      *) mkdir -p "$STATE_DIR"; echo $(( $(date +%s) + ${2:-60} * 60 )) >"$HOLD_FILE"
+         bull resume; echo "indexing allowed for ${2:-60} minutes" ;;
+    esac
+    ;;
+  gate) gate ;;
+  in-window)
+    w=${2-$(effective_window)}; t=${3-$(local_hm)}
+    window_state "$w" "$t"; rc=$?
+    case $rc in 0) echo open ;; 1) echo closed ;; *) echo invalid ;; esac
+    exit $rc
+    ;;
+  *) sed -n '2,/^set -uo/p' "$0" | sed '$d;s/^# \{0,1\}//'; [ "${1:-help}" = help ] || exit 2 ;;
+esac
