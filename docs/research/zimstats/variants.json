@@ -1,0 +1,446 @@
+{
+ "lookup_hit_rates": {
+  "top_mini": {
+   "requested": 1000,
+   "resolved_to_html_page": 999,
+   "hit_rate": 0.999,
+   "via_redirect": 0
+  },
+  "top1m_mini": {
+   "requested": 1000,
+   "resolved_to_html_page": 994,
+   "hit_rate": 0.994,
+   "via_redirect": 2
+  }
+ },
+ "rows": [
+  {
+   "variant": "wikipedia_en_top_mini_2026-09 (best 50k, intro+infobox)",
+   "pages": 50002,
+   "basis": "MEASURED (K=1000 random pages of the mini ZIM)",
+   "note": "sampled the mini pages themselves",
+   "K_pages": 1000,
+   "chunksPerPage_mean": 1.25,
+   "chunksPerPage_CI95": [
+    1.222,
+    1.278
+   ],
+   "chunksPerPage_median": 1.0,
+   "chunksPerPage_p90": 2.0,
+   "chunksPerPage_p99": 2.0,
+   "chunksPerPage_max": 4,
+   "structuredFraction": 0.0,
+   "charsPerChunk_mean": 1766.3272,
+   "charsPerChunk_median": 1774.5,
+   "payloadBytesPerPoint_total": 3512.252,
+   "payloadBytesPerPoint_text": 1781.2744,
+   "payloadBytesPerPoint_keywords": 1068.3312,
+   "payloadBytesPerPoint_archive": 217.0,
+   "payloadBytesPerPoint_titles": 164.9,
+   "payloadBytesPerPoint_source": 61.0,
+   "payloadBytesPerPoint_fixed": 219.7464,
+   "estTotalChunks": 62502.5,
+   "estTotalChunks_CI95": [
+    61102.443999999996,
+    63902.556000000004
+   ],
+   "estPayloadJsonGB": 0.21952453063,
+   "estVectorGB_768xf32": 0.19200768,
+   "tokensPerChunk_nomic": 360.874,
+   "charsPerToken_nomic": 4.759434040690103,
+   "tokensPerChunk_embeddinggemma": 363.238,
+   "tokensPerChunk_qwen3": 371.168,
+   "tokensSample": 500
+  },
+  {
+   "variant": "wikipedia_en_top1m_mini_2026-04 (best 1M, intro+infobox)",
+   "pages": 1774449,
+   "basis": "MEASURED (K=1000 random pages of the mini ZIM)",
+   "note": "sampled the mini pages themselves",
+   "K_pages": 1000,
+   "chunksPerPage_mean": 1.026,
+   "chunksPerPage_CI95": [
+    1.01,
+    1.05
+   ],
+   "chunksPerPage_median": 1.0,
+   "chunksPerPage_p90": 1.0,
+   "chunksPerPage_p99": 2.0,
+   "chunksPerPage_max": 11,
+   "structuredFraction": 0.0,
+   "charsPerChunk_mean": 595.9142300194932,
+   "charsPerChunk_median": 392.5,
+   "payloadBytesPerPoint_total": 1679.583820662768,
+   "payloadBytesPerPoint_text": 607.8986354775828,
+   "payloadBytesPerPoint_keywords": 377.9395711500975,
+   "payloadBytesPerPoint_archive": 230.0,
+   "payloadBytesPerPoint_titles": 181.98538011695908,
+   "payloadBytesPerPoint_source": 63.0,
+   "payloadBytesPerPoint_fixed": 218.76023391812865,
+   "estTotalChunks": 1820584.674,
+   "estTotalChunks_CI95": [
+    1792193.49,
+    1863171.4500000002
+   ],
+   "estPayloadJsonGB": 3.057824562597,
+   "estVectorGB_768xf32": 5.592836118528,
+   "tokensPerChunk_nomic": 134.404,
+   "charsPerToken_nomic": 4.458825630189578,
+   "tokensPerChunk_embeddinggemma": 135.912,
+   "tokensPerChunk_qwen3": 139.434,
+   "tokensSample": 500
+  },
+  {
+   "variant": "best-50k selection, FULL text (= top_nopic/top_maxi core 50k pages)",
+   "pages": 50002,
+   "basis": "MEASURED on 999 of 1000 sampled paths found in local maxi_2026-02 (hit rate 99.9%)",
+   "note": "same articles, full text, local maxi 2026-02 build",
+   "K_pages": 999,
+   "chunksPerPage_mean": 17.59259259259259,
+   "chunksPerPage_CI95": [
+    16.8508008008008,
+    18.31136136136136
+   ],
+   "chunksPerPage_median": 14,
+   "chunksPerPage_p90": 32.200000000000045,
+   "chunksPerPage_p99": 61.039999999999964,
+   "chunksPerPage_max": 85,
+   "structuredFraction": 0.0,
+   "charsPerChunk_mean": 2906.9401422475107,
+   "charsPerChunk_median": 3000,
+   "payloadBytesPerPoint_total": 5057.551123755335,
+   "payloadBytesPerPoint_text": 2946.157211948791,
+   "payloadBytesPerPoint_keywords": 1485.1890184921763,
+   "payloadBytesPerPoint_archive": 181.0,
+   "payloadBytesPerPoint_titles": 162.83812233285917,
+   "payloadBytesPerPoint_source": 61.0,
+   "payloadBytesPerPoint_fixed": 221.3667709815078,
+   "estTotalChunks": 879664.8148148147,
+   "estTotalChunks_CI95": [
+    842573.7416416417,
+    915604.6907907907
+   ],
+   "estPayloadJsonGB": 4.448949772694695,
+   "estVectorGB_768xf32": 2.7023303111111106,
+   "tokensPerChunk_nomic": 715.641,
+   "charsPerToken_nomic": 4.083358834946573,
+   "tokensPerChunk_embeddinggemma": 799.465,
+   "tokensPerChunk_qwen3": 819.45,
+   "tokensSample": 1000,
+   "lookup": {
+    "requested": 1000,
+    "resolved_to_html_page": 999,
+    "hit_rate": 0.999,
+    "via_redirect": 0
+   }
+  },
+  {
+   "variant": "best-1M selection, FULL text (= top1m_nopic/top1m_maxi)",
+   "pages": 1774449,
+   "basis": "MEASURED on 994 of 1000 sampled paths found in local maxi_2026-02 (hit rate 99.4%)",
+   "note": "same articles, full text, local maxi 2026-02 build",
+   "K_pages": 994,
+   "chunksPerPage_mean": 4.210261569416499,
+   "chunksPerPage_CI95": [
+    3.835990945674044,
+    4.618762575452716
+   ],
+   "chunksPerPage_median": 2.0,
+   "chunksPerPage_p90": 10.0,
+   "chunksPerPage_p99": 31.0,
+   "chunksPerPage_max": 67,
+   "structuredFraction": 0.0,
+   "charsPerChunk_mean": 2474.853524492234,
+   "charsPerChunk_median": 3000,
+   "payloadBytesPerPoint_total": 4398.2238948626045,
+   "payloadBytesPerPoint_text": 2518.2136200716845,
+   "payloadBytesPerPoint_keywords": 1237.7859020310634,
+   "payloadBytesPerPoint_archive": 181.0,
+   "payloadBytesPerPoint_titles": 179.77777777777777,
+   "payloadBytesPerPoint_source": 61.0,
+   "payloadBytesPerPoint_fixed": 220.44659498207886,
+   "estTotalChunks": 7470894.431589537,
+   "estTotalChunks_CI95": [
+    6806770.297560362,
+    8195758.633249496
+   ],
+   "estPayloadJsonGB": 32.85866640501308,
+   "estVectorGB_768xf32": 22.950587693843058,
+   "tokensPerChunk_nomic": 625.81,
+   "charsPerToken_nomic": 4.030614723318579,
+   "tokensPerChunk_embeddinggemma": 705.532,
+   "tokensPerChunk_qwen3": 725.382,
+   "tokensSample": 1000,
+   "lookup": {
+    "requested": 1000,
+    "resolved_to_html_page": 994,
+    "hit_rate": 0.994,
+    "via_redirect": 2
+   }
+  },
+  {
+   "variant": "wikipedia_en_top_nopic/top_maxi_2026-09 (224,147 pages, full text) [low proxy]",
+   "pages": 224147,
+   "basis": "EXTRAPOLATED: proxy = best-1M full-text chunks/page (lower: extra pages are less popular, hence shorter [inference])",
+   "note": "the 224,147 pages = 50k selection + ~174k extra pages of unknown content [inference]",
+   "K_pages": 994,
+   "chunksPerPage_mean": 4.210261569416499,
+   "chunksPerPage_CI95": [
+    3.835990945674044,
+    4.618762575452716
+   ],
+   "chunksPerPage_median": 2.0,
+   "chunksPerPage_p90": 10.0,
+   "chunksPerPage_p99": 31.0,
+   "chunksPerPage_max": 67,
+   "structuredFraction": 0.0,
+   "charsPerChunk_mean": 2474.853524492234,
+   "charsPerChunk_median": 3000,
+   "payloadBytesPerPoint_total": 4398.2238948626045,
+   "payloadBytesPerPoint_text": 2518.2136200716845,
+   "payloadBytesPerPoint_keywords": 1237.7859020310634,
+   "payloadBytesPerPoint_archive": 181.0,
+   "payloadBytesPerPoint_titles": 179.77777777777777,
+   "payloadBytesPerPoint_source": 61.0,
+   "payloadBytesPerPoint_fixed": 220.44659498207886,
+   "estTotalChunks": 943717.5,
+   "estTotalChunks_CI95": [
+    859825.8624999999,
+    1035281.7749999999
+   ],
+   "estPayloadJsonGB": 4.1506808585,
+   "estVectorGB_768xf32": 2.89910016
+  },
+  {
+   "variant": "wikipedia_en_top_nopic/top_maxi_2026-09 (224,147 pages, full text) [high proxy]",
+   "pages": 224147,
+   "basis": "EXTRAPOLATED: proxy = best-50k full-text chunks/page (upper)",
+   "note": "the 224,147 pages = 50k selection + ~174k extra pages of unknown content [inference]",
+   "K_pages": 999,
+   "chunksPerPage_mean": 17.59259259259259,
+   "chunksPerPage_CI95": [
+    16.8508008008008,
+    18.31136136136136
+   ],
+   "chunksPerPage_median": 14,
+   "chunksPerPage_p90": 32.200000000000045,
+   "chunksPerPage_p99": 61.039999999999964,
+   "chunksPerPage_max": 85,
+   "structuredFraction": 0.0,
+   "charsPerChunk_mean": 2906.9401422475107,
+   "charsPerChunk_median": 3000,
+   "payloadBytesPerPoint_total": 5057.551123755335,
+   "payloadBytesPerPoint_text": 2946.157211948791,
+   "payloadBytesPerPoint_keywords": 1485.1890184921763,
+   "payloadBytesPerPoint_archive": 181.0,
+   "payloadBytesPerPoint_titles": 162.83812233285917,
+   "payloadBytesPerPoint_source": 61.0,
+   "payloadBytesPerPoint_fixed": 221.3667709815078,
+   "estTotalChunks": 3943326.8518518517,
+   "estTotalChunks_CI95": [
+    3777056.447097097,
+    4104436.715065065
+   ],
+   "estPayloadJsonGB": 19.943577150917918,
+   "estVectorGB_768xf32": 12.11390008888889
+  },
+  {
+   "variant": "wikipedia_en_all_mini_2026-09 (7,331,817 pages, intro+infobox)",
+   "pages": 7331817,
+   "basis": "EXTRAPOLATED: best-1M mini chunks/page x pages (rank<1M intros are longer than the tail, so probably an over-estimate [inference])",
+   "note": "all_mini not sampled (14.4 GB download skipped)",
+   "K_pages": 1000,
+   "chunksPerPage_mean": 1.026,
+   "chunksPerPage_CI95": [
+    1.01,
+    1.05
+   ],
+   "chunksPerPage_median": 1.0,
+   "chunksPerPage_p90": 1.0,
+   "chunksPerPage_p99": 2.0,
+   "chunksPerPage_max": 11,
+   "structuredFraction": 0.0,
+   "charsPerChunk_mean": 595.9142300194932,
+   "charsPerChunk_median": 392.5,
+   "payloadBytesPerPoint_total": 1679.583820662768,
+   "payloadBytesPerPoint_text": 607.8986354775828,
+   "payloadBytesPerPoint_keywords": 377.9395711500975,
+   "payloadBytesPerPoint_archive": 230.0,
+   "payloadBytesPerPoint_titles": 181.98538011695908,
+   "payloadBytesPerPoint_source": 63.0,
+   "payloadBytesPerPoint_fixed": 218.76023391812865,
+   "estTotalChunks": 7522444.242000001,
+   "estTotalChunks_CI95": [
+    7405135.17,
+    7698407.850000001
+   ],
+   "estPayloadJsonGB": 12.634575640701,
+   "estVectorGB_768xf32": 23.108948711424002
+  },
+  {
+   "variant": "wikipedia_en_all_nopic_2026-06 (8,516,991 pages, full text, no images)",
+   "pages": 8516991,
+   "basis": "EXTRAPOLATED: uniform full-text sample of the installed maxi_2026-02 (K=13008) x pages of the 2026-06 nopic build (same text as maxi [inference])",
+   "note": "proxy from zim_sampling.json",
+   "K_pages": 13008,
+   "chunksPerPage_mean": 2.344787822878229,
+   "chunksPerPage_CI95": [
+    2.2865909440344403,
+    2.4055984778597783
+   ],
+   "chunksPerPage_median": 1.0,
+   "chunksPerPage_p90": 4.0,
+   "chunksPerPage_p99": 17.0,
+   "chunksPerPage_max": 76,
+   "structuredFraction": 0.0,
+   "charsPerChunk_mean": 2162.1805842431395,
+   "charsPerChunk_median": 2999,
+   "payloadBytesPerPoint_total": 3964.330480967837,
+   "payloadBytesPerPoint_text": 2203.7316809284944,
+   "payloadBytesPerPoint_keywords": 1105.7198452509754,
+   "payloadBytesPerPoint_archive": 181.0,
+   "payloadBytesPerPoint_titles": 192.84980820300973,
+   "payloadBytesPerPoint_source": 61.0,
+   "payloadBytesPerPoint_fixed": 220.02914658535786,
+   "estTotalChunks": 19970536.78436347,
+   "estTotalChunks_CI95": [
+    19474874.491022833,
+    20488460.58554543
+   ],
+   "estPayloadJsonGB": 79.16980769554152,
+   "estVectorGB_768xf32": 61.349489001564585,
+   "tokensPerChunk_nomic": 544.56,
+   "charsPerToken_nomic": 3.9886789334508594,
+   "tokensSample": 2000
+  },
+  {
+   "variant": "wikipedia_en_all_maxi_2026-02 (installed, 8,425,786 pages, full text)",
+   "pages": 8425786,
+   "basis": "MEASURED (K=13008 random pages)",
+   "note": "zim_sampling.json",
+   "K_pages": 13008,
+   "chunksPerPage_mean": 2.344787822878229,
+   "chunksPerPage_CI95": [
+    2.2865909440344403,
+    2.4055984778597783
+   ],
+   "chunksPerPage_median": 1.0,
+   "chunksPerPage_p90": 4.0,
+   "chunksPerPage_p99": 17.0,
+   "chunksPerPage_max": 76,
+   "structuredFraction": 0.0,
+   "charsPerChunk_mean": 2162.1805842431395,
+   "charsPerChunk_median": 2999,
+   "payloadBytesPerPoint_total": 3964.330480967837,
+   "payloadBytesPerPoint_text": 2203.7316809284944,
+   "payloadBytesPerPoint_keywords": 1105.7198452509754,
+   "payloadBytesPerPoint_archive": 181.0,
+   "payloadBytesPerPoint_titles": 192.84980820300973,
+   "payloadBytesPerPoint_source": 61.0,
+   "payloadBytesPerPoint_fixed": 220.02914658535786,
+   "estTotalChunks": 19756680.41097786,
+   "estTotalChunks_CI95": [
+    19266325.96397217,
+    20269057.97637223
+   ],
+   "estPayloadJsonGB": 78.3220103559797,
+   "estVectorGB_768xf32": 60.69252222252398,
+   "tokensPerChunk_nomic": 544.56,
+   "charsPerToken_nomic": 3.9886789334508594,
+   "tokensSample": 2000
+  }
+ ],
+ "mini_samples": {
+  "top_mini": {
+   "K_pages": 1000,
+   "chunksPerPage_mean": 1.25,
+   "chunksPerPage_CI95": [
+    1.222,
+    1.278
+   ],
+   "chunksPerPage_median": 1.0,
+   "chunksPerPage_p90": 2.0,
+   "chunksPerPage_p99": 2.0,
+   "chunksPerPage_max": 4,
+   "structuredFraction": 0.0,
+   "charsPerChunk_mean": 1766.3272,
+   "charsPerChunk_median": 1774.5,
+   "payloadBytesPerPoint_total": 3512.252,
+   "payloadBytesPerPoint_text": 1781.2744,
+   "payloadBytesPerPoint_keywords": 1068.3312,
+   "payloadBytesPerPoint_archive": 217.0,
+   "payloadBytesPerPoint_titles": 164.9,
+   "payloadBytesPerPoint_source": 61.0,
+   "payloadBytesPerPoint_fixed": 219.7464
+  },
+  "top1m_mini": {
+   "K_pages": 1000,
+   "chunksPerPage_mean": 1.026,
+   "chunksPerPage_CI95": [
+    1.01,
+    1.05
+   ],
+   "chunksPerPage_median": 1.0,
+   "chunksPerPage_p90": 1.0,
+   "chunksPerPage_p99": 2.0,
+   "chunksPerPage_max": 11,
+   "structuredFraction": 0.0,
+   "charsPerChunk_mean": 595.9142300194932,
+   "charsPerChunk_median": 392.5,
+   "payloadBytesPerPoint_total": 1679.583820662768,
+   "payloadBytesPerPoint_text": 607.8986354775828,
+   "payloadBytesPerPoint_keywords": 377.9395711500975,
+   "payloadBytesPerPoint_archive": 230.0,
+   "payloadBytesPerPoint_titles": 181.98538011695908,
+   "payloadBytesPerPoint_source": 63.0,
+   "payloadBytesPerPoint_fixed": 218.76023391812865
+  }
+ },
+ "maxi_fulltext_samples": {
+  "top_mini": {
+   "K_pages": 999,
+   "chunksPerPage_mean": 17.59259259259259,
+   "chunksPerPage_CI95": [
+    16.8508008008008,
+    18.31136136136136
+   ],
+   "chunksPerPage_median": 14,
+   "chunksPerPage_p90": 32.200000000000045,
+   "chunksPerPage_p99": 61.039999999999964,
+   "chunksPerPage_max": 85,
+   "structuredFraction": 0.0,
+   "charsPerChunk_mean": 2906.9401422475107,
+   "charsPerChunk_median": 3000,
+   "payloadBytesPerPoint_total": 5057.551123755335,
+   "payloadBytesPerPoint_text": 2946.157211948791,
+   "payloadBytesPerPoint_keywords": 1485.1890184921763,
+   "payloadBytesPerPoint_archive": 181.0,
+   "payloadBytesPerPoint_titles": 162.83812233285917,
+   "payloadBytesPerPoint_source": 61.0,
+   "payloadBytesPerPoint_fixed": 221.3667709815078
+  },
+  "top1m_mini": {
+   "K_pages": 994,
+   "chunksPerPage_mean": 4.210261569416499,
+   "chunksPerPage_CI95": [
+    3.835990945674044,
+    4.618762575452716
+   ],
+   "chunksPerPage_median": 2.0,
+   "chunksPerPage_p90": 10.0,
+   "chunksPerPage_p99": 31.0,
+   "chunksPerPage_max": 67,
+   "structuredFraction": 0.0,
+   "charsPerChunk_mean": 2474.853524492234,
+   "charsPerChunk_median": 3000,
+   "payloadBytesPerPoint_total": 4398.2238948626045,
+   "payloadBytesPerPoint_text": 2518.2136200716845,
+   "payloadBytesPerPoint_keywords": 1237.7859020310634,
+   "payloadBytesPerPoint_archive": 181.0,
+   "payloadBytesPerPoint_titles": 179.77777777777777,
+   "payloadBytesPerPoint_source": 61.0,
+   "payloadBytesPerPoint_fixed": 220.44659498207886
+  }
+ },
+ "page_counts_source": "research/wikipedia_variants.md (Counter text/html)"
+}

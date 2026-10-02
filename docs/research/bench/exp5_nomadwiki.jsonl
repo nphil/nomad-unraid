@@ -1,0 +1,4 @@
+{"recall@1": 0.64, "recall@5": 0.91, "recall@10": 0.9566666666666667, "mrr@10": 0.7567235449735449, "nq": 300, "corpus": 7596, "model": "nomic15", "variant": "nomadfix", "dataset": "nomadwiki", "dim": 768}
+{"recall@1": 0.08666666666666667, "recall@5": 0.12333333333333334, "recall@10": 0.12666666666666668, "mrr@10": 0.10024999999999999, "nq": 300, "corpus": 7596, "model": "granite_r2", "variant": "none", "dataset": "nomadwiki", "dim": 768}
+{"recall@1": 0.6466666666666666, "recall@5": 0.9133333333333333, "recall@10": 0.96, "mrr@10": 0.7602791005291005, "nq": 300, "corpus": 7596, "model": "granite_r2", "variant": "nomadfix", "dataset": "nomadwiki", "dim": 768}
+{"recall@1": 0.6666666666666666, "recall@5": 0.9166666666666666, "recall@10": 0.96, "mrr@10": 0.7697195767195768, "nq": 300, "corpus": 7596, "model": "granite_r2", "variant": "none", "dataset": "nomadwiki", "dim": 768}

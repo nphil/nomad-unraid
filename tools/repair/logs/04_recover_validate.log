@@ -1,0 +1,83 @@
+[12:15:23] == 04 start; load 9.04 9.93 11.26
+[12:15:23] RAM available 23421 MB
+[12:15:35] snapshot @pre-validate taken
+WARNING: Your kernel does not support swap limit capabilities or the cgroup is not mounted. Memory limited without swap.
+[12:21:37] ready=1 after 362 s
+mem 3.639GiB / 4GiB cpu 0.13%
+collection: {'status': 'grey', 'points_count': 4130695, 'indexed_vectors_count': 138707, 'segments_count': 9} optimizer: ok
+payload_schema: {'collection': 'keyword/0', 'source': 'keyword/4130695', 'content_type': 'keyword/4130652', 'active': 'bool/4130695'}
+exact count: 4130695 | old instance reported 4,130,695 (= 138,707 + 3,989,177 + 2,811)
+PASS count is close to the old instance's 4,130,695 (within 1%) (got 4130695, diff +0)
+top sources:
+      525026  diy.stackexchange.com_en_all_2026-08.zim
+      452081  wikibooks_en_all_maxi_2026-01.zim
+      420794  electronics.stackexchange.com_en_all_2026-08.zim
+      414101  wikibooks_en_all_nopic_2026-01.zim
+      403059  wikipedia_en_medicine_maxi_2026-01.zim
+      261368  wikipedia_en_all_maxi_2026-02.zim
+      206522  raspberrypi.stackexchange.com_en_all_2026-08.zim
+      196639  ifixit_en_all_2025-12.zim
+      156140  mechanics.stackexchange.com_en_all_2026-08.zim
+      155936  wikiversity_en_all_maxi_2026-02.zim
+      152969  cooking.stackexchange.com_en_all_2026-07.zim
+      144181  robotics.stackexchange.com_en_all_2026-08.zim
+PASS 120 reference points present (missing 0)
+PASS reference payloads identical (120/120)
+PASS reference vectors identical (120/120, worst abs diff 0.00e+00)
+PASS 42 random points: API vector == raw chunk-file vector (42/42)
+PASS those points have payload text (without text: 0, found 42/42)
+sample texts:
+   - Managing Groups and Teams/Team Personalities | Managing Groups and Teams/Team | direct confrontation and prefer to attack from a distance from behind some kind of protect
+   - Space medicine | Space medicine | ey dialysis machine. These machines rely on technology developed by NASA in order to proce
+   - Rhetoric and Composition/Capitalization | Rhetoric and Composition/Capit | < Rhetoric and Composition Capitalize means to use uppercase for the first letter of a wor
+   - Microcontroller software shutdown with transisto | Microcontroller software shutd | Microcontroller software shutdown with transistor 2N4401 Asked Dec 26 '16 at 11:14 Active 
+   - Crypto | Choosing a key format | Always prefer a KeyObject - create one from whatever format you have and reuse it. The gui
+ALL CHECKS PASSED
+recover_check exit=0
+orig-boil | hits 15 | first 40.820s median 45.5095s | (0.83, 'How long does water need to be boiled for to kill ', 'outdoors.stackexchange.com_e')
+diy-switch | hits 15 | first 41.364s median 40.9911s | (0.864, 'How do I wire a three way switch with two lights?', 'diy.stackexchange.com_en_all')
+Terminated                 QDRANT_BASE=http://127.0.0.1:16333 SKIP_RECALL=1 TAG=recovered-plain python3 $R/verify_search.py 2
+mem 3.513GiB / 4GiB cpu 70.97%
+[12:26:37] cgroup peak memory: 4294967296
+[12:26:37] -- scratch qdrant log (non-request lines)
+           _                 _    
+  __ _  __| |_ __ __ _ _ __ | |_  
+ / _` |/ _` | '__/ _` | '_ \| __| 
+| (_| | (_| | | | (_| | | | | |_  
+ \__, |\__,_|_|  \__,_|_| |_|\__| 
+    |_|                           
+
+Version: 1.16.3, build: bd49f45a
+Access web UI at http://localhost:6333/dashboard
+
+2026-10-02T16:15:35.846312Z  WARN qdrant: There is a potential issue with the filesystem for storage path ./storage. Details: Unrecognized filesystem - cannot guarantee data safety
+2026-10-02T16:15:35.846779Z  INFO storage::content_manager::consensus::persistent: Loading raft state from ./storage/raft_state.json
+2026-10-02T16:15:35.857800Z  INFO storage::content_manager::toc: Loading collection: nomad_knowledge_base
+2026-10-02T16:21:05.678619Z  INFO collection::shards::local_shard: Recovering shard ./storage/collections/nomad_knowledge_base/0: 0/115716 (0%)
+2026-10-02T16:21:36.960713Z  INFO collection::shards::local_shard: Recovered collection nomad_knowledge_base: 115716/115716 (100%)
+2026-10-02T16:21:36.991800Z  INFO qdrant: Distributed mode disabled
+2026-10-02T16:21:36.993370Z  INFO qdrant: Telemetry reporting enabled, id: 3a3a0604-03e7-4643-a8b6-08059a647377
+2026-10-02T16:21:37.036643Z  INFO qdrant::tonic: Qdrant gRPC listening on 6334
+2026-10-02T16:21:37.036665Z  INFO qdrant::tonic: TLS disabled for gRPC API
+2026-10-02T16:21:37.037265Z  INFO qdrant::actix: TLS disabled for REST API
+2026-10-02T16:21:37.037323Z  INFO qdrant::actix: Qdrant HTTP listening on 6333
+2026-10-02T16:21:37.038486Z  INFO actix_server::builder: starting 3 workers
+2026-10-02T16:21:37.038496Z  INFO actix_server::server: Actix runtime found; starting in Actix runtime
+2026-10-02T16:21:37.038499Z  INFO actix_server::server: starting service: "actix-web-service-0.0.0.0:6333", workers: 3, listening on: 0.0.0.0:6333
+[12:26:38] scratch stopped in 0 s (container gone: yes)
+2026-10-02T16:22:21.048957Z  INFO actix_web::middleware::logger: 172.17.0.1 "POST /collections/nomad_knowledge_base/points/search HTTP/1.1" 200 4750 "-" "Python-urllib/3.12" 40.814967
+2026-10-02T16:23:00.325675Z  INFO actix_web::middleware::logger: 172.17.0.1 "POST /collections/nomad_knowledge_base/points/search HTTP/1.1" 200 4750 "-" "Python-urllib/3.12" 39.274461
+2026-10-02T16:23:52.068174Z  INFO actix_web::middleware::logger: 172.17.0.1 "POST /collections/nomad_knowledge_base/points/search HTTP/1.1" 200 4750 "-" "Python-urllib/3.12" 51.740939
+2026-10-02T16:24:33.432590Z  INFO actix_web::middleware::logger: 172.17.0.1 "POST /collections/nomad_knowledge_base/points/search HTTP/1.1" 200 4651 "-" "Python-urllib/3.12" 41.362871
+2026-10-02T16:25:14.828753Z  INFO actix_web::middleware::logger: 172.17.0.1 "POST /collections/nomad_knowledge_base/points/search HTTP/1.1" 200 4651 "-" "Python-urllib/3.12" 41.394494
+2026-10-02T16:25:55.414965Z  INFO actix_web::middleware::logger: 172.17.0.1 "POST /collections/nomad_knowledge_base/points/search HTTP/1.1" 200 4651 "-" "Python-urllib/3.12" 40.584857
+2026-10-02T16:26:36.384606Z  INFO actix_web::middleware::logger: 172.17.0.1 "POST /collections/nomad_knowledge_base/points/search HTTP/1.1" 200 4690 "-" "Python-urllib/3.12" 40.968279
+2026-10-02T16:26:38.108959Z  INFO actix_server::server: SIGTERM received; starting graceful shutdown
+2026-10-02T16:26:38.108987Z  INFO actix_server::worker: shutting down idle worker
+2026-10-02T16:26:38.108993Z  INFO actix_server::worker: graceful worker shutdown; finishing 1 connections
+2026-10-02T16:26:38.109020Z  INFO actix_server::worker: shutting down idle worker
+2026-10-02T16:26:38.108991Z  INFO actix_server::accept: accept thread stopped
+21G	/mnt/nvme/appdata/nomad-qdrant-recovered
+NAME                                  USED  AVAIL
+nvme/appdata/nomad-qdrant-recovered  21.2G   185G
+[12:26:40] == 04 done

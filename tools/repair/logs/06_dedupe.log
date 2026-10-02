@@ -1,0 +1,41 @@
+[12:32:25] == 06 start; load 14.45 11.38 10.88; RAM available 22491 MB; qdrant pid 4172869
+[12:32:25] collection: {'status': 'grey', 'points_count': 4130695, 'segments_count': 9}
+scanned 200,000 points, candidate groups 3,127, 5s
+scanned 400,000 points, candidate groups 11,648, 9s
+scanned 600,000 points, candidate groups 24,994, 15s
+scanned 800,000 points, candidate groups 41,953, 22s
+scanned 1,000,000 points, candidate groups 62,022, 28s
+scanned 1,200,000 points, candidate groups 84,649, 35s
+scanned 1,400,000 points, candidate groups 109,503, 41s
+scanned 1,600,000 points, candidate groups 136,009, 47s
+scanned 1,800,000 points, candidate groups 164,464, 54s
+scanned 2,000,000 points, candidate groups 194,148, 61s
+scanned 2,200,000 points, candidate groups 224,947, 67s
+scanned 2,400,000 points, candidate groups 257,071, 73s
+scanned 2,600,000 points, candidate groups 290,206, 78s
+scanned 2,800,000 points, candidate groups 324,158, 84s
+scanned 3,000,000 points, candidate groups 358,934, 89s
+scanned 3,200,000 points, candidate groups 394,481, 94s
+scanned 3,400,000 points, candidate groups 431,029, 101s
+scanned 3,600,000 points, candidate groups 468,265, 106s
+scanned 3,800,000 points, candidate groups 506,507, 112s
+scanned 4,000,000 points, candidate groups 545,830, 118s
+SCAN DONE: 4,130,695 points, 572,294 candidate groups, 1,441,639 members, 123s
+fetched 0/1,441,639 2s
+fetched 100,000/1,441,639 26s
+fetched 200,000/1,441,639 47s
+fetched 300,000/1,441,639 66s
+fetched 400,000/1,441,639 87s
+fetched 500,000/1,441,639 106s
+fetched 600,000/1,441,639 125s
+fetched 700,000/1,441,639 144s
+fetched 800,000/1,441,639 163s
+fetched 900,000/1,441,639 180s
+fetched 1,000,000/1,441,639 198s
+fetched 1,100,000/1,441,639 215s
+fetched 1,200,000/1,441,639 232s
+fetched 1,300,000/1,441,639 249s
+fetched 1,400,000/1,441,639 266s
+PLAN DONE {"candidate_groups": 572294, "groups_with_different_texts_kept": 656, "ids_missing_on_fetch": 0, "to_delete": 868176, "by_source": [["diy.stackexchange.com_en_all_2026-08.zim", 263212], ["electronics.stackexchange.com_en_all_2026-08.zim", 207468], ["wikibooks_en_all_maxi_2026-01.zim", 128586], ["wikipedia_en_medicine_maxi_2026-01.zim", 95513], ["wikibooks_en_all_nopic_2026-01.zim", 91345], ["wikipedia_en_all_maxi_2026-02.zim", 64026], ["raspberrypi.stackexchange.com_en_all_2026-08.zim", 14881], ["devdocs_en_node_2026-08.zim", 2904], ["devdocs_en_docker_2026-07.zim", 132], ["robotics.stackexchange.com_en_all_2026-08.zim", 40], ["wikipedia_en_100_mini_2026-01.zim", 39], ["devdocs_en_react_2026-05.zim", 10], ["devdocs_en_css_2026-07.zim", 9], ["arduino.stackexchange.com_en_all_2026-07.zim", 5], ["gutenberg_en_lcc-s_2026-03.zim", 3], ["ifixit_en_all_2025-12.zim", 1], ["devdocs_en_python_2026-08.zim", 1], ["medlineplus.gov_en_all_2025-01.zim", 1]]} 275s
+[12:39:04] delete_ids.txt: 868176 ids
+[12:39:04] == 06 done

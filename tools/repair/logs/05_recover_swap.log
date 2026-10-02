@@ -1,0 +1,28 @@
+[12:31:07] == 05 start; load 9.05 9.34 10.21
+[12:31:07] RAM available 22939 MB
+already paused
+Batch window: 02:00-05:00 America/New_York, closed now (EMBED_WINDOW=unset)
+Queue file-embeddings: PAUSED (no new work starts)
+Jobs: active 0, waiting 0, held by pause 6, delayed 0, failed 10
+[12:31:08] template backup: /boot/config/plugins/dockerMan/backup-2026-10-02/my-Nomad.xml.pre-qdrant-recovered-123107
+[12:31:25] Nomad stopped in 12 s
+template updated
+[12:31:25] template qdrant path: default=/mnt/nvme/appdata/nomad-qdrant-recovered value=/mnt/nvme/appdata/nomad-qdrant-recovered
+[12:31:27] recreate.php exit 0
+[12:31:52] outer health: healthy restarting=false
+/mnt/nvme/appdata/nomad -> /config; /mnt/nvme/system/nomad-docker -> /var/lib/docker; /mnt/nvme/appdata/nomad-qdrant-recovered -> /data/qdrant; /mnt/user/Stash/Nomad -> /data; 
+[12:32:03] nomad_admin: Up 33 seconds (healthy)
+[12:32:23] qdrant pid=4172869 storage fs=zfs; bind source: 17071 17024 0:1291 / /data/qdrant rw,noatime shared:189 - zfs nvme/appdata/nomad-qdrant-recovered rw,xattr,posixacl,case
+[12:32:23] affinity: pid 4172869's current affinity list: 0-4,8-12
+collection: {'status': 'grey', 'points_count': 4130695, 'indexed_vectors_count': 138707, 'segments_count': 9} optimizer: ok
+optimizer_config: {'indexing_threshold': 0, 'deleted_threshold': 1.0}
+VmRSS:	11995868 kB
+RssAnon:	 1444748 kB
+RssFile:	10551120 kB
+VmSwap:	       0 kB
+[12:32:24] nomad-embed re-installed (gate NOT started)
+already paused
+Batch window: 02:00-05:00 America/New_York, closed now (EMBED_WINDOW=unset)
+Queue file-embeddings: PAUSED (no new work starts)
+Jobs: active 0, waiting 0, held by pause 6, delayed 0, failed 10
+[12:32:25] == 05 done; gate is NOT running (queue paused); start it at the very end with: bash /data/home/tmp/nomad-embed-hot-apply.sh apply

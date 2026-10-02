@@ -1,0 +1,59 @@
+[11:30:00] == 02_cutover start; load 18.14 17.99 18.13
+[11:30:00] RAM available 16955 MB
+already paused
+Batch window: 02:00-05:00 America/New_York, closed now (EMBED_WINDOW=unset)
+Queue file-embeddings: PAUSED (no new work starts)
+Jobs: active 0, waiting 0, held by pause 6, delayed 0, failed 10
+[11:30:01] template backup: /boot/config/plugins/dockerMan/backup-2026-10-02/my-Nomad.xml.pre-qdrant-nvme-113000
+VmRSS:	 6271456 kB
+RssAnon:	 5227536 kB
+RssFile:	 1043920 kB
+VmSwap:	  127828 kB
+[11:30:06] redis lastsave 1790955001, pause flag 1
+[11:30:18] Nomad stopped in 12 s
+exit=0 oom=false
+
+Number of files: 1,435 (reg: 1,204, dir: 231)
+Number of created files: 0
+Number of deleted files: 0
+Number of regular files transferred: 0
+Total file size: 23,202,872,574 bytes
+Total transferred file size: 0 bytes
+Literal data: 0 bytes
+Matched data: 0 bytes
+File list size: 0
+File list generation time: 0.001 seconds
+File list transfer time: 0.000 seconds
+Total bytes sent: 41,192
+Total bytes received: 258
+
+sent 41,192 bytes  received 258 bytes  27,633.33 bytes/sec
+total size is 23,202,872,574  speedup is 559,779.80
+[11:30:19] final copy done: 22G
+before: {'indexing_threshold': 10000, 'deleted_threshold': 0.2}
+after:  {'indexing_threshold': 0, 'deleted_threshold': 1.0}
+template updated
+[11:30:19] template Qdrant path entries: 1
+[11:30:21] recreate.php exit 0
+    if (w && w.dockerUIBlock) w.dockerUIBlock(false);
+  } catch (e) {}
+})();
+</script><div style="text-align:center"><button type="button" onclick="window.parent.jQuery('#iframe-popup').dialog('close')">Done</button></div><br>
+[11:30:41] outer health: healthy restarting=false
+image=sha256:339e13bfdf3b8a37ae3fda79297fceb7d7ed90693a57d3887cb8efd7470df0d1
+/mnt/user/Stash/Nomad -> /data; /mnt/nvme/appdata/nomad -> /config; /mnt/nvme/system/nomad-docker -> /var/lib/docker; /mnt/nvme/appdata/nomad-qdrant -> /data/qdrant; 
+[11:30:56] nomad_admin: Up 34 seconds (healthy)
+[11:31:22] qdrant pid=715514 storage fs=zfs
+[11:31:22] affinity: pid 715514's current affinity list: 0-4,8-12
+collection: {'status': 'grey', 'points_count': 220942, 'indexed_vectors_count': 138707, 'segments_count': 9} optimizer: ok
+optimizer_config: {'indexing_threshold': 0, 'deleted_threshold': 1.0}
+VmRSS:	11739228 kB
+RssAnon:	  149668 kB
+RssFile:	11589560 kB
+VmSwap:	       0 kB
+[11:31:22] nomad-embed re-installed (gate NOT started)
+already paused
+Batch window: 02:00-05:00 America/New_York, closed now (EMBED_WINDOW=unset)
+Queue file-embeddings: PAUSED (no new work starts)
+Jobs: active 0, waiting 0, held by pause 6, delayed 0, failed 10
+[11:31:23] == 02_cutover done; gate is NOT running (queue paused); start it at the very end with: bash /data/home/tmp/nomad-embed-hot-apply.sh apply

@@ -1,0 +1,40 @@
+[15:00:29] == 10 start; live qdrant: green 3276224 3276052 (status points indexed); storage: nvme/appdata/nomad-qdrant-recovered rw,xattr,posixacl,casesensitive
+[15:00:29] free before: disk2 2861749M | disk3 3257530M | nvme pool 195G
+  before: NAME                                  USED  USEDSNAP  USEDDS  AVAIL
+  before: nvme                                  711G        0B   1.66G   195G
+  before: nvme/appdata/nomad-qdrant            20.3G        0B   20.3G   195G
+  before: nvme/appdata/nomad-qdrant-recovered  39.9G     21.1G   18.9G   195G
+  before: Filesystem     1M-blocks     Used Available Use% Mounted on
+  before: /dev/md2p1      4767270M 1905521M  2861749M  40% /mnt/disk2
+  before: /dev/md3p1      7628848M 4371318M  3257530M  58% /mnt/disk3
+  before: nvme             201857M    1697M   200160M   1% /mnt/nvme
+[15:00:30] old array store on /mnt/disk2: removed 3444 MB; left: 0 entries (directory kept)
+[15:00:33] old array store on /mnt/disk3: removed 39029 MB; left: 0 entries (directory kept)
+[15:00:33] ABORT: v1 dataset still in use
+[15:01:15] == 10 start; live qdrant: green 3276224 3276052 (status points indexed); storage: nvme/appdata/nomad-qdrant-recovered rw,xattr,posixacl,casesensitive
+[15:01:15] free before: disk2 2865192M | disk3 3296559M | nvme pool 195G
+  before: NAME                                  USED  USEDSNAP  USEDDS  AVAIL
+  before: nvme                                  711G        0B   1.66G   195G
+  before: nvme/appdata/nomad-qdrant            20.3G        0B   20.3G   195G
+  before: nvme/appdata/nomad-qdrant-recovered  39.9G     21.1G   18.9G   195G
+  before: Filesystem     1M-blocks     Used Available Use% Mounted on
+  before: /dev/md2p1      4767270M 1902078M  2865192M  40% /mnt/disk2
+  before: /dev/md3p1      7628848M 4332289M  3296559M  57% /mnt/disk3
+  before: nvme             201857M    1697M   200161M   1% /mnt/nvme
+[15:01:15] old array store on /mnt/disk2: removed 0 MB; left: 0 entries (directory kept)
+[15:01:15] old array store on /mnt/disk3: removed 0 MB; left: 0 entries (directory kept)
+[15:01:16] v1 NVMe dataset destroyed WITH its snapshots: freed 21773 MB (of which held by snapshots: 0 MB)
+[15:01:17] manual/repair snapshot pre-validate destroyed (held 22645948416 bytes = 22645 MB)
+[15:01:17] scratch dir /mnt/nvme/nomadindex-scratch removed: 74 MB
+[15:01:17] free after: disk2 2865192M | disk3 3296559M | nvme pool 223G
+  after: NAME                                  USED  USEDSNAP  USEDDS  AVAIL
+  after: nvme                                  683G        0B   1.66G   223G
+  after: nvme/appdata/nomad-qdrant-recovered  18.9G        0B   18.9G   223G
+  snapshots left: no datasets available
+  after: Filesystem     1M-blocks     Used Available Use% Mounted on
+  after: /dev/md2p1      4767270M 1902078M  2865192M  40% /mnt/disk2
+  after: /dev/md3p1      7628848M 4332289M  3296559M  57% /mnt/disk3
+  after: nvme             230086M    1697M   228389M   1% /mnt/nvme
+  entries left in the old share dir: 1
+[15:01:17] live qdrant after cleanup: green 3276224 3276052; nomad health: healthy
+[15:01:17] == 10 done

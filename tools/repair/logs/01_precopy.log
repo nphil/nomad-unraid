@@ -1,0 +1,27 @@
+== 01_precopy start 2026-10-02 10:49:44 load: 18.56 18.28 18.09
+RAM available: 19104 MB
+Jobs: active 0, waiting 0, held by pause 6, delayed 0, failed 10
+recordsize	16K
+primarycache	metadata
+compression	lz4
+atime	off
+mountpoint	/mnt/nvme/appdata/nomad-qdrant
+-- rsync /mnt/disk2/Stash/Nomad/qdrant -> /mnt/nvme/appdata/nomad-qdrant 10:49:49
+
+Number of files: 432 (reg: 310, dir: 122)
+Number of created files: 431 (reg: 310, dir: 121)
+Number of deleted files: 0
+Number of regular files transferred: 310
+Total file size: 3,191,121,088 bytes
+Total transferred file size: 3,191,121,088 bytes
+Literal data: 3,191,121,088 bytes
+Matched data: 0 bytes
+File list size: 0
+File list generation time: 0.001 seconds
+File list transfer time: 0.000 seconds
+Total bytes sent: 3,191,926,944
+Total bytes received: 6,713
+
+sent 3,191,926,944 bytes  received 6,713 bytes  58,567,590.04 bytes/sec
+total size is 3,191,121,088  speedup is 1.00
+-- rsync /mnt/disk3/Stash/Nomad/qdrant -> /mnt/nvme/appdata/nomad-qdrant 10:50:43

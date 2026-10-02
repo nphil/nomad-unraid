@@ -1,0 +1,259 @@
+{
+ "queries": [
+  {
+   "name": "orig-boil",
+   "text": "how long should I boil water to make it safe to drink",
+   "hits": 15,
+   "first_s": 0.585,
+   "median_s": 0.0062,
+   "p90_s": 0.0063,
+   "top3": [
+    [
+     0.83,
+     "How long does water need to be boiled for to kill ",
+     "outdoors.stackexchange.com_e"
+    ],
+    [
+     0.813,
+     "How do you boil water without a proper container?",
+     "outdoors.stackexchange.com_e"
+    ],
+    [
+     0.81,
+     "Some dilemmas concerning use of UV water treatment",
+     "outdoors.stackexchange.com_e"
+    ]
+   ]
+  },
+  {
+   "name": "diy-switch",
+   "text": "how do I wire a three-way light switch",
+   "hits": 15,
+   "first_s": 0.329,
+   "median_s": 0.0057,
+   "p90_s": 0.0089,
+   "top3": [
+    [
+     0.865,
+     "How do I wire a three way switch with two lights?",
+     "diy.stackexchange.com_en_all"
+    ],
+    [
+     0.855,
+     "How do I wire 3 way switches where the power comes",
+     "diy.stackexchange.com_en_all"
+    ],
+    [
+     0.842,
+     "How to wire a 3 way switch that was a light fan an",
+     "diy.stackexchange.com_en_all"
+    ]
+   ]
+  },
+  {
+   "name": "electronics-reg",
+   "text": "why does my linear voltage regulator get so hot",
+   "hits": 15,
+   "first_s": 0.506,
+   "median_s": 0.0053,
+   "p90_s": 0.0071,
+   "top3": [
+    [
+     0.831,
+     "My linear voltage regulator is overheating very fa",
+     "electronics.stackexchange.co"
+    ],
+    [
+     0.806,
+     "Damaging a linear regulator applying a voltage to ",
+     "electronics.stackexchange.co"
+    ],
+    [
+     0.806,
+     "My linear voltage regulator is overheating very fa",
+     "electronics.stackexchange.co"
+    ]
+   ]
+  },
+  {
+   "name": "ifixit-battery",
+   "text": "how to replace the battery in an iPhone 8",
+   "hits": 15,
+   "first_s": 0.391,
+   "median_s": 0.0034,
+   "p90_s": 0.0038,
+   "top3": [
+    [
+     0.825,
+     "iPad 8 Battery Replacement",
+     "ifixit_en_all_2025-12.zim"
+    ],
+    [
+     0.818,
+     "BLU Life X8 Battery Replacement",
+     "ifixit_en_all_2025-12.zim"
+    ],
+    [
+     0.815,
+     "iPad 8 LTE Battery Replacement",
+     "ifixit_en_all_2025-12.zim"
+    ]
+   ]
+  },
+  {
+   "name": "medicine-bp",
+   "text": "what are the symptoms of high blood pressure",
+   "hits": 15,
+   "first_s": 0.397,
+   "median_s": 0.0047,
+   "p90_s": 0.0054,
+   "top3": [
+    [
+     0.838,
+     "Labile hypertension",
+     "wikipedia_en_medicine_maxi_2"
+    ],
+    [
+     0.821,
+     "Blood Pressure Medicines | MedlinePlus",
+     "medlineplus.gov_en_all_2025-"
+    ],
+    [
+     0.816,
+     "Hypertension",
+     "wikipedia_en_medicine_maxi_2"
+    ]
+   ]
+  },
+  {
+   "name": "wikibooks-python",
+   "text": "python list comprehension tutorial",
+   "hits": 15,
+   "first_s": 0.518,
+   "median_s": 0.0059,
+   "p90_s": 0.0068,
+   "top3": [
+    [
+     0.779,
+     "How to Think Like a Computer Scientist: Learning w",
+     "wikibooks_en_all_maxi_2026-0"
+    ],
+    [
+     0.779,
+     "How to Think Like a Computer Scientist: Learning w",
+     "wikibooks_en_all_nopic_2026-"
+    ],
+    [
+     0.769,
+     "How to Think Like a Computer Scientist: Learning w",
+     "wikibooks_en_all_nopic_2026-"
+    ]
+   ]
+  },
+  {
+   "name": "wikipedia-napoleon",
+   "text": "who was Napoleon Bonaparte",
+   "hits": 15,
+   "first_s": 0.475,
+   "median_s": 0.0057,
+   "p90_s": 0.0058,
+   "top3": [
+    [
+     0.842,
+     "Modern History/Napoleon Bonaparte",
+     "wikibooks_en_all_nopic_2026-"
+    ],
+    [
+     0.785,
+     "1806 in France",
+     "wikipedia_en_all_maxi_2026-0"
+    ],
+    [
+     0.769,
+     "1811 in France",
+     "wikipedia_en_all_maxi_2026-0"
+    ]
+   ]
+  },
+  {
+   "name": "arduino-pwm",
+   "text": "arduino pwm frequency change timer",
+   "hits": 15,
+   "first_s": 0.559,
+   "median_s": 0.0052,
+   "p90_s": 0.0078,
+   "top3": [
+    [
+     0.788,
+     "Variable pulse train generation",
+     "electronics.stackexchange.co"
+    ],
+    [
+     0.782,
+     "Variable frequency PWM, without changing timers",
+     "arduino.stackexchange.com_en"
+    ],
+    [
+     0.773,
+     "NodeMCU Arduino set PWM Frequency to specific freq",
+     "arduino.stackexchange.com_en"
+    ]
+   ]
+  },
+  {
+   "name": "cooking-cast-iron",
+   "text": "how do I season a cast iron skillet",
+   "hits": 15,
+   "first_s": 0.244,
+   "median_s": 0.0046,
+   "p90_s": 0.0056,
+   "top3": [
+    [
+     0.845,
+     "Does cast iron have a coating from the manufacture",
+     "cooking.stackexchange.com_en"
+    ],
+    [
+     0.834,
+     "Preventing flash rust after tempering a carbon ste",
+     "cooking.stackexchange.com_en"
+    ],
+    [
+     0.831,
+     "Should I use or avoid flaxseed oil when seasoning ",
+     "cooking.stackexchange.com_en"
+    ]
+   ]
+  },
+  {
+   "name": "gutenberg",
+   "text": "a story about a whaling ship and a white whale",
+   "hits": 15,
+   "first_s": 0.245,
+   "median_s": 0.0074,
+   "p90_s": 0.0082,
+   "top3": [
+    [
+     0.769,
+     "Whale Fishery of New England",
+     "gutenberg_en_lcc-s_2026-03.z"
+    ],
+    [
+     0.756,
+     "Whale hunting with gun and camera",
+     "gutenberg_en_lcc-s_2026-03.z"
+    ],
+    [
+     0.755,
+     "Whale Fishery of New England",
+     "gutenberg_en_lcc-s_2026-03.z"
+    ]
+   ]
+  }
+ ],
+ "recall": {
+  "error": "skipped (SKIP_RECALL set)"
+ },
+ "median_of_medians_s": 0.0055,
+ "p90_of_medians_s": 0.0062
+}

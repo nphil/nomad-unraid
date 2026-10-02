@@ -1,0 +1,305 @@
+[
+    {
+        "Id": "298ff90f3a281370fdd4ce682c84b53151305cf54033927ef4a440fb7ebcdab9",
+        "Created": "2026-10-01T09:00:47.520256207Z",
+        "Path": "/sbin/tini",
+        "Args": [
+            "--",
+            "/usr/local/bin/nomad-entrypoint"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 546848,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-10-01T09:00:47.566933125Z",
+            "FinishedAt": "0001-01-01T00:00:00Z",
+            "Health": {
+                "Status": "healthy",
+                "FailingStreak": 0,
+                "Log": [
+                    {
+                        "Start": "2026-10-02T11:27:55.291241589-04:00",
+                        "End": "2026-10-02T11:27:55.330144992-04:00",
+                        "ExitCode": 0,
+                        "Output": ""
+                    },
+                    {
+                        "Start": "2026-10-02T11:28:25.331229063-04:00",
+                        "End": "2026-10-02T11:28:25.36800947-04:00",
+                        "ExitCode": 0,
+                        "Output": ""
+                    },
+                    {
+                        "Start": "2026-10-02T11:28:55.368971515-04:00",
+                        "End": "2026-10-02T11:28:55.406961809-04:00",
+                        "ExitCode": 0,
+                        "Output": ""
+                    },
+                    {
+                        "Start": "2026-10-02T11:29:25.407594916-04:00",
+                        "End": "2026-10-02T11:29:25.439621746-04:00",
+                        "ExitCode": 0,
+                        "Output": ""
+                    },
+                    {
+                        "Start": "2026-10-02T11:29:55.440231795-04:00",
+                        "End": "2026-10-02T11:29:55.47719913-04:00",
+                        "ExitCode": 0,
+                        "Output": ""
+                    }
+                ]
+            }
+        },
+        "Image": "sha256:339e13bfdf3b8a37ae3fda79297fceb7d7ed90693a57d3887cb8efd7470df0d1",
+        "ResolvConfPath": "/var/lib/docker/containers/298ff90f3a281370fdd4ce682c84b53151305cf54033927ef4a440fb7ebcdab9/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/298ff90f3a281370fdd4ce682c84b53151305cf54033927ef4a440fb7ebcdab9/hostname",
+        "HostsPath": "/var/lib/docker/containers/298ff90f3a281370fdd4ce682c84b53151305cf54033927ef4a440fb7ebcdab9/hosts",
+        "LogPath": "/var/lib/docker/containers/298ff90f3a281370fdd4ce682c84b53151305cf54033927ef4a440fb7ebcdab9/298ff90f3a281370fdd4ce682c84b53151305cf54033927ef4a440fb7ebcdab9-json.log",
+        "Name": "/Nomad",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": [
+            "81b29f32234f9852f19e28f488cf4c0c6fea191adb1368c1bd98d7f302d7f1fe"
+        ],
+        "HostConfig": {
+            "Binds": [
+                "/mnt/user/Stash/Nomad:/data:rw",
+                "/mnt/nvme/appdata/nomad:/config:rw",
+                "/mnt/nvme/system/nomad-docker:/var/lib/docker:rw"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {
+                    "max-file": "1",
+                    "max-size": "100m"
+                }
+            },
+            "NetworkMode": "bridge",
+            "PortBindings": {
+                "80/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "8085"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "unless-stopped",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": true,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": [
+                "label=disable"
+            ],
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": [],
+            "BlkioDeviceWriteBps": [],
+            "BlkioDeviceReadIOps": [],
+            "BlkioDeviceWriteIOps": [],
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": 2048,
+            "Ulimits": [],
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": null,
+            "ReadonlyPaths": null
+        },
+        "GraphDriver": {
+            "Data": {
+                "ID": "298ff90f3a281370fdd4ce682c84b53151305cf54033927ef4a440fb7ebcdab9",
+                "LowerDir": "/var/lib/docker/overlay2/ca9c32d70c5907259d30e3c8af54c628620897b8b2644c6a8ccf5d667a43c5b2-init/diff:/var/lib/docker/overlay2/3468344cade3e8b46b2d3e35d1b29ee846088ee8873600e43fd8a349a7d17c73/diff:/var/lib/docker/overlay2/0ef03f8a0e2801bbf801cd34bdfeff3295745a55865202b22d12d3f5a5b21de0/diff:/var/lib/docker/overlay2/3f4abb1f525abfd5c0e1e3be95997e69102dec367635194c9061509da8b73129/diff:/var/lib/docker/overlay2/be21f11f32ec3731f68e19c48fa9f36e041af92e277ab2a1719619674fb78ada/diff:/var/lib/docker/overlay2/83ed5b6e0859c0b280e77e8615e6344c051a564d768392a1ce8ef28524588e48/diff:/var/lib/docker/overlay2/35648dd18d14ea039752e5d1c2c992e8541c697520217edf3050a091851ce177/diff:/var/lib/docker/overlay2/0f790ad86f47a32afda7934cd6c3c57f33197d48f0f65664aac6f3b7a773c947/diff:/var/lib/docker/overlay2/97aacee5bc4908446c62e14b938f05d2508f5f0e83d35a9f57b20a2cf5dcb30b/diff:/var/lib/docker/overlay2/791755ee3fe45389e5e59ff4db74e65d15320b316d4551660052d231efd51a79/diff:/var/lib/docker/overlay2/4857c3d8912a11b54ef7b70511d95c4f08565871e981dc4b457b973ea65ddb9c/diff:/var/lib/docker/overlay2/e5ffa270110287c5d66e86e7ad77885baba1beda4f69217af8268dcad4638c9f/diff:/var/lib/docker/overlay2/0f6ed2b5eb55c6c43c276b394c8497b7a91d9bb136a840bf4ade1705dd8e5f1c/diff:/var/lib/docker/overlay2/b09385d3ef7370b8a44f52c2f296fd8687b7d637f2ea4f6e71973a3f1a0c3a82/diff:/var/lib/docker/overlay2/6e8d63054fa8762fbee0e01d2bc3b1ed0b85bf1cc393a0c420c1e5024df42491/diff:/var/lib/docker/overlay2/2e73e7bd53b9beda605d67c3863a896ef07ab4d51f92feb108cb954b5d5835a8/diff:/var/lib/docker/overlay2/5ece01ad2d576d060d8fe59a05e15c1bd4cdf1d7853b5f757a80e6b4f9a84490/diff:/var/lib/docker/overlay2/0535d1ab9f982739abfd4dca4e3da1286a8305b786516a72e8040021941ee4e4/diff:/var/lib/docker/overlay2/dd244dacf1b989d2a061600008e4cd3fc226b8636a3229d3e184b83971dbd30f/diff:/var/lib/docker/overlay2/2cc07cc8e6ff79a787493c5efe4855340b35902918522e1556824c3d6ce0aee4/diff",
+                "MergedDir": "/var/lib/docker/overlay2/ca9c32d70c5907259d30e3c8af54c628620897b8b2644c6a8ccf5d667a43c5b2/merged",
+                "UpperDir": "/var/lib/docker/overlay2/ca9c32d70c5907259d30e3c8af54c628620897b8b2644c6a8ccf5d667a43c5b2/diff",
+                "WorkDir": "/var/lib/docker/overlay2/ca9c32d70c5907259d30e3c8af54c628620897b8b2644c6a8ccf5d667a43c5b2/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/mnt/user/Stash/Nomad",
+                "Destination": "/data",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/mnt/nvme/appdata/nomad",
+                "Destination": "/config",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/mnt/nvme/system/nomad-docker",
+                "Destination": "/var/lib/docker",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "298ff90f3a28",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "2375/tcp": {},
+                "2376/tcp": {},
+                "80/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "UPDATE_WINDOW=03:00-05:00",
+                "TZ=America/New_York",
+                "HOST_OS=Unraid",
+                "HOST_HOSTNAME=BeastNAS",
+                "HOST_CONTAINERNAME=Nomad",
+                "PUBLIC_URL=https://knowledge.nateshome.net",
+                "AI_URL=http://192.168.1.69:9292",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "DOCKER_VERSION=29.8.1",
+                "DOCKER_BUILDX_VERSION=0.37.1",
+                "DOCKER_COMPOSE_VERSION=5.5.1",
+                "DOCKER_TLS_CERTDIR=/certs",
+                "DIND_COMMIT=8d9e3502aba39127e4d12196dae16d306f76993d",
+                "NOMAD_VERSION=1.35.0"
+            ],
+            "Cmd": null,
+            "Healthcheck": {
+                "Test": [
+                    "CMD-SHELL",
+                    "curl -fsS http://127.0.0.1:18080/api/health >/dev/null && curl -fsS http://127.0.0.1/.nomad-unraid/ok >/dev/null || exit 1"
+                ],
+                "Interval": 30000000000,
+                "Timeout": 10000000000,
+                "StartPeriod": 300000000000,
+                "Retries": 5
+            },
+            "Image": "ghcr.io/nphil/nomad-unraid:latest",
+            "Volumes": {
+                "/config": {},
+                "/data": {},
+                "/var/lib/docker": {}
+            },
+            "WorkingDir": "/",
+            "Entrypoint": [
+                "/sbin/tini",
+                "--",
+                "/usr/local/bin/nomad-entrypoint"
+            ],
+            "Labels": {
+                "net.unraid.docker.icon": "https://raw.githubusercontent.com/nphil/nomad-unraid/main/assets/icon.png",
+                "net.unraid.docker.managed": "dockerman",
+                "net.unraid.docker.webui": "https://knowledge.nateshome.net",
+                "org.opencontainers.image.description": "Project NOMAD as a single, portable Unraid app",
+                "org.opencontainers.image.licenses": "Apache-2.0",
+                "org.opencontainers.image.revision": "44236f8f40105ff0dceddc544a8caa2d4136c01f",
+                "org.opencontainers.image.source": "https://github.com/nphil/nomad-unraid",
+                "org.opencontainers.image.version": "v1.35.0"
+            },
+            "StopSignal": "SIGTERM",
+            "StopTimeout": 120
+        },
+        "NetworkSettings": {
+            "SandboxID": "4b18aa1a5309f1a45c77572b45e7355538ab8b69dffe56e81aa09db2d537325a",
+            "SandboxKey": "/var/run/docker/netns/4b18aa1a5309",
+            "Ports": {
+                "2375/tcp": null,
+                "2376/tcp": null,
+                "80/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "8085"
+                    },
+                    {
+                        "HostIp": "::",
+                        "HostPort": "8085"
+                    }
+                ]
+            },
+            "Networks": {
+                "bridge": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "2743e867b25553bc9a04b1075c790d08ef3a48f63e6b92f3d6dd0cc309c68701",
+                    "EndpointID": "699f643e50113300ebef8b6c5dc1b31cc36ca986939adf8010e2014b8707a9fb",
+                    "Gateway": "172.17.0.1",
+                    "IPAddress": "172.17.0.67",
+                    "MacAddress": "aa:22:2f:1f:65:d0",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": null
+                }
+            }
+        }
+    }
+]

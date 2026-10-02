@@ -1,0 +1,471 @@
+{
+ "meta": {
+  "slice": "qdrantlab",
+  "qdrant_version": "v1.16.3 (= production)",
+  "status": "partial: scope cut by instruction (host overload / one-heavy-job lock)",
+  "tags": {
+   "smoke": "measured N=10,000 throw-away collection, host load 40-165, timings PROVISIONAL",
+   "prod": "live production telemetry snapshot / host ls,du",
+   "src": "Qdrant v1.16.3 source / OpenAPI",
+   "docs": "Qdrant documentation formula",
+   "infer": "inference, not measured"
+  },
+  "not_run": [
+   "N>=100k variant runs",
+   "real-vector recall/NDCG (bench/emb was empty)",
+   "in-place quantization PATCH proof",
+   "restart-with-leftovers test",
+   "anon-heap attribution runs (E_plain/E_noidx/E_idxdisk/E_intid)"
+  ],
+  "scripts_exercised_end_to_end": [
+   "scripts/run_variant.py with the EARLIER qlab.py (N=10k smoke)"
+  ],
+  "scripts_written_never_run": [
+   "scripts/qlab.py (current version)",
+   "scripts/run_v.py",
+   "scripts/inplace.py",
+   "scripts/fidelity.py",
+   "scripts/quiet_window.sh"
+  ],
+  "deferred_runs": "local://quiet-NomadQdrantLab.md"
+ },
+ "defaults_check": {
+  "verified": true,
+  "detail": "NOMAD createCollection call on v1.16.3 gives on_disk_payload=true, hnsw m16/ef100/full_scan 10000/on_disk false, indexing_threshold 10000, wal 32 MB, no quantization = production config (state/qdrant_collection.json)"
+ },
+ "nomad_search_shape_v1_35_0": {
+  "limit": 15,
+  "score_threshold": 0.3,
+  "with_payload": true,
+  "filter": {
+   "must_not": [
+    {
+     "key": "active",
+     "match": {
+      "value": false
+     }
+    }
+   ]
+  },
+  "params": null,
+  "note": "collection==eval exclusion only in facet calls (rag_service.ts l.43-45 vs l.1030-1042)"
+ },
+ "quantization_defaults_v1_16_3": {
+  "rescore_default": {
+   "scalar_int8": false,
+   "product": false,
+   "binary": true
+  },
+  "oversampling_default": 1.0,
+  "consequence": "NOMAD (no search params) gets NO rescoring with int8; score_threshold applies to int8-approximate scores",
+  "source": "lib/segment/src/vector_storage/quantized/quantized_vectors.rs l.194-208; lib/segment/src/types.rs l.480-505"
+ },
+ "smoke_N10000": {
+  "disk_allocated_B_per_point": {
+   "collection_meta": 3.6,
+   "id_tracker": 35.3,
+   "vectors_original": 3097.6,
+   "payload_index": 195.9,
+   "segment_other": 2.0,
+   "hnsw": 38.0,
+   "payload_storage": 1618.1,
+   "wal": 6103.9
+  },
+  "disk_total_ex_wal_B_per_point": {
+   "allocated": 4990.6,
+   "apparent": 17683.9
+  },
+  "rss_MB": {
+   "snap_empty": {
+    "RssAnon_MB": 25.5,
+    "RssFile_MB": 56.9,
+    "VmHWM_MB": 82.4
+   },
+   "snap_after_ingest": {
+    "RssAnon_MB": 155.3,
+    "RssFile_MB": 250.9,
+    "VmHWM_MB": 414.1
+   },
+   "snap_loaded": {
+    "RssAnon_MB": 43.0,
+    "RssFile_MB": 129.2,
+    "VmHWM_MB": 414.1
+   },
+   "snap_after_200_queries": {
+    "RssAnon_MB": 48.4,
+    "RssFile_MB": 146.4,
+    "VmHWM_MB": 414.1
+   },
+   "snap_after_queries": {
+    "RssAnon_MB": 48.5,
+    "RssFile_MB": 129.6,
+    "VmHWM_MB": 414.1
+   },
+   "snap_after_steady": {
+    "RssAnon_MB": 53.7,
+    "RssFile_MB": 97.8,
+    "VmHWM_MB": 414.1
+   },
+   "after_restart(cap 1g)": {
+    "RssAnon_MB": 29.9,
+    "RssFile_MB": 186.7
+   }
+  },
+  "rss_plain_MB": {
+   "snap_empty": {
+    "RssAnon_MB": 25.4,
+    "RssFile_MB": 54.3,
+    "VmHWM_MB": 79.7
+   },
+   "snap_after_ingest": {
+    "RssAnon_MB": 124.6,
+    "RssFile_MB": 53.5,
+    "VmHWM_MB": 215.2
+   },
+   "snap_loaded": {
+    "RssAnon_MB": 33.4,
+    "RssFile_MB": 23.4,
+    "VmHWM_MB": 215.2
+   },
+   "snap_after_200_queries": {
+    "RssAnon_MB": 44.3,
+    "RssFile_MB": 64.2,
+    "VmHWM_MB": 215.2
+   },
+   "snap_after_queries": {
+    "RssAnon_MB": 44.3,
+    "RssFile_MB": 62.2,
+    "VmHWM_MB": 215.2
+   },
+   "snap_after_steady": {
+    "RssAnon_MB": 35.9,
+    "RssFile_MB": 166.7,
+    "VmHWM_MB": 240.8
+   },
+   "after_restart(cap 1g)": {
+    "RssAnon_MB": 58.5,
+    "RssFile_MB": 178.8
+   }
+  },
+  "telemetry_bytes_per_point": {
+   "vectors": 3072.0,
+   "payload": 1584.1408
+  },
+  "recall_synthetic_default_hnsw_ef100": 0.9456250000000002,
+  "upserts_PROVISIONAL": {
+   "small_1to5_per_call_pts_per_s": [
+    316,
+    108
+   ],
+   "bulk_500_per_call_pts_per_s": [
+    2297,
+    2001
+   ],
+   "steady_small_pts_per_s": [
+    286,
+    314
+   ]
+  },
+  "plain_to_indexed_patch": {
+   "body": {
+    "optimizers_config": {
+     "indexing_threshold": 10000
+    }
+   },
+   "seconds": 33.0,
+   "disk_MB": {
+    "before": 117.2,
+    "peak": 169.5,
+    "after": 117.6
+   },
+   "peak_anon_MB": 41.3,
+   "cpu_s": 24.6,
+   "host_load_1min": 99.35
+  },
+  "nomad_ensure_seconds": {
+   "PUT_index_source_s": 0.04046676401048899,
+   "PUT_index_content_type_s": 0.00984884425997734,
+   "PUT_index_collection_s": 0.011062473058700562,
+   "PUT_index_active_s": 0.011046336963772774,
+   "setPayload_backfill_s": 0.02931052353233099,
+   "setPayload_status": 200
+  }
+ },
+ "production_facts": {
+  "points": 4110669,
+  "plain_segment_points": 3989177,
+  "vectors_B_per_point": 3072,
+  "payload_stored_B_per_point": 2171.2,
+  "payload_index_B_per_point": 91,
+  "jemalloc_allocated_GB": 5.91,
+  "heap_B_per_point": 1438,
+  "status": "red",
+  "optimizer_error": "Directory not empty (os error 39) removing a *.deleted segment dir",
+  "storage_path": {
+   "container_bind": "/mnt/user/Stash/Nomad (FUSE shfs)",
+   "qdrant_dir_on_disks_GB": {
+    "disk2": 3.5,
+    "disk3": 38,
+    "disk5": 0
+   }
+  },
+  "ensure_calls_15h": {
+   "PUT_index": {
+    "count": 2040,
+    "avg_s": 4.77,
+    "max_s": 1481
+   },
+   "setPayload": {
+    "count": 507,
+    "avg_s": 155.2,
+    "max_s": 3290
+   }
+  }
+ },
+ "extrapolation": {
+  "constants_B_per_point": {
+   "vec_f32": {
+    "bytes": 3072,
+    "source": "[prod] 12,254,751,744 B / 3,989,177 pts = 3,072; = dims*4 [docs]"
+   },
+   "payload_stored": {
+    "bytes": 2171,
+    "source": "[prod] 8,661,381,888 B / 3,989,177 pts (mixed libraries); Wikipedia chunks ~2.4 KB per NomadIndexAgent"
+   },
+   "payload_index_disk": {
+    "bytes": 91,
+    "source": "[prod] NomadIndexAgent (source/content_type/collection/active indexes)"
+   },
+   "id_tracker_disk": {
+    "bytes": 35,
+    "source": "[smoke] id_tracker folder 35 B/pt allocated (docs: 52 B/pt resident in RAM)"
+   },
+   "hnsw_graph": {
+    "bytes": 54,
+    "source": "[smoke] 38 B per point on a 7,000-of-10,000 indexed collection = 54 B per indexed pt, m=16 compressed links (docs formula uncompressed: m*2*4*1.2 = 154)"
+   },
+   "quant_int8": {
+    "bytes": 768,
+    "source": "[docs] 1 byte per dimension"
+   },
+   "quant_bin": {
+    "bytes": 96,
+    "source": "[docs] 1 bit per dimension"
+   },
+   "ram_id_tracker": {
+    "bytes": 52,
+    "source": "[docs] capacity-planning: id tracker resident in RAM, 52 B/pt"
+   },
+   "ram_payload_index": {
+    "bytes": 130,
+    "source": "[docs] payload index ~ 2 x indexed payload (source ~51 B + content_type ~11 B + bool) ~ 130 B/pt; resident"
+   },
+   "anon_slack_prod": {
+    "bytes": 1270,
+    "source": "[prod] jemalloc live heap 5.9 GB / 4.11M pts = 1,440 B/pt minus the 182 B/pt the formulas explain = ~1,270 B/pt unexplained, plain-segment state"
+   }
+  },
+  "disk_B_per_point": {
+   "V0": 5423,
+   "V1": 6191,
+   "V2": 6191,
+   "V3": 6191
+  },
+  "ram_B_per_point_formula": {
+   "V0": 3308,
+   "V1": 1004,
+   "V2": 950,
+   "V3_mandatory": 52,
+   "V3_hot_cache": 952
+  },
+  "wal_fixed_GB": 0.06,
+  "N": [
+   4100000.0,
+   8000000.0,
+   20000000.0,
+   40000000.0
+  ],
+  "tables": {
+   "V0": {
+    "disk_GB": [
+     22.3,
+     43.4,
+     108.5,
+     217.0
+    ],
+    "disk_GB_payload_2400": [
+     23.2,
+     45.3,
+     113.1,
+     226.1
+    ],
+    "ram_GB_formula": [
+     13.6,
+     26.5,
+     66.2,
+     132.3
+    ],
+    "ram_GB_with_prod_anon_slack": [
+     18.8,
+     36.6,
+     91.6,
+     183.1
+    ]
+   },
+   "V1": {
+    "disk_GB": [
+     25.4,
+     49.6,
+     123.9,
+     247.7
+    ],
+    "disk_GB_payload_2400": [
+     26.4,
+     51.4,
+     128.5,
+     256.9
+    ],
+    "ram_GB_formula": [
+     4.1,
+     8.0,
+     20.1,
+     40.2
+    ],
+    "ram_GB_with_prod_anon_slack": [
+     9.3,
+     18.2,
+     45.5,
+     91.0
+    ]
+   },
+   "V2": {
+    "disk_GB": [
+     25.4,
+     49.6,
+     123.9,
+     247.7
+    ],
+    "disk_GB_payload_2400": [
+     26.4,
+     51.4,
+     128.5,
+     256.9
+    ],
+    "ram_GB_formula": [
+     3.9,
+     7.6,
+     19.0,
+     38.0
+    ],
+    "ram_GB_with_prod_anon_slack": [
+     9.1,
+     17.8,
+     44.4,
+     88.8
+    ]
+   },
+   "V3": {
+    "disk_GB": [
+     25.4,
+     49.6,
+     123.9,
+     247.7
+    ],
+    "disk_GB_payload_2400": [
+     26.4,
+     51.4,
+     128.5,
+     256.9
+    ],
+    "ram_GB_formula_mandatory": [
+     0.2,
+     0.4,
+     1.0,
+     2.1
+    ],
+    "ram_GB_formula_hot_cache_wanted": [
+     4.1,
+     8.0,
+     20.1,
+     40.2
+    ],
+    "ram_GB_with_prod_anon_slack": [
+     5.4,
+     10.6,
+     26.4,
+     52.9
+    ]
+   }
+  },
+  "fits_10GB": {
+   "V0": {
+    "formula_M_points": 3.0,
+    "with_prod_anon_slack_M_points": 2.2
+   },
+   "V1": {
+    "formula_M_points": 10.0,
+    "with_prod_anon_slack_M_points": 4.4
+   },
+   "V2": {
+    "formula_M_points": 10.5,
+    "with_prod_anon_slack_M_points": 4.5
+   },
+   "V3": {
+    "formula_M_points": 192.3,
+    "with_prod_anon_slack_M_points": 7.6
+   }
+  },
+  "build_cpu_estimate": {
+   "cpu_ms_per_point_at_10k_smoke": 2.46,
+   "cpu_hours": {
+    "4M": 2.8,
+    "8M": 5.5,
+    "20M": 13.7,
+    "40M": 27.3
+   },
+   "note": "[infer] HNSW cost per point grows ~log N, so real values may be up to ~2x higher; divide by the cores actually granted (4)"
+  }
+ },
+ "recommendation": {
+  "create_body": {
+   "vectors": {
+    "size": 768,
+    "distance": "Cosine",
+    "on_disk": true
+   },
+   "quantization_config": {
+    "scalar": {
+     "type": "int8",
+     "quantile": 0.99,
+     "always_ram": true
+    }
+   },
+   "hnsw_config": {
+    "m": 16,
+    "ef_construct": 100,
+    "on_disk": false
+   },
+   "on_disk_payload": true
+  },
+  "patch_body_in_place": {
+   "vectors": {
+    "": {
+     "on_disk": true
+    }
+   },
+   "quantization_config": {
+    "scalar": {
+     "type": "int8",
+     "quantile": 0.99,
+     "always_ram": true
+    }
+   }
+  },
+  "v2_extra": {
+   "hnsw_config": {
+    "on_disk": true
+   }
+  },
+  "storage": "bind a direct NVMe/ZFS path (/mnt/nvme/...) or a single /mnt/diskN path, never /mnt/user (FUSE shfs)"
+ }
+}

@@ -1,0 +1,24 @@
+[12:43:34] == 07 start; load 9.06 10.58 10.63; RAM available 28836 MB
+Queue file-embeddings: PAUSED (no new work starts)
+Jobs: active 0, waiting 0, held by pause 6, delayed 0, failed 10
+[12:43:35] applying 868176 planned deletions to a collection with 4130695 points
+deleted 2,000/868,176 2s
+deleted 102,000/868,176 52s
+deleted 202,000/868,176 96s
+deleted 302,000/868,176 155s
+deleted 402,000/868,176 240s
+deleted 502,000/868,176 283s
+deleted 602,000/868,176 350s
+deleted 702,000/868,176 380s
+deleted 802,000/868,176 402s
+APPLY DONE: points 4,130,695 -> 3,262,519 (planned 868,176), 409s
+[12:50:24] dedupe applied; status:
+12:50:24 green pts 3262519 indexed 101582 segs 8 opt_thr None idx_thr 0 err: ok
+   load 11.15 11.40 11.07 | RssAnon: 1655696 kB RssFile: 5307348 kB VmSwap: 0 kB  | qdrant cpu% 26.7
+[12:50:24] starting int8 + HNSW build (PATCH)
+{"result":true,"status":"ok","time":0.202391018}
+12:50:25 yellow pts 3262519 indexed 101582 segs 8 opt_thr 2 idx_thr 10000 err: ok
+   load 11.15 11.40 11.07 | RssAnon: 1655776 kB RssFile: 5307804 kB VmSwap: 0 kB  | qdrant cpu% 26.7
+12:51:55 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 9.24 10.83 10.91 | RssAnon: 1662760 kB RssFile: 11417452 kB VmSwap: 0 kB  | qdrant cpu% 29.9
+[12:51:55] == 07 done (build continues in the background)

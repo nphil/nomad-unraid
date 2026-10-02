@@ -1,0 +1,106 @@
+=== config A_prod_like(-c2048 -b2048 -ub2048)
+ load time 1.0 s
+{"clients": 1, "batch": 8, "seconds": 24.4, "requests": 62, "errors": 0, "chunks_per_s": 20.3, "tokens_per_s": 11148, "tokens_per_chunk": 548.2, "lat_p50_s": 0.368, "lat_max_s": 1.079, "host_start": "60.21 64.58 57.88 | 73, 16052", "host_end": "59.35 64.11 57.90 | 90, 16108", "config": "A_prod_like(-c2048 -b2048 -ub2048)", "vram_mb": 400}
+{"clients": 4, "batch": 8, "seconds": 25.5, "requests": 69, "errors": 0, "chunks_per_s": 21.6, "tokens_per_s": 11278, "tokens_per_chunk": 521.3, "lat_p50_s": 1.47, "lat_max_s": 2.497, "host_start": "59.35 64.11 57.90 | 85, 16108", "host_end": "56.84 63.15 57.75 | 69, 15850", "config": "A_prod_like(-c2048 -b2048 -ub2048)", "vram_mb": 400}
+{"clients": 8, "batch": 8, "seconds": 28.3, "requests": 82, "errors": 0, "chunks_per_s": 23.2, "tokens_per_s": 12063, "tokens_per_chunk": 520.7, "lat_p50_s": 2.501, "lat_max_s": 6.33, "host_start": "56.84 63.15 57.75 | 38, 15850", "host_end": "61.18 63.51 58.04 | 97, 16814", "config": "A_prod_like(-c2048 -b2048 -ub2048)", "vram_mb": 400}
+{"clients": 4, "batch": 32, "seconds": 30.5, "requests": 15, "errors": 0, "chunks_per_s": 15.8, "tokens_per_s": 8211, "tokens_per_chunk": 521.2, "lat_p50_s": 8.166, "lat_max_s": 10.282, "host_start": "61.18 63.51 58.04 | 98, 16816", "host_end": "58.44 62.61 57.91 | 99, 16884", "config": "A_prod_like(-c2048 -b2048 -ub2048)", "vram_mb": 400}
+=== config B_np8(-c8192 -b4096 -ub4096 -np8 -fa on)
+ load time 2.0 s
+warm err HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+{"clients": 1, "batch": 8, "seconds": 24.8, "requests": 23, "errors": 13, "chunks_per_s": 7.4, "tokens_per_s": 3657, "tokens_per_chunk": 493.5, "lat_p50_s": 0.672, "lat_max_s": 1.741, "host_start": "72.81 65.85 59.20 | 97, 16468", "host_end": "69.84 65.62 59.30 | 99, 16136", "config": "B_np8(-c8192 -b4096 -ub4096 -np8 -fa on)", "vram_mb": 520}
+warm err HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+{"clients": 4, "batch": 8, "seconds": 26.7, "requests": 40, "errors": 7, "chunks_per_s": 12.0, "tokens_per_s": 5899, "tokens_per_chunk": 491.8, "lat_p50_s": 2.138, "lat_max_s": 4.084, "host_start": "69.84 65.62 59.30 | 95, 16002", "host_end": "64.35 64.72 59.17 | 100, 16084", "config": "B_np8(-c8192 -b4096 -ub4096 -np8 -fa on)", "vram_mb": 520}
+warm err HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+{"clients": 8, "batch": 8, "seconds": 28.9, "requests": 49, "errors": 11, "chunks_per_s": 13.6, "tokens_per_s": 6540, "tokens_per_chunk": 481.5, "lat_p50_s": 3.598, "lat_max_s": 5.911, "host_start": "64.35 64.72 59.17 | 96, 16218", "host_end": "56.29 62.74 58.69 | 86, 16280", "config": "B_np8(-c8192 -b4096 -ub4096 -np8 -fa on)", "vram_mb": 520}
+warm err HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+{"clients": 4, "batch": 32, "seconds": 29.2, "requests": 9, "errors": 9, "chunks_per_s": 9.9, "tokens_per_s": 4822, "tokens_per_chunk": 488.9, "lat_p50_s": 6.252, "lat_max_s": 7.983, "host_start": "56.29 62.74 58.69 | 81, 16280", "host_end": "48.64 60.28 58.00 | 96, 15726", "config": "B_np8(-c8192 -b4096 -ub4096 -np8 -fa on)", "vram_mb": 520}
+=== config C_np16(-c16384 -b8192 -ub8192 -np16 -fa on)
+ load time 2.0 s
+warm err HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+{"clients": 1, "batch": 8, "seconds": 25.3, "requests": 29, "errors": 19, "chunks_per_s": 9.2, "tokens_per_s": 4542, "tokens_per_chunk": 495.6, "lat_p50_s": 0.42, "lat_max_s": 1.537, "host_start": "48.43 60.05 57.94 | 13, 14852", "host_end": "53.66 60.40 58.11 | 13, 15628", "config": "C_np16(-c16384 -b8192 -ub8192 -np16 -fa on)", "vram_mb": 792}
+warm err HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+{"clients": 4, "batch": 8, "seconds": 27.1, "requests": 36, "errors": 7, "chunks_per_s": 10.6, "tokens_per_s": 5218, "tokens_per_chunk": 491.5, "lat_p50_s": 2.33, "lat_max_s": 4.966, "host_start": "53.66 60.40 58.11 | 98, 15834", "host_end": "52.71 59.47 57.87 | 82, 15708", "config": "C_np16(-c16384 -b8192 -ub8192 -np16 -fa on)", "vram_mb": 808}
+warm err HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+{"clients": 8, "batch": 8, "seconds": 28.3, "requests": 34, "errors": 7, "chunks_per_s": 9.6, "tokens_per_s": 4500, "tokens_per_chunk": 468.3, "lat_p50_s": 5.589, "lat_max_s": 8.63, "host_start": "52.71 59.47 57.87 | 33, 15708", "host_end": "51.39 58.57 57.63 | 15, 15076", "config": "C_np16(-c16384 -b8192 -ub8192 -np16 -fa on)", "vram_mb": 808}
+warm err HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+   err: HTTP Error 400: Bad Request
+{"clients": 4, "batch": 32, "seconds": 35.8, "requests": 9, "errors": 7, "chunks_per_s": 8.0, "tokens_per_s": 3930, "tokens_per_chunk": 488.9, "lat_p50_s": 10.568, "lat_max_s": 14.006, "host_start": "51.39 58.57 57.63 | 32, 15076", "host_end": "49.14 57.25 57.22 | 80, 16004", "config": "C_np16(-c16384 -b8192 -ub8192 -np16 -fa on)", "vram_mb": 808}

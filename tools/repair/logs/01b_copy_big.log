@@ -1,0 +1,19 @@
+[11:23:19] == 01b start; load 16.36 17.73 18.05
+[11:23:21] small files done
+[11:23:54] copied 40 big files (1342 MB), skipped 92
+[11:24:16] copied 80 big files (2684 MB), skipped 92
+[11:24:29] copied 120 big files (4026 MB), skipped 92
+[11:24:38] copied 160 big files (5368 MB), skipped 92
+[11:24:46] copied 200 big files (6710 MB), skipped 92
+[11:24:54] copied 240 big files (8052 MB), skipped 92
+[11:25:03] copied 280 big files (9394 MB), skipped 92
+[11:25:13] copied 320 big files (10736 MB), skipped 92
+[11:25:22] copied 360 big files (12078 MB), skipped 101
+[11:25:33] copied 400 big files (13421 MB), skipped 141
+[11:25:43] copied 440 big files (14763 MB), skipped 206
+[11:25:48] big files copied: 462 (15501 MB), skipped(already ok): 215
+21G	/mnt/nvme/appdata/nomad-qdrant
+files: 1197
+NAME                        USED  AVAIL
+nvme/appdata/nomad-qdrant  20.6G   206G
+[11:25:48] == 01b done

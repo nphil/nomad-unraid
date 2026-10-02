@@ -1,0 +1,92 @@
+12:52:03 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 11.42 11.23 11.04 | RssAnon: 1664768 kB RssFile: 11013108 kB VmSwap: 0 kB  | qdrant cpu% 29.8
+12:53:03 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 11.77 11.47 11.14 | RssAnon: 1838060 kB RssFile: 12593792 kB VmSwap: 0 kB  | qdrant cpu% 31.5
+12:54:03 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 15.35 12.41 11.47 | RssAnon: 1996296 kB RssFile: 12968036 kB VmSwap: 0 kB  | qdrant cpu% 32.0
+12:55:04 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 12.43 12.18 11.45 | RssAnon: 1961676 kB RssFile: 12869336 kB VmSwap: 0 kB  | qdrant cpu% 33.8
+12:56:04 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 12.58 12.42 11.59 | RssAnon: 1844140 kB RssFile: 16925848 kB VmSwap: 0 kB  | qdrant cpu% 35.7
+12:57:04 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 10.75 11.86 11.45 | RssAnon: 2119452 kB RssFile: 17758012 kB VmSwap: 0 kB  | qdrant cpu% 38.0
+12:58:04 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 11.21 11.68 11.41 | RssAnon: 2402928 kB RssFile: 16823972 kB VmSwap: 0 kB  | qdrant cpu% 40.3
+12:59:04 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 12.91 11.89 11.48 | RssAnon: 2865892 kB RssFile: 16133696 kB VmSwap: 0 kB  | qdrant cpu% 44.9
+13:00:04 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 19.42 13.99 12.24 | RssAnon: 2867644 kB RssFile: 14750468 kB VmSwap: 0 kB  | qdrant cpu% 50.0
+13:01:04 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 17.54 14.52 12.53 | RssAnon: 2870116 kB RssFile: 10630992 kB VmSwap: 0 kB  | qdrant cpu% 54.9
+13:02:04 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 14.10 14.12 12.52 | RssAnon: 2873076 kB RssFile: 10781408 kB VmSwap: 0 kB  | qdrant cpu% 59.5
+13:03:04 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 12.31 13.51 12.41 | RssAnon: 2875964 kB RssFile: 10811556 kB VmSwap: 0 kB  | qdrant cpu% 63.8
+13:04:04 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 13.09 13.54 12.49 | RssAnon: 2881316 kB RssFile: 10339216 kB VmSwap: 0 kB  | qdrant cpu% 67.8
+13:05:05 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 13.32 13.44 12.52 | RssAnon: 2895284 kB RssFile: 10152184 kB VmSwap: 0 kB  | qdrant cpu% 71.6
+13:06:05 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 13.16 13.45 12.58 | RssAnon: 2908828 kB RssFile: 9832440 kB VmSwap: 0 kB  | qdrant cpu% 75.1
+13:07:05 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 12.60 13.20 12.55 | RssAnon: 2922508 kB RssFile: 9804792 kB VmSwap: 0 kB  | qdrant cpu% 78.5
+13:08:05 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 11.25 12.76 12.44 | RssAnon: 2937140 kB RssFile: 9931184 kB VmSwap: 0 kB  | qdrant cpu% 81.7
+13:09:05 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 10.64 12.24 12.28 | RssAnon: 2951684 kB RssFile: 10017484 kB VmSwap: 0 kB  | qdrant cpu% 84.7
+13:10:05 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 10.45 11.82 12.12 | RssAnon: 2966128 kB RssFile: 10148392 kB VmSwap: 0 kB  | qdrant cpu% 87.6
+13:11:05 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 11.79 12.00 12.17 | RssAnon: 2979860 kB RssFile: 10150496 kB VmSwap: 0 kB  | qdrant cpu% 90.3
+13:12:05 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 16.19 13.27 12.60 | RssAnon: 2992728 kB RssFile: 9775180 kB VmSwap: 0 kB  | qdrant cpu% 92.9
+13:13:05 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 13.96 13.25 12.64 | RssAnon: 3006096 kB RssFile: 9771704 kB VmSwap: 0 kB  | qdrant cpu% 95.3
+13:14:05 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 12.47 12.96 12.58 | RssAnon: 3019112 kB RssFile: 9813700 kB VmSwap: 0 kB  | qdrant cpu% 97.7
+13:15:05 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 24.72 16.17 13.69 | RssAnon: 3028136 kB RssFile: 9091988 kB VmSwap: 0 kB  | qdrant cpu% 99.8
+13:16:05 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 27.72 18.42 14.62 | RssAnon: 3039032 kB RssFile: 8986512 kB VmSwap: 0 kB  | qdrant cpu%  101
+13:17:06 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 21.08 18.41 14.86 | RssAnon: 3050780 kB RssFile: 7719624 kB VmSwap: 0 kB  | qdrant cpu%  103
+13:18:06 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 15.42 17.23 14.67 | RssAnon: 3269056 kB RssFile: 7732876 kB VmSwap: 0 kB  | qdrant cpu%  105
+13:19:06 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 15.09 16.77 14.67 | RssAnon: 3289992 kB RssFile: 7618572 kB VmSwap: 0 kB  | qdrant cpu%  107
+13:20:06 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 17.52 16.98 14.87 | RssAnon: 3292956 kB RssFile: 7334464 kB VmSwap: 0 kB  | qdrant cpu%  108
+13:21:06 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 23.94 19.00 15.70 | RssAnon: 3300620 kB RssFile: 6827840 kB VmSwap: 0 kB  | qdrant cpu%  110
+13:22:06 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 22.72 19.56 16.10 | RssAnon: 3303916 kB RssFile: 5403656 kB VmSwap: 0 kB  | qdrant cpu%  111
+13:23:06 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 21.79 19.90 16.45 | RssAnon: 3317040 kB RssFile: 5250480 kB VmSwap: 0 kB  | qdrant cpu%  113
+13:24:06 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 23.62 20.81 16.98 | RssAnon: 3330128 kB RssFile: 5213000 kB VmSwap: 0 kB  | qdrant cpu%  114
+13:25:06 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 17.57 19.65 16.83 | RssAnon: 3344948 kB RssFile: 3030724 kB VmSwap: 0 kB  | qdrant cpu%  116
+13:26:06 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 14.44 18.33 16.54 | RssAnon: 3357760 kB RssFile: 2527280 kB VmSwap: 0 kB  | qdrant cpu%  117
+13:27:06 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 14.99 17.68 16.43 | RssAnon: 3375336 kB RssFile: 2458248 kB VmSwap: 0 kB  | qdrant cpu%  118
+13:28:06 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 17.11 17.71 16.51 | RssAnon: 3384368 kB RssFile: 1839020 kB VmSwap: 44 kB  | qdrant cpu%  119
+13:29:07 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 16.23 17.33 16.45 | RssAnon: 3387404 kB RssFile: 1674516 kB VmSwap: 44 kB  | qdrant cpu%  119
+13:30:07 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 16.84 17.16 16.44 | RssAnon: 3393272 kB RssFile: 1550620 kB VmSwap: 464 kB  | qdrant cpu%  120
+13:31:07 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 15.67 16.71 16.33 | RssAnon: 3395740 kB RssFile: 1432964 kB VmSwap: 644 kB  | qdrant cpu%  121
+13:32:07 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 13.56 15.85 16.05 | RssAnon: 3405248 kB RssFile: 1726136 kB VmSwap: 644 kB  | qdrant cpu%  122
+13:33:07 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 14.60 15.59 15.94 | RssAnon: 3422464 kB RssFile: 1802476 kB VmSwap: 644 kB  | qdrant cpu%  122
+13:34:07 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 16.46 15.89 16.02 | RssAnon: 3438744 kB RssFile: 1709896 kB VmSwap: 644 kB  | qdrant cpu%  123
+13:35:07 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 16.68 16.00 16.05 | RssAnon: 3443140 kB RssFile: 1893588 kB VmSwap: 652 kB  | qdrant cpu%  124
+13:36:07 yellow pts 3262519 indexed 53932 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 14.80 15.58 15.90 | RssAnon: 3396960 kB RssFile: 2113448 kB VmSwap: 664 kB  | qdrant cpu%  125
+13:37:07 green pts 3262519 indexed 3262519 segs 5 opt_thr 2 idx_thr 10000 err: ok
+   load 15.31 15.42 15.81 | RssAnon: 772800 kB RssFile: 683492 kB VmSwap: 492 kB  | qdrant cpu%  123

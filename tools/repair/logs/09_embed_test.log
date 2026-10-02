@@ -1,0 +1,151 @@
+[13:57:44] == 09 start; load 15.26 17.50 15.83; RAM available 22554 MB
+[13:57:44] before: pts 3262519 indexed 3262519 segs 5 green
+Batch window: 02:00-05:00 America/New_York, closed now (EMBED_WINDOW=unset)
+Queue file-embeddings: PAUSED (no new work starts)
+Jobs: active 0, waiting 0, held by pause 6, delayed 0, failed 10
+[13:57:45] snapshot @churn-1 taken; dataset: 39.8G 18.8G 21.1G (used, by dataset, by snapshots)
+[13:57:45] t0 (epoch ms) = 1790963865181
+resumed
+indexing allowed for 10 minutes
+[13:58:15] pts 3262519 indexed 3262519 segs 5 green
+[13:58:45] pts 3262661 indexed 3262519 segs 5 green
+[13:59:15] pts 3263329 indexed 3262519 segs 5 green
+[13:59:45] pts 3263906 indexed 3262519 segs 5 green
+[14:00:15] pts 3264111 indexed 3262519 segs 5 green
+[14:00:45] pts 3264376 indexed 3262519 segs 5 green
+[14:01:15] pts 3264894 indexed 3262519 segs 5 green
+[14:01:45] pts 3265512 indexed 3262519 segs 5 green
+[14:02:15] pts 3266467 indexed 3265911 segs 5 green
+[14:02:45] pts 3266771 indexed 3265911 segs 5 green
+[14:03:15] pts 3266784 indexed 3265911 segs 5 green
+[14:03:45] pts 3266974 indexed 3265911 segs 5 green
+[14:04:15] pts 3267118 indexed 3265911 segs 5 green
+[14:04:45] pts 3267742 indexed 3265911 segs 5 green
+[14:05:15] pts 3268589 indexed 3265911 segs 5 green
+[14:05:46] pts 3268788 indexed 3265911 segs 5 green
+[14:06:16] pts 3268998 indexed 3265911 segs 5 green
+[14:06:46] pts 3269338 indexed 3269250 segs 5 green
+[14:07:16] pts 3269960 indexed 3269250 segs 5 green
+[14:07:46] pts 3270534 indexed 3269250 segs 5 green
+[14:08:16] pts 3270861 indexed 3269250 segs 5 green
+[14:08:46] pts 3271007 indexed 3269250 segs 5 green
+hold cleared; the gate applies the window again within a minute
+[14:08:46] waiting for the running batches to finish (max 10 min)
+already paused
+Batch window: 02:00-05:00 America/New_York, closed now (EMBED_WINDOW=unset)
+Queue file-embeddings: PAUSED (no new work starts)
+Jobs: active 0, waiting 0, held by pause 6, delayed 0, failed 10
+[14:13:55] after: pts 3274772 indexed 3272600 segs 5 green
+[14:14:55] after 60 s more: pts 3274772 indexed 3272600 segs 5 green
+collection now: {'status': 'green', 'points_count': 3274772, 'indexed_vectors_count': 3272600, 'segments_count': 5}
+Traceback (most recent call last):
+  File "/mnt/nvme/appdata/cody/home/tmp/nomadindex/repair/new_points_check.py", line 15, in <module>
+    n_new = post(f"{BASE}/collections/{COL}/points/count", {"filter": flt, "exact": True})["result"]["count"]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/nvme/appdata/cody/home/tmp/nomadindex/repair/new_points_check.py", line 9, in post
+    with urllib.request.urlopen(req, timeout=timeout) as r: return json.load(r)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.12/urllib/request.py", line 215, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.12/urllib/request.py", line 521, in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.12/urllib/request.py", line 630, in http_response
+    response = self.parent.error(
+               ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.12/urllib/request.py", line 559, in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.12/urllib/request.py", line 492, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/usr/lib64/python3.12/urllib/request.py", line 639, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 500: Internal Server Error
+new_points_check exit=1
+  optimizer log: {"name": "indexing", "segment_ids": [13], "status": "done", "start_at": "2026-10-02T16:50:35.701433958Z", "end_at": "2026-10-02T16:50:40.687189460Z"}
+  optimizer log: {"name": "indexing", "segment_ids": [8], "status": "done", "start_at": "2026-10-02T16:50:25.127690328Z", "end_at": "2026-10-02T17:36:15.506226286Z"}
+  optimizer log: {"name": "merge", "segment_ids": [12, 1, 7, 2, 4], "status": "done", "start_at": "2026-10-02T16:50:25.127668649Z", "end_at": "2026-10-02T16:50:35.701387066Z"}
+  optimizer log: {"name": "merge", "segment_ids": [0, 5, 6], "status": "done", "start_at": "2026-10-02T16:43:37.504920138Z", "end_at": "2026-10-02T16:43:43.713728938Z"}
+  segment plain pts 2172 idx 0
+  segment indexed pts 31139 idx 31139
+  segment indexed pts 16764 idx 16764
+  segment indexed pts 3208587 idx 3208587
+  segment indexed pts 16110 idx 16110
+[14:15:55] settling: waiting for the optimizer to go green (max 8 min)
+[14:15:55] settled: pts 3274772 indexed 3272600 segs 5 green
+[14:15:55] CHURN phase 1: snapshot holds 72 MB unique to it; dataset now: 40.0G 18.8G 21.2G
+files by change type (since @churn-1): {'-': 154, 'M': 3, '+': 111}
+removed files (fully pinned by the snapshot): 232 MB
+modified files, total size (upper bound of what is pinned): 69 MB
+top removed by category: [('wal', 101), ('segment a7062d26', 69), ('segment 87cb42ab', 62), ('other (collections)', 0), ('segment 25ff12be', 0), ('segment ec03369a', 0), ('segment 681076dc', 0)]
+top modified by category (size, upper bound): [('segment 681076dc', 67), ('segment ec03369a', 1), ('segment 25ff12be', 1)]
+[14:15:56] snapshot @churn-1 destroyed
+[14:15:56] == 09 done
+[14:20:44] == 09 start; load 48.23 30.44 22.22; RAM available 9415 MB
+[14:20:44] before: pts 3274772 indexed 3272600 segs 5 green
+Batch window: 02:00-05:00 America/New_York, closed now (EMBED_WINDOW=unset)
+Queue file-embeddings: PAUSED (no new work starts)
+Jobs: active 0, waiting 0, held by pause 6, delayed 0, failed 10
+[14:20:47] snapshot @churn-2 taken; dataset: 39.9G 18.8G 21.1G (used, by dataset, by snapshots)
+[14:20:47] t0 (epoch ms) = 1790965247027
+resumed
+indexing allowed for 10 minutes
+[14:21:17] pts 3274772 indexed 3272600 segs 5 green
+[14:21:47] pts 3274772 indexed 3272600 segs 5 green
+[14:22:18] pts 3274933 indexed 3272600 segs 5 green
+[14:22:48] pts 3274933 indexed 3272600 segs 5 green
+[14:23:19] pts 3274953 indexed 3272600 segs 5 green
+[14:25:25] pts 3275188 indexed 3272600 segs 5 green
+[14:25:59] pts 3275238 indexed 3272600 segs 5 green
+[14:27:40] pts 3275363 indexed 3272600 segs 5 green
+[14:29:01] pts 3275363 indexed 3272600 segs 5 green
+[14:30:32] pts 3275363 indexed 3272600 segs 5 green
+[14:31:18] pts 3275363 indexed 3272600 segs 5 green
+[14:31:48] pts 3275730 indexed 3272600 segs 5 green
+[14:32:18] pts 3276224 indexed 3276052 segs 5 green
+[14:32:48] pts 3276224 indexed 3276052 segs 5 green
+[14:33:19] pts 3276224 indexed 3276052 segs 5 green
+[14:33:49] pts 3276224 indexed 3276052 segs 5 green
+[14:34:19] pts 3276224 indexed 3276052 segs 5 green
+[14:34:49] pts 3276224 indexed 3276052 segs 5 green
+[14:35:19] pts 3276224 indexed 3276052 segs 5 green
+[14:35:49] pts 3276224 indexed 3276052 segs 5 green
+[14:36:19] pts 3276224 indexed 3276052 segs 5 green
+[14:36:49] pts 3276224 indexed 3276052 segs 5 green
+hold cleared; the gate applies the window again within a minute
+[14:36:50] waiting for the running batches to finish (max 10 min)
+already paused
+Batch window: 02:00-05:00 America/New_York, closed now (EMBED_WINDOW=unset)
+Queue file-embeddings: PAUSED (no new work starts)
+Jobs: active 0, waiting 0, held by pause 6, delayed 0, failed 10
+[14:37:23] after: pts 3276224 indexed 3276052 segs 5 green
+[14:38:23] after 60 s more: pts 3276224 indexed 3276052 segs 5 green
+collection now: {'status': 'green', 'points_count': 3276224, 'indexed_vectors_count': 3276052, 'segments_count': 5}
+points created since the test started: 1452
+new point 002b89ff | iPad 7 Cracked Digitizer Replacement     | rank in top-15: 1 | top score 0.898 | 395 ms
+new point 1a0d2fc1 | iPad 7 Microphone Assembly Replacement   | rank in top-15: 5 | top score 0.842 | 328 ms
+new point 2373f1e8 | Why does my Current Regulative Diode not | rank in top-15: 3 | top score 0.805 | 506 ms
+new point 3bb9e12c | Wetlands and islands in Germanic paganis | rank in top-15: 1 | top score 0.856 | 440 ms
+found 4 of 4 sampled NEW points in the top 15 of a NOMAD-style search on their own text
+new_points_check exit=0
+  optimizer log: {"name": "indexing", "segment_ids": [13], "status": "done", "start_at": "2026-10-02T16:50:35.701433958Z", "end_at": "2026-10-02T16:50:40.687189460Z"}
+  optimizer log: {"name": "indexing", "segment_ids": [8], "status": "done", "start_at": "2026-10-02T16:50:25.127690328Z", "end_at": "2026-10-02T17:36:15.506226286Z"}
+  optimizer log: {"name": "merge", "segment_ids": [12, 1, 7, 2, 4], "status": "done", "start_at": "2026-10-02T16:50:25.127668649Z", "end_at": "2026-10-02T16:50:35.701387066Z"}
+  optimizer log: {"name": "merge", "segment_ids": [0, 5, 6], "status": "done", "start_at": "2026-10-02T16:43:37.504920138Z", "end_at": "2026-10-02T16:43:43.713728938Z"}
+  segment plain pts 172 idx 0
+  segment indexed pts 31139 idx 31139
+  segment indexed pts 16764 idx 16764
+  segment indexed pts 3208587 idx 3208587
+  segment indexed pts 19562 idx 19562
+[14:39:45] settling: waiting for the optimizer to go green (max 8 min)
+[14:39:45] settled: pts 3276224 indexed 3276052 segs 5 green
+[14:39:45] CHURN phase 2: snapshot holds 119 MB unique to it; dataset now: 40.1G 18.9G 21.2G
+files by change type (since @churn-2): {'M': 4, '-': 155, '+': 108}
+removed files (fully pinned by the snapshot): 239 MB
+modified files, total size (upper bound of what is pinned): 103 MB
+top removed by category: [('segment ffd04122', 144), ('segment 18138ff7', 96), ('other (collections)', 0), ('segment 25ff12be', 0), ('segment ec03369a', 0), ('segment 681076dc', 0), ('wal', 0)]
+top modified by category (size, upper bound): [('segment 681076dc', 67), ('wal', 34), ('segment ec03369a', 1), ('segment 25ff12be', 1)]
+[14:39:45] snapshot @churn-2 destroyed
+[14:39:45] == 09 done

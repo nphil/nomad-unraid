@@ -1,0 +1,14 @@
+meta ['opts.maxLenEvents', '10000', 'version', 'bullmq:5.77.6', 'paused', '1']
+wait none
+paused len 6
+active none
+delayed none
+failed card 10
+completed card 50
+paused 28899 {'fileName': 'wikibooks_en_all_nopic_2026-01.zim', 'batchOffset': 98550, 'totalArticles': 118834, 'chunksSoFar': 320934, 'collection': None} attempts None ts 1790898987579 processedOn None
+paused 28890 {'fileName': 'diy.stackexchange.com_en_all_2026-08.zim', 'batchOffset': 98100, 'totalArticles': 165653, 'chunksSoFar': 256512, 'collection': None} attempts None ts 1790897246078 processedOn None
+paused 28889 {'fileName': 'wikibooks_en_all_maxi_2026-01.zim', 'batchOffset': 98450, 'totalArticles': 118834, 'chunksSoFar': 320961, 'collection': None} attempts None ts 1790896617945 processedOn None
+paused 28887 {'fileName': 'electronics.stackexchange.com_en_all_2026-08.zim', 'batchOffset': 99450, 'totalArticles': 324255, 'chunksSoFar': 210994, 'collection': None} attempts None ts 1790896351236 processedOn None
+paused 28886 {'fileName': 'ifixit_en_all_2025-12.zim', 'batchOffset': 98050, 'totalArticles': 103480, 'chunksSoFar': 190782, 'collection': None} attempts None ts 1790896197394 processedOn None
+paused 28884 {'fileName': 'wikipedia_en_medicine_maxi_2026-01.zim', 'batchOffset': 98700, 'totalArticles': 360628, 'chunksSoFar': 303600, 'collection': None} attempts None ts 1790895886888 processedOn None
+parked: []

@@ -1,0 +1,29 @@
+[13:42:11] == 08 start; load 11.67 14.41 15.33
+[13:42:11] RSS before queries: RssAnon: 772756 kB RssFile: 465812 kB VmSwap: 496 kB 
+collection: {'status': 'green', 'points_count': 3262519, 'indexed_vectors_count': 3262519, 'segments_count': 5} optimizer: ok
+vectors: {'size': 768, 'distance': 'Cosine', 'on_disk': True} | quantization: {'scalar': {'type': 'int8', 'quantile': 0.99, 'always_ram': False}} | hnsw: {'m': 16, 'ef_construct': 100, 'full_scan_threshold': 10000, 'max_indexing_threads': 2, 'on_disk': False}
+optimizer_config: {'deleted_threshold': 0.2, 'vacuum_min_vector_number': 1000, 'default_segment_number': 0, 'max_segment_size': None, 'memmap_threshold': None, 'indexing_threshold': 10000, 'flush_interval_sec': 5, 'max_optimization_threads': 2}
+payload_schema: {'active': ('bool', 3262519), 'source': ('keyword', 3262519), 'content_type': ('keyword', 3262476), 'collection': ('keyword', 0)}
+ segment plain pts 0 idx 0 del 0 storage ChunkedMmap quant null index plain
+ segment indexed pts 31139 idx 31139 del 0 storage Mmap quant {"scalar": {"type": "int8", "quantile": 0.99, "always_ram": false}} index hnsw
+ segment indexed pts 16764 idx 16764 del 0 storage Mmap quant {"scalar": {"type": "int8", "quantile": 0.99, "always_ram": false}} index hnsw
+ segment indexed pts 6029 idx 6029 del 0 storage Mmap quant {"scalar": {"type": "int8", "quantile": 0.99, "always_ram": false}} index hnsw
+ segment indexed pts 3208587 idx 3208587 del 0 storage Mmap quant {"scalar": {"type": "int8", "quantile": 0.99, "always_ram": false}} index hnsw
+[13:42:11] -- searches (NOMAD-shaped: limit 15, threshold 0.3, active != false), recall vs float-exact
+orig-boil | hits 15 | first 0.206s median 0.0030s | (0.83, 'How long does water need to be boiled for to kill ', 'outdoors.stackexchange.com_e')
+diy-switch | hits 15 | first 0.136s median 0.0033s | (0.865, 'How do I wire a three way switch with two lights?', 'diy.stackexchange.com_en_all')
+electronics-reg | hits 15 | first 0.101s median 0.0032s | (0.831, 'My linear voltage regulator is overheating very fa', 'electronics.stackexchange.co')
+ifixit-battery | hits 15 | first 0.145s median 0.0030s | (0.818, 'BLU Life X8 Battery Replacement', 'ifixit_en_all_2025-12.zim')
+medicine-bp | hits 15 | first 0.111s median 0.0034s | (0.838, 'Labile hypertension', 'wikipedia_en_medicine_maxi_2')
+wikibooks-python | hits 15 | first 0.121s median 0.0035s | (0.779, 'How to Think Like a Computer Scientist: Learning w', 'wikibooks_en_all_nopic_2026-')
+wikipedia-napoleon | hits 15 | first 0.115s median 0.0026s | (0.842, 'Modern History/Napoleon Bonaparte', 'wikibooks_en_all_nopic_2026-')
+arduino-pwm | hits 15 | first 0.117s median 0.0039s | (0.788, 'Variable pulse train generation', 'electronics.stackexchange.co')
+cooking-cast-iron | hits 15 | first 0.049s median 0.0026s | (0.845, 'Does cast iron have a coating from the manufacture', 'cooking.stackexchange.com_en')
+gutenberg | hits 15 | first 0.070s median 0.0024s | (0.769, 'Whale Fishery of New England', 'gutenberg_en_lcc-s_2026-03.z')
+recall@15 vs exact: {'n': 30, 'default_params_recall_at_15_mean': 0.8933, 'default_min': 0.133, 'rescore_true_recall_at_15_mean': 0.9089, 'float_exact_search_median_s': 1.03}
+[13:43:37] RSS after queries: RssAnon: 808184 kB RssFile: 10879296 kB VmSwap: 496 kB 
+[13:43:37] disk: nvme/appdata/nomad-qdrant-recovered 39.8G 18.8G
+segments on disk MB: 19170
+wal MB: 48
+[13:43:37] load now 10.91 13.50 14.93
+[13:43:37] == 08 done

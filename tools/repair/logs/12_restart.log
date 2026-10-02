@@ -1,0 +1,23 @@
+[14:56:58] == 12 start; load 14.17 16.79 44.96; RAM available 16270 MB
+[14:56:58] inner exec test before: OCI runtime exec failed: exec failed: unable to start container process: error adding pid 
+[14:57:10] Nomad stopped in 12 s (exit 0, oom false)
+[14:57:30] outer health: healthy after 32 s
+[14:57:46] nomad_admin: Up 34 seconds (healthy)
+[14:57:46] qdrant pid=1782998 storage: nvme/appdata/nomad-qdrant-recovered rw,xattr,posixacl,casesensitive
+[14:57:46] affinity: pid 1782998's current affinity list: 0-4,8-12
+collection: {'status': 'green', 'points_count': 3276224, 'indexed_vectors_count': 3276052, 'segments_count': 5}
+[14:57:46] inner exec test after: PONG
+Batch window: 02:00-05:00 America/New_York, closed now (EMBED_WINDOW=unset)
+Queue file-embeddings: PAUSED (no new work starts)
+Jobs: active 0, waiting 0, held by pause 25, delayed 0, failed 9
+nomad_admin Up 35 seconds (healthy)
+nomad_qdrant Up 35 seconds
+nomad_kolibri_2 Up 35 seconds
+nomad_kiwix_server Up 35 seconds
+nomad_flatnotes Up 35 seconds (health: starting)
+nomad_cyberchef Up 35 seconds
+nomad_mysql Up 35 seconds (healthy)
+nomad_redis Up 35 seconds (healthy)
+nomad_disk_collector Up 35 seconds
+RssAnon: 679696 kB RssFile: 805496 kB VmSwap: 0 kB 
+[14:57:47] == 12 done (gate NOT running: run nomad-embed-hot-apply.sh apply)

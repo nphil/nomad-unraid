@@ -1,0 +1,5 @@
+{
+ "nomic-embed-text-v1.5": "nomic-ai/nomic-embed-text-v1.5",
+ "embeddinggemma-300m": "unsloth/embeddinggemma-300m",
+ "qwen3-embedding-0.6b": "Qwen/Qwen3-Embedding-0.6B"
+}

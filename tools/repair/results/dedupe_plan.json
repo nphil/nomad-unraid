@@ -1,0 +1,80 @@
+{
+ "candidate_groups": 572294,
+ "groups_with_different_texts_kept": 656,
+ "ids_missing_on_fetch": 0,
+ "to_delete": 868176,
+ "by_source": [
+  [
+   "diy.stackexchange.com_en_all_2026-08.zim",
+   263212
+  ],
+  [
+   "electronics.stackexchange.com_en_all_2026-08.zim",
+   207468
+  ],
+  [
+   "wikibooks_en_all_maxi_2026-01.zim",
+   128586
+  ],
+  [
+   "wikipedia_en_medicine_maxi_2026-01.zim",
+   95513
+  ],
+  [
+   "wikibooks_en_all_nopic_2026-01.zim",
+   91345
+  ],
+  [
+   "wikipedia_en_all_maxi_2026-02.zim",
+   64026
+  ],
+  [
+   "raspberrypi.stackexchange.com_en_all_2026-08.zim",
+   14881
+  ],
+  [
+   "devdocs_en_node_2026-08.zim",
+   2904
+  ],
+  [
+   "devdocs_en_docker_2026-07.zim",
+   132
+  ],
+  [
+   "robotics.stackexchange.com_en_all_2026-08.zim",
+   40
+  ],
+  [
+   "wikipedia_en_100_mini_2026-01.zim",
+   39
+  ],
+  [
+   "devdocs_en_react_2026-05.zim",
+   10
+  ],
+  [
+   "devdocs_en_css_2026-07.zim",
+   9
+  ],
+  [
+   "arduino.stackexchange.com_en_all_2026-07.zim",
+   5
+  ],
+  [
+   "gutenberg_en_lcc-s_2026-03.zim",
+   3
+  ],
+  [
+   "ifixit_en_all_2025-12.zim",
+   1
+  ],
+  [
+   "devdocs_en_python_2026-08.zim",
+   1
+  ],
+  [
+   "medlineplus.gov_en_all_2025-01.zim",
+   1
+  ]
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "file": "wikipedia_en_all_maxi_2026-02.zim",
+ "realHtmlPages": 8425786,
+ "jobs": 168517,
+ "meanEntriesWalkedPerJob": 9396445.845095325,
+ "totalEntriesWalkedAllJobs": 1583460864477.929,
+ "entriesAtArticleOffset_est": {
+  "0": 4316,
+  "10000": 15629,
+  "99350": 216622,
+  "100000": 217708,
+  "500000": 1096782,
+  "1000000": 2183810,
+  "2000000": 4437582,
+  "4000000": 8905147,
+  "6000000": 13325730
+ },
+ "sampleArticles": 13008,
+ "note": "entry index = position in path-ordered entry list; NOMAD walks every entry (redirects, media, articles) up to the start offset in every job"
+}

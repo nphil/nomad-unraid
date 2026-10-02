@@ -1,0 +1,2 @@
+{"n": 12, "cos_min": 0.9998830239222806, "cos_mean": 0.9999458251623836, "norm_mean": 1.0000000043387003, "model": "nomic15", "np": 4, "vram_mb": null}
+{"n": 12, "cos_min": 0.9998812508277086, "cos_mean": 0.9999393691863084, "norm_mean": 1.0000000072824766, "model": "granite_r2", "np": 4, "vram_mb": null}

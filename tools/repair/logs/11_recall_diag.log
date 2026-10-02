@@ -1,0 +1,18 @@
+[13:47:23] == 11 start; load 10.70 12.59 14.29
+A orig-boil          identity default 1.00 rescore 1.00 | tie-aware default 1.00 | score gap 0.00000 | near-identical in exact top: 0
+A diy-switch         identity default 0.93 rescore 0.93 | tie-aware default 0.93 | score gap 0.00013 | near-identical in exact top: 0
+A electronics-reg    identity default 1.00 rescore 1.00 | tie-aware default 1.00 | score gap 0.00000 | near-identical in exact top: 0
+A ifixit-battery     identity default 1.00 rescore 1.00 | tie-aware default 1.00 | score gap 0.00000 | near-identical in exact top: 0
+A medicine-bp        identity default 1.00 rescore 1.00 | tie-aware default 1.00 | score gap 0.00000 | near-identical in exact top: 0
+A wikibooks-python   identity default 0.93 rescore 0.93 | tie-aware default 0.93 | score gap 0.00016 | near-identical in exact top: 0
+A wikipedia-napoleon identity default 0.93 rescore 0.93 | tie-aware default 0.93 | score gap 0.00009 | near-identical in exact top: 0
+A arduino-pwm        identity default 1.00 rescore 1.00 | tie-aware default 1.00 | score gap 0.00000 | near-identical in exact top: 0
+A cooking-cast-iron  identity default 1.00 rescore 1.00 | tie-aware default 1.00 | score gap 0.00000 | near-identical in exact top: 0
+A gutenberg          identity default 1.00 rescore 1.00 | tie-aware default 1.00 | score gap 0.00000 | near-identical in exact top: 0
+A summary: {"default": {"identity_mean": 0.98, "identity_min": 0.933, "tie_aware_mean": 0.98, "tie_aware_min": 0.933, "mean_score_gap": 4e-05}, "rescore": {"identity_mean": 0.98, "identity_min": 0.933, "tie_aware_mean": 0.98, "tie_aware_min": 0.933, "mean_score_gap": 4e-05}}
+B worst: identity 0.00 tie-aware 1.00 | near-identical in exact top-15: 15 | exact scores [1.0, 1.0, 1.0, 1.0, 1.0, '...', 1.0]
+B worst: identity 0.00 tie-aware 0.00 | near-identical in exact top-15: 15 | exact scores [1.0, 1.0, 1.0, 1.0, 1.0, '...', 1.0]
+B worst: identity 0.00 tie-aware 0.47 | near-identical in exact top-15: 15 | exact scores [1.0, 1.0, 1.0, 1.0, 1.0, '...', 1.0]
+B worst: identity 0.00 tie-aware 1.00 | near-identical in exact top-15: 15 | exact scores [1.0, 1.0, 1.0, 1.0, 0.9999, '...', 0.9999]
+B summary: {"n": 60, "default": {"identity_mean": 0.7811, "identity_min": 0.0, "tie_aware_mean": 0.9122, "tie_aware_min": 0.0, "mean_score_gap": 0.007}, "rescore": {"identity_mean": 0.8167, "identity_min": 0.0, "tie_aware_mean": 0.9311, "tie_aware_min": 0.0, "mean_score_gap": 0.00699}, "queries_with_ties_or_near_duplicates_in_exact_top15": 21}
+[13:49:53] == 11 done

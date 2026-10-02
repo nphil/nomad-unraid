@@ -1,0 +1,1998 @@
+{
+ "run": "plain.test.10000.smoke",
+ "variant": "plain",
+ "data": "test",
+ "n": 10000,
+ "dim": 768,
+ "mem_cap": "4g",
+ "started": "2026-10-01 20:29:57",
+ "load_start": [
+  "69.68",
+  "62.36",
+  "59.11"
+ ],
+ "dataset": {
+  "rows": 20000,
+  "chunks": "/tmp/qlab-work/test_chunks.jsonl"
+ },
+ "host_free_gb_at_start": 10.258342742919922,
+ "t_start_to_ready_s": 2.535540061071515,
+ "qdrant_root": {
+  "title": "qdrant - vector search engine",
+  "version": "1.16.3",
+  "commit": "bd49f45a8a2d4e4774cac50fa29507c4e8375af2"
+ },
+ "create_body": {
+  "vectors": {
+   "size": 768,
+   "distance": "Cosine"
+  },
+  "optimizers_config": {
+   "indexing_threshold": 0
+  }
+ },
+ "info_empty": {
+  "status": "green",
+  "optimizer_status": "ok",
+  "indexed_vectors_count": 0,
+  "points_count": 0,
+  "segments_count": 2,
+  "config": {
+   "params": {
+    "vectors": {
+     "size": 768,
+     "distance": "Cosine"
+    },
+    "shard_number": 1,
+    "replication_factor": 1,
+    "write_consistency_factor": 1,
+    "on_disk_payload": true
+   },
+   "hnsw_config": {
+    "m": 16,
+    "ef_construct": 100,
+    "full_scan_threshold": 10000,
+    "max_indexing_threads": 0,
+    "on_disk": false
+   },
+   "optimizer_config": {
+    "deleted_threshold": 0.2,
+    "vacuum_min_vector_number": 1000,
+    "default_segment_number": 0,
+    "max_segment_size": null,
+    "memmap_threshold": null,
+    "indexing_threshold": 0,
+    "flush_interval_sec": 5,
+    "max_optimization_threads": null
+   },
+   "wal_config": {
+    "wal_capacity_mb": 32,
+    "wal_segments_ahead": 0,
+    "wal_retain_closed": 1
+   },
+   "quantization_config": null
+  },
+  "payload_schema": {
+   "content_type": {
+    "data_type": "keyword",
+    "points": 0
+   },
+   "collection": {
+    "data_type": "keyword",
+    "points": 0
+   },
+   "active": {
+    "data_type": "bool",
+    "points": 0
+   },
+   "source": {
+    "data_type": "keyword",
+    "points": 0
+   }
+  }
+ },
+ "snap_empty": {
+  "status.VmHWM": 79671296,
+  "status.VmRSS": 79671296,
+  "status.RssAnon": 25366528,
+  "status.RssFile": 54304768,
+  "status.RssShmem": 0,
+  "status.VmSwap": 0,
+  "status.Threads": 26,
+  "minflt": 6895,
+  "majflt": 6147,
+  "io.rchar": 496790,
+  "io.wchar": 10686,
+  "io.syscr": 380,
+  "io.syscw": 130,
+  "io.read_bytes": 40726528,
+  "io.write_bytes": 156280,
+  "io.cancelled_write_bytes": 0,
+  "cgmem.current": 96821248,
+  "cgmem.anon": 25632768,
+  "cgmem.file": 67493888,
+  "cgmem.shmem": 0,
+  "cgmem.file_mapped": 55242752,
+  "cgmem.file_dirty": 16384,
+  "cgmem.inactive_file": 23486464,
+  "cgmem.active_file": 44011520,
+  "cgmem.pgfault": 14462,
+  "cgmem.pgmajfault": 6194,
+  "cgev.low": 0,
+  "cgev.high": 0,
+  "cgev.max": 0,
+  "cgev.oom": 0,
+  "cgev.oom_kill": 0,
+  "cgev.oom_group_kill": 0,
+  "cgcpu.usage_usec": 254377,
+  "cgcpu.user_usec": 93379,
+  "cgcpu.system_usec": 160998,
+  "cgcpu.nr_throttled": 0,
+  "cgcpu.throttled_usec": 0,
+  "loadavg": [
+   "69.39",
+   "62.42",
+   "59.15"
+  ],
+  "host.MemFree": 2635579392,
+  "host.MemAvailable": 11075137536,
+  "host.Cached": 9026576384,
+  "host.SwapFree": 434176
+ },
+ "ingest": {
+  "small_empty": {
+   "points": 1500,
+   "calls": 498,
+   "wall_s": 36.205341601744294,
+   "client_build_s": 22.144894897937775,
+   "server_wall_s": 13.881394603289664,
+   "points_per_s_total": 41.43035070625417,
+   "points_per_s_server": 108.05830702662429,
+   "calls_per_s_server": 35.875357932839265,
+   "call_ms_p50": 12.362774461507797,
+   "call_ms_p95": 93.38814434595399,
+   "call_ms_p99": 201.9084434118113,
+   "call_ms_max": 279.7101829200983,
+   "mode": "small",
+   "batch": "1-5"
+  },
+  "bulk": {
+   "points": 8500,
+   "calls": 17,
+   "wall_s": 21.889084639959037,
+   "client_build_s": 17.641525903716683,
+   "server_wall_s": 4.246830164454877,
+   "points_per_s_total": 388.3214003605729,
+   "points_per_s_server": 2001.4928007112944,
+   "calls_per_s_server": 4.002985601422589,
+   "call_ms_p50": 206.82815369218588,
+   "call_ms_p95": 429.62714452296484,
+   "call_ms_p99": 505.6060757115484,
+   "call_ms_max": 524.6008085086942,
+   "mode": "bulk",
+   "batch": 500
+  },
+  "small_steady": {
+   "points": 600,
+   "calls": 199,
+   "wall_s": 4.192924205213785,
+   "client_build_s": 2.249591311439872,
+   "server_wall_s": 1.910483568906784,
+   "points_per_s_total": 143.09822229887118,
+   "points_per_s_server": 314.0566136055971,
+   "calls_per_s_server": 104.1621101791897,
+   "call_ms_p50": 6.54884148389101,
+   "call_ms_p95": 22.682996839284893,
+   "call_ms_p99": 37.61347802355902,
+   "call_ms_max": 167.32256021350622,
+   "mode": "small",
+   "batch": "1-5"
+  }
+ },
+ "snap_after_ingest": {
+  "status.VmHWM": 215158784,
+  "status.VmRSS": 178106368,
+  "status.RssAnon": 124604416,
+  "status.RssFile": 53501952,
+  "status.RssShmem": 0,
+  "status.VmSwap": 0,
+  "status.Threads": 24,
+  "minflt": 142245,
+  "majflt": 32860,
+  "io.rchar": 496790,
+  "io.wchar": 377662,
+  "io.syscr": 380,
+  "io.syscw": 4174,
+  "io.read_bytes": 60983808,
+  "io.write_bytes": 196931656,
+  "io.cancelled_write_bytes": 0,
+  "cgmem.current": 183136256,
+  "cgmem.anon": 124870656,
+  "cgmem.file": 54579200,
+  "cgmem.shmem": 0,
+  "cgmem.file_mapped": 53477376,
+  "cgmem.file_dirty": 2428928,
+  "cgmem.inactive_file": 32092160,
+  "cgmem.active_file": 22487040,
+  "cgmem.pgfault": 176525,
+  "cgmem.pgmajfault": 32907,
+  "cgev.low": 0,
+  "cgev.high": 0,
+  "cgev.max": 0,
+  "cgev.oom": 0,
+  "cgev.oom_kill": 0,
+  "cgev.oom_group_kill": 0,
+  "cgcpu.usage_usec": 4253849,
+  "cgcpu.user_usec": 2493811,
+  "cgcpu.system_usec": 1760038,
+  "cgcpu.nr_throttled": 0,
+  "cgcpu.throttled_usec": 0,
+  "loadavg": [
+   "88.65",
+   "69.53",
+   "61.82"
+  ],
+  "host.MemFree": 4812926976,
+  "host.MemAvailable": 11369267200,
+  "host.Cached": 7633002496,
+  "host.SwapFree": 290816
+ },
+ "optimizer_wait_after_last_upsert_s": 5.319587014615536,
+ "info_green": {
+  "status": "green",
+  "optimizer_status": "ok",
+  "indexed_vectors_count": 0,
+  "points_count": 10000,
+  "segments_count": 2,
+  "config": {
+   "params": {
+    "vectors": {
+     "size": 768,
+     "distance": "Cosine"
+    },
+    "shard_number": 1,
+    "replication_factor": 1,
+    "write_consistency_factor": 1,
+    "on_disk_payload": true
+   },
+   "hnsw_config": {
+    "m": 16,
+    "ef_construct": 100,
+    "full_scan_threshold": 10000,
+    "max_indexing_threads": 0,
+    "on_disk": false
+   },
+   "optimizer_config": {
+    "deleted_threshold": 0.2,
+    "vacuum_min_vector_number": 1000,
+    "default_segment_number": 0,
+    "max_segment_size": null,
+    "memmap_threshold": null,
+    "indexing_threshold": 0,
+    "flush_interval_sec": 5,
+    "max_optimization_threads": null
+   },
+   "wal_config": {
+    "wal_capacity_mb": 32,
+    "wal_segments_ahead": 0,
+    "wal_retain_closed": 1
+   },
+   "quantization_config": null
+  },
+  "payload_schema": {
+   "collection": {
+    "data_type": "keyword",
+    "points": 0
+   },
+   "content_type": {
+    "data_type": "keyword",
+    "points": 10000
+   },
+   "active": {
+    "data_type": "bool",
+    "points": 10000
+   },
+   "source": {
+    "data_type": "keyword",
+    "points": 10000
+   }
+  }
+ },
+ "snap_loaded": {
+  "status.VmHWM": 215158784,
+  "status.VmRSS": 56766464,
+  "status.RssAnon": 33378304,
+  "status.RssFile": 23388160,
+  "status.RssShmem": 0,
+  "status.VmSwap": 0,
+  "status.Threads": 23,
+  "minflt": 142436,
+  "majflt": 32870,
+  "io.rchar": 496790,
+  "io.wchar": 424767,
+  "io.syscr": 380,
+  "io.syscw": 4451,
+  "io.read_bytes": 62899712,
+  "io.write_bytes": 197508601,
+  "io.cancelled_write_bytes": 0,
+  "cgmem.current": 61390848,
+  "cgmem.anon": 33644544,
+  "cgmem.file": 24723456,
+  "cgmem.shmem": 0,
+  "cgmem.file_mapped": 23453696,
+  "cgmem.file_dirty": 0,
+  "cgmem.inactive_file": 4943872,
+  "cgmem.active_file": 19783680,
+  "cgmem.pgfault": 176726,
+  "cgmem.pgmajfault": 32917,
+  "cgev.low": 0,
+  "cgev.high": 0,
+  "cgev.max": 0,
+  "cgev.oom": 0,
+  "cgev.oom_kill": 0,
+  "cgev.oom_group_kill": 0,
+  "cgcpu.usage_usec": 4321566,
+  "cgcpu.user_usec": 2512395,
+  "cgcpu.system_usec": 1809170,
+  "cgcpu.nr_throttled": 0,
+  "cgcpu.throttled_usec": 0,
+  "loadavg": [
+   "87.32",
+   "70.50",
+   "62.31"
+  ],
+  "host.MemFree": 805670912,
+  "host.MemAvailable": 7325323264,
+  "host.Cached": 10318053376,
+  "host.SwapFree": 4096
+ },
+ "cpu_usec_build": 4067189,
+ "docker_stats_loaded": "53.36MiB / 4GiB|0.15%",
+ "disk": {
+  "buckets": {
+   "wal": {
+    "apparent": 100663313,
+    "allocated": 61038592,
+    "files": 4
+   },
+   "id_tracker": {
+    "apparent": 290000,
+    "allocated": 364544,
+    "files": 4
+   },
+   "payload_storage": {
+    "apparent": 69272130,
+    "allocated": 16197632,
+    "files": 10
+   },
+   "segment_other": {
+    "apparent": 488,
+    "allocated": 20480,
+    "files": 4
+   },
+   "payload_index": {
+    "apparent": 52629292,
+    "allocated": 1851392,
+    "files": 72
+   },
+   "vectors_original": {
+    "apparent": 69202132,
+    "allocated": 30967808,
+    "files": 10
+   },
+   "collection_meta": {
+    "apparent": 919,
+    "allocated": 35840,
+    "files": 7
+   }
+  },
+  "storage_apparent": 292058631,
+  "storage_allocated": 110673920,
+  "points": 10000
+ },
+ "disk_files": [
+  [
+   "./0/wal/open-3",
+   33554432,
+   17408
+  ],
+  [
+   "./0/wal/closed-0",
+   33554432,
+   33580032
+  ],
+  [
+   "./0/wal/open-2",
+   33554432,
+   27436032
+  ],
+  [
+   "./0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_storage/page_0.dat",
+   33554432,
+   7971840
+  ],
+  [
+   "./0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_storage/tracker.dat",
+   1048576,
+   91136
+  ],
+  [
+   "./0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/877mf55q880bgee56kolanof-source-map/tracker.dat",
+   1048576,
+   91136
+  ],
+  [
+   "./0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/877mf55q880bgee56kolanof-source-map/page_0.dat",
+   4194304,
+   336896
+  ],
+  [
+   "./0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/oruua22165nnaekttbgk7mjr-content_-null/is_null/flags_a.dat",
+   1048576,
+   17408
+  ],
+  [
+   "./0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/oruua22165nnaekttbgk7mjr-content_-null/has_values/flags_a.dat",
+   1048576,
+   17408
+  ],
+  [
+   "./0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/iq3pc4b51u0ag4sikkn0redg-active-null/is_null/flags_a.dat",
+   1048576,
+   17408
+  ],
+  [
+   "./0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/iq3pc4b51u0ag4sikkn0redg-active-null/has_values/flags_a.dat",
+   1048576,
+   17408
+  ],
+  [
+   "./0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/oruua22165nnaekttbgk7mjr-content_-map/page_0.dat",
+   4194304,
+   91136
+  ],
+  [
+   "./0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/oruua22165nnaekttbgk7mjr-content_-map/tracker.dat",
+   1048576,
+   91136
+  ],
+  [
+   "./0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/877mf55q880bgee56kolanof-source-null/is_null/flags_a.dat",
+   1048576,
+   17408
+  ],
+  [
+   "./0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/877mf55q880bgee56kolanof-source-null/has_values/flags_a.dat",
+   1048576,
+   17408
+  ],
+  [
+   "./0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/v9q9dp5egg1gdnq1nliog01p-collecti-map/page_0.dat",
+   4194304,
+   1024
+  ],
+  [
+   "./0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/v9q9dp5egg1gdnq1nliog01p-collecti-map/tracker.dat",
+   1048576,
+   17408
+  ],
+  [
+   "./0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/iq3pc4b51u0ag4sikkn0redg-active-bool/trues/flags_a.dat",
+   1048576,
+   17408
+  ],
+  [
+   "./0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/iq3pc4b51u0ag4sikkn0redg-active-bool/falses/flags_a.dat",
+   1048576,
+   17408
+  ],
+  [
+   "./0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/v9q9dp5egg1gdnq1nliog01p-collecti-null/has_values/flags_a.dat",
+   1048576,
+   17408
+  ],
+  [
+   "./0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/v9q9dp5egg1gdnq1nliog01p-collecti-null/is_null/flags_a.dat",
+   1048576,
+   17408
+  ],
+  [
+   "./0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/vector_storage/vectors/chunk_0.mmap",
+   33552384,
+   15467520
+  ],
+  [
+   "./0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/vector_storage/deleted/flags_a.dat",
+   1048576,
+   17408
+  ],
+  [
+   "./0/segments/3774dec7-2d63-468e-9891-6b7f79184442/payload_index/877mf55q880bgee56kolanof-source-map/tracker.dat",
+   1048576,
+   91136
+  ],
+  [
+   "./0/segments/3774dec7-2d63-468e-9891-6b7f79184442/payload_index/877mf55q880bgee56kolanof-source-map/page_0.dat",
+   4194304,
+   336896
+  ],
+  [
+   "./0/segments/3774dec7-2d63-468e-9891-6b7f79184442/payload_index/oruua22165nnaekttbgk7mjr-content_-map/tracker.dat",
+   1048576,
+   91136
+  ],
+  [
+   "./0/segments/3774dec7-2d63-468e-9891-6b7f79184442/payload_index/oruua22165nnaekttbgk7mjr-content_-map/page_0.dat",
+   4194304,
+   91136
+  ],
+  [
+   "./0/segments/3774dec7-2d63-468e-9891-6b7f79184442/payload_index/v9q9dp5egg1gdnq1nliog01p-collecti-null/has_values/flags_a.dat",
+   1048576,
+   17408
+  ],
+  [
+   "./0/segments/3774dec7-2d63-468e-9891-6b7f79184442/payload_index/v9q9dp5egg1gdnq1nliog01p-collecti-null/is_null/flags_a.dat",
+   1048576,
+   17408
+  ],
+  [
+   "./0/segments/3774dec7-2d63-468e-9891-6b7f79184442/payload_index/iq3pc4b51u0ag4sikkn0redg-active-bool/trues/flags_a.dat",
+   1048576,
+   17408
+  ],
+  [
+   "./0/segments/3774dec7-2d63-468e-9891-6b7f79184442/payload_index/iq3pc4b51u0ag4sikkn0redg-active-bool/falses/flags_a.dat",
+   1048576,
+   17408
+  ],
+  [
+   "./0/segments/3774dec7-2d63-468e-9891-6b7f79184442/payload_index/v9q9dp5egg1gdnq1nliog01p-collecti-map/page_0.dat",
+   4194304,
+   1024
+  ],
+  [
+   "./0/segments/3774dec7-2d63-468e-9891-6b7f79184442/payload_index/v9q9dp5egg1gdnq1nliog01p-collecti-map/tracker.dat",
+   1048576,
+   17408
+  ],
+  [
+   "./0/segments/3774dec7-2d63-468e-9891-6b7f79184442/payload_index/877mf55q880bgee56kolanof-source-null/is_null/flags_a.dat",
+   1048576,
+   17408
+  ],
+  [
+   "./0/segments/3774dec7-2d63-468e-9891-6b7f79184442/payload_index/877mf55q880bgee56kolanof-source-null/has_values/flags_a.dat",
+   1048576,
+   17408
+  ],
+  [
+   "./0/segments/3774dec7-2d63-468e-9891-6b7f79184442/payload_index/oruua22165nnaekttbgk7mjr-content_-null/is_null/flags_a.dat",
+   1048576,
+   17408
+  ],
+  [
+   "./0/segments/3774dec7-2d63-468e-9891-6b7f79184442/payload_index/oruua22165nnaekttbgk7mjr-content_-null/has_values/flags_a.dat",
+   1048576,
+   17408
+  ],
+  [
+   "./0/segments/3774dec7-2d63-468e-9891-6b7f79184442/payload_index/iq3pc4b51u0ag4sikkn0redg-active-null/is_null/flags_a.dat",
+   1048576,
+   17408
+  ],
+  [
+   "./0/segments/3774dec7-2d63-468e-9891-6b7f79184442/payload_index/iq3pc4b51u0ag4sikkn0redg-active-null/has_values/flags_a.dat",
+   1048576,
+   17408
+  ],
+  [
+   "./0/segments/3774dec7-2d63-468e-9891-6b7f79184442/vector_storage/vectors/chunk_0.mmap",
+   33552384,
+   15434752
+  ],
+  [
+   "./0/segments/3774dec7-2d63-468e-9891-6b7f79184442/vector_storage/deleted/flags_a.dat",
+   1048576,
+   17408
+  ],
+  [
+   "./0/segments/3774dec7-2d63-468e-9891-6b7f79184442/payload_storage/tracker.dat",
+   1048576,
+   91136
+  ],
+  [
+   "./0/segments/3774dec7-2d63-468e-9891-6b7f79184442/payload_storage/page_0.dat",
+   33554432,
+   7988224
+  ]
+ ],
+ "telemetry": {
+  "segments": [
+   {
+    "type": "plain",
+    "points": 5006,
+    "indexed": 0,
+    "vectors_size_bytes": 15378432,
+    "payloads_size_bytes": 7912576,
+    "ram_usage_bytes": 0,
+    "disk_usage_bytes": 0,
+    "storage_type": "InRamChunkedMmap",
+    "index": "plain",
+    "quantization": null,
+    "payload_storage": {
+     "type": "mmap"
+    },
+    "appendable": true
+   },
+   {
+    "type": "plain",
+    "points": 4994,
+    "indexed": 0,
+    "vectors_size_bytes": 15341568,
+    "payloads_size_bytes": 7928832,
+    "ram_usage_bytes": 0,
+    "disk_usage_bytes": 0,
+    "storage_type": "InRamChunkedMmap",
+    "index": "plain",
+    "quantization": null,
+    "payload_storage": {
+     "type": "mmap"
+    },
+    "appendable": true
+   }
+  ],
+  "memory": {
+   "active_bytes": 30289920,
+   "allocated_bytes": 24597400,
+   "metadata_bytes": 9574768,
+   "resident_bytes": 39317504,
+   "retained_bytes": 243388416
+  },
+  "hardware": {
+   "collection_data": {
+    "nomad_knowledge_base": {
+     "cpu": 0,
+     "payload_io_read": 0,
+     "payload_io_write": 15221754,
+     "payload_index_io_read": 0,
+     "payload_index_io_write": 741361,
+     "vector_io_read": 0,
+     "vector_io_write": 30720000
+    }
+   }
+  }
+ },
+ "metrics_mem": {
+  "app_status_recovery_mode": "0",
+  "collections_total": "1",
+  "collections_vector_total": "10000",
+  "memory_active_bytes": "30666752",
+  "memory_allocated_bytes": "24942072",
+  "memory_metadata_bytes": "9605744",
+  "memory_resident_bytes": "39698432",
+  "memory_retained_bytes": "243011584"
+ },
+ "smaps_loaded": [
+  {
+   "rss_kb": 31464,
+   "anon_kb": 31464,
+   "swap_kb": 0,
+   "name": "[anon]"
+  },
+  {
+   "rss_kb": 18220,
+   "anon_kb": 1512,
+   "swap_kb": 0,
+   "name": "/qdrant/qdrant"
+  },
+  {
+   "rss_kb": 644,
+   "anon_kb": 24,
+   "swap_kb": 0,
+   "name": "/usr/lib/x86_64-linux-gnu/libc.so.6"
+  },
+  {
+   "rss_kb": 80,
+   "anon_kb": 80,
+   "swap_kb": 0,
+   "name": "[stack]"
+  },
+  {
+   "rss_kb": 68,
+   "anon_kb": 56,
+   "swap_kb": 0,
+   "name": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33"
+  },
+  {
+   "rss_kb": 48,
+   "anon_kb": 12,
+   "swap_kb": 0,
+   "name": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2"
+  },
+  {
+   "rss_kb": 44,
+   "anon_kb": 8,
+   "swap_kb": 0,
+   "name": "/usr/lib/x86_64-linux-gnu/libm.so.6"
+  },
+  {
+   "rss_kb": 44,
+   "anon_kb": 0,
+   "swap_kb": 0,
+   "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/oruua22165nnaekttbgk7mjr-content_-map/tracker.dat"
+  },
+  {
+   "rss_kb": 44,
+   "anon_kb": 0,
+   "swap_kb": 0,
+   "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/877mf55q880bgee56kolanof-source-map/tracker.dat"
+  },
+  {
+   "rss_kb": 44,
+   "anon_kb": 0,
+   "swap_kb": 0,
+   "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/3774dec7-2d63-468e-9891-6b7f79184442/payload_storage/tracker.dat"
+  },
+  {
+   "rss_kb": 40,
+   "anon_kb": 0,
+   "swap_kb": 0,
+   "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_storage/tracker.dat"
+  },
+  {
+   "rss_kb": 40,
+   "anon_kb": 0,
+   "swap_kb": 0,
+   "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/3774dec7-2d63-468e-9891-6b7f79184442/payload_index/oruua22165nnaekttbgk7mjr-content_-map/tracker.dat"
+  },
+  {
+   "rss_kb": 40,
+   "anon_kb": 0,
+   "swap_kb": 0,
+   "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/3774dec7-2d63-468e-9891-6b7f79184442/payload_index/877mf55q880bgee56kolanof-source-map/tracker.dat"
+  },
+  {
+   "rss_kb": 24,
+   "anon_kb": 8,
+   "swap_kb": 0,
+   "name": "/usr/lib/x86_64-linux-gnu/liblzma.so.5.8.1"
+  }
+ ],
+ "snap_after_200_queries": {
+  "status.VmHWM": 215158784,
+  "status.VmRSS": 108490752,
+  "status.RssAnon": 44302336,
+  "status.RssFile": 64188416,
+  "status.RssShmem": 0,
+  "status.VmSwap": 0,
+  "status.Threads": 29,
+  "minflt": 144560,
+  "majflt": 43695,
+  "io.rchar": 544538,
+  "io.wchar": 476182,
+  "io.syscr": 434,
+  "io.syscw": 6853,
+  "io.read_bytes": 202069504,
+  "io.write_bytes": 197508601,
+  "io.cancelled_write_bytes": 0,
+  "cgmem.current": 117829632,
+  "cgmem.anon": 44568576,
+  "cgmem.file": 69423104,
+  "cgmem.shmem": 0,
+  "cgmem.file_mapped": 64094208,
+  "cgmem.file_dirty": 0,
+  "cgmem.inactive_file": 5251072,
+  "cgmem.active_file": 64180224,
+  "cgmem.pgfault": 189675,
+  "cgmem.pgmajfault": 43742,
+  "cgev.low": 0,
+  "cgev.high": 0,
+  "cgev.max": 0,
+  "cgev.oom": 0,
+  "cgev.oom_kill": 0,
+  "cgev.oom_group_kill": 0,
+  "cgcpu.usage_usec": 6913843,
+  "cgcpu.user_usec": 4799272,
+  "cgcpu.system_usec": 2114571,
+  "cgcpu.nr_throttled": 0,
+  "cgcpu.throttled_usec": 0,
+  "loadavg": [
+   "179.08",
+   "117.18",
+   "80.51"
+  ],
+  "host.MemFree": 3566051328,
+  "host.MemAvailable": 12288397312,
+  "host.Cached": 11023503360,
+  "host.SwapFree": 521322496
+ },
+ "lat_first200": {
+  "n": 200,
+  "p50_ms": 17.658636439591646,
+  "p95_ms": 56.648354465141885,
+  "p99_ms": 84.89795951172688,
+  "mean_ms": 22.290730318054557,
+  "max_ms": 187.7339417114854
+ },
+ "modes": [
+  {
+   "mode": "default",
+   "params": null,
+   "n_queries": 200,
+   "passA": {
+    "n": 200,
+    "p50_ms": 11.803777422755957,
+    "p95_ms": 27.7069394476711,
+    "p99_ms": 50.90973390266271,
+    "mean_ms": 14.871579608879983,
+    "max_ms": 163.8577440753579,
+    "server_p50_ms": 9.001474,
+    "server_p95_ms": 21.022331649999987
+   },
+   "passB": {
+    "n": 200,
+    "p50_ms": 15.28480276465416,
+    "p95_ms": 61.613277392461775,
+    "p99_ms": 99.9070280883458,
+    "mean_ms": 21.845307941548526,
+    "max_ms": 277.77891978621483,
+    "server_p50_ms": 10.9790965,
+    "server_p95_ms": 38.82697939999996
+   },
+   "passA_majflt_per_q": 0.0,
+   "passA_read_MB_per_q": 0.0,
+   "passB_majflt_per_q": 0.0,
+   "passB_read_MB_per_q": 0.0,
+   "cpu_ms_per_q_passB": 9.690155,
+   "cpu_user_ms_per_q_passB": 9.37873,
+   "load_before": [
+    "179.08",
+    "117.18",
+    "80.51"
+   ],
+   "load_after": [
+    "165.65",
+    "116.34",
+    "80.63"
+   ],
+   "recall@10": 1.0,
+   "recall@10_min": 1.0,
+   "recall@15": 1.0,
+   "recall@15_min": 1.0,
+   "mean_hits": 14.395,
+   "rss_after_MB": 107.966464
+  },
+  {
+   "mode": "default_taskfilter",
+   "params": null,
+   "n_queries": 200,
+   "passA": {
+    "n": 200,
+    "p50_ms": 11.356150731444359,
+    "p95_ms": 38.18715843372042,
+    "p99_ms": 81.78303191438262,
+    "mean_ms": 16.562293656170368,
+    "max_ms": 166.29906930029392,
+    "server_p50_ms": 8.9919555,
+    "server_p95_ms": 25.02068945
+   },
+   "passB": {
+    "n": 200,
+    "p50_ms": 12.368955183774233,
+    "p95_ms": 30.566206714138378,
+    "p99_ms": 48.69006056338535,
+    "mean_ms": 15.069010914303362,
+    "max_ms": 133.2050459459424,
+    "server_p50_ms": 9.7013875,
+    "server_p95_ms": 23.78366989999997
+   },
+   "passA_majflt_per_q": 0.0,
+   "passA_read_MB_per_q": 0.0,
+   "passB_majflt_per_q": 0.01,
+   "passB_read_MB_per_q": 0.00032768,
+   "cpu_ms_per_q_passB": 10.781625,
+   "cpu_user_ms_per_q_passB": 10.499705,
+   "load_before": [
+    "165.65",
+    "116.34",
+    "80.63"
+   ],
+   "load_after": [
+    "157.51",
+    "115.47",
+    "80.54"
+   ],
+   "recall@10": 1.0,
+   "recall@10_min": 1.0,
+   "recall@15": 1.0,
+   "recall@15_min": 1.0,
+   "mean_hits": 14.395,
+   "rss_after_MB": 106.565632
+  }
+ ],
+ "snap_after_queries": {
+  "status.VmHWM": 215158784,
+  "status.VmRSS": 106520576,
+  "status.RssAnon": 44273664,
+  "status.RssFile": 62246912,
+  "status.RssShmem": 0,
+  "status.VmSwap": 0,
+  "status.Threads": 26,
+  "minflt": 144823,
+  "majflt": 43697,
+  "io.rchar": 544538,
+  "io.wchar": 637106,
+  "io.syscr": 434,
+  "io.syscw": 10869,
+  "io.read_bytes": 202135040,
+  "io.write_bytes": 197508601,
+  "io.cancelled_write_bytes": 0,
+  "cgmem.current": 115191808,
+  "cgmem.anon": 44539904,
+  "cgmem.file": 67297280,
+  "cgmem.shmem": 0,
+  "cgmem.file_mapped": 62185472,
+  "cgmem.file_dirty": 0,
+  "cgmem.inactive_file": 8359936,
+  "cgmem.active_file": 58945536,
+  "cgmem.pgfault": 189940,
+  "cgmem.pgmajfault": 43744,
+  "cgev.low": 0,
+  "cgev.high": 0,
+  "cgev.max": 0,
+  "cgev.oom": 0,
+  "cgev.oom_kill": 0,
+  "cgev.oom_group_kill": 0,
+  "cgcpu.usage_usec": 14970527,
+  "cgcpu.user_usec": 12634866,
+  "cgcpu.system_usec": 2335661,
+  "cgcpu.nr_throttled": 0,
+  "cgcpu.throttled_usec": 0,
+  "loadavg": [
+   "157.51",
+   "115.47",
+   "80.54"
+  ],
+  "host.MemFree": 2000158720,
+  "host.MemAvailable": 9893289984,
+  "host.Cached": 12458688512,
+  "host.SwapFree": 520593408
+ },
+ "smaps_after_queries": [
+  {
+   "rss_kb": 41504,
+   "anon_kb": 41504,
+   "swap_kb": 0,
+   "name": "[anon]"
+  },
+  {
+   "rss_kb": 18260,
+   "anon_kb": 1512,
+   "swap_kb": 0,
+   "name": "/qdrant/qdrant"
+  },
+  {
+   "rss_kb": 15020,
+   "anon_kb": 0,
+   "swap_kb": 0,
+   "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/vector_storage/vectors/chunk_0.mmap"
+  },
+  {
+   "rss_kb": 14988,
+   "anon_kb": 0,
+   "swap_kb": 0,
+   "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/3774dec7-2d63-468e-9891-6b7f79184442/vector_storage/vectors/chunk_0.mmap"
+  },
+  {
+   "rss_kb": 6400,
+   "anon_kb": 0,
+   "swap_kb": 0,
+   "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_storage/page_0.dat"
+  },
+  {
+   "rss_kb": 6336,
+   "anon_kb": 0,
+   "swap_kb": 0,
+   "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/3774dec7-2d63-468e-9891-6b7f79184442/payload_storage/page_0.dat"
+  },
+  {
+   "rss_kb": 644,
+   "anon_kb": 24,
+   "swap_kb": 0,
+   "name": "/usr/lib/x86_64-linux-gnu/libc.so.6"
+  },
+  {
+   "rss_kb": 80,
+   "anon_kb": 80,
+   "swap_kb": 0,
+   "name": "[stack]"
+  },
+  {
+   "rss_kb": 76,
+   "anon_kb": 0,
+   "swap_kb": 0,
+   "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_storage/tracker.dat"
+  },
+  {
+   "rss_kb": 76,
+   "anon_kb": 0,
+   "swap_kb": 0,
+   "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/3774dec7-2d63-468e-9891-6b7f79184442/payload_storage/tracker.dat"
+  },
+  {
+   "rss_kb": 64,
+   "anon_kb": 56,
+   "swap_kb": 0,
+   "name": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33"
+  },
+  {
+   "rss_kb": 48,
+   "anon_kb": 12,
+   "swap_kb": 0,
+   "name": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2"
+  },
+  {
+   "rss_kb": 44,
+   "anon_kb": 8,
+   "swap_kb": 0,
+   "name": "/usr/lib/x86_64-linux-gnu/libm.so.6"
+  },
+  {
+   "rss_kb": 36,
+   "anon_kb": 0,
+   "swap_kb": 0,
+   "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/3774dec7-2d63-468e-9891-6b7f79184442/payload_index/877mf55q880bgee56kolanof-source-map/tracker.dat"
+  }
+ ],
+ "docker_stats_after_queries": "101.9MiB / 4GiB|0.10%",
+ "cold": [
+  {
+   "mem_cap": "1g",
+   "shutdown_s": 0.8304729461669922,
+   "start_to_ready_s": 2.7908872794359922,
+   "ready_to_green_s": 2.0120497969910502,
+   "points_after_restart": 10000,
+   "segments_after_restart": 2,
+   "snap_after_restart": {
+    "status.VmHWM": 237248512,
+    "status.VmRSS": 237248512,
+    "status.RssAnon": 58458112,
+    "status.RssFile": 178790400,
+    "status.RssShmem": 0,
+    "status.VmSwap": 0,
+    "status.Threads": 25,
+    "minflt": 16155,
+    "majflt": 37632,
+    "io.rchar": 791339,
+    "io.wchar": 3105,
+    "io.syscr": 473,
+    "io.syscw": 82,
+    "io.read_bytes": 220697088,
+    "io.write_bytes": 74206,
+    "io.cancelled_write_bytes": 0,
+    "cgmem.current": 234156032,
+    "cgmem.anon": 58728448,
+    "cgmem.file": 172142592,
+    "cgmem.shmem": 0,
+    "cgmem.file_mapped": 166543360,
+    "cgmem.file_dirty": 0,
+    "cgmem.inactive_file": 151986176,
+    "cgmem.active_file": 20152320,
+    "cgmem.pgfault": 55175,
+    "cgmem.pgmajfault": 37649,
+    "cgev.low": 0,
+    "cgev.high": 0,
+    "cgev.max": 0,
+    "cgev.oom": 0,
+    "cgev.oom_kill": 0,
+    "cgev.oom_group_kill": 0,
+    "cgcpu.usage_usec": 738100,
+    "cgcpu.user_usec": 175712,
+    "cgcpu.system_usec": 562388,
+    "cgcpu.nr_throttled": 0,
+    "cgcpu.throttled_usec": 0,
+    "loadavg": [
+     "143.26",
+     "113.80",
+     "80.37"
+    ],
+    "host.MemFree": 5406535680,
+    "host.MemAvailable": 13667725312,
+    "host.Cached": 8747917312,
+    "host.SwapFree": 520597504
+   },
+   "smaps_after_restart": [
+    {
+     "rss_kb": 55332,
+     "anon_kb": 55332,
+     "swap_kb": 0,
+     "name": "[anon]"
+    },
+    {
+     "rss_kb": 32768,
+     "anon_kb": 0,
+     "swap_kb": 0,
+     "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/vector_storage/vectors/chunk_0.mmap"
+    },
+    {
+     "rss_kb": 32768,
+     "anon_kb": 0,
+     "swap_kb": 0,
+     "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/3774dec7-2d63-468e-9891-6b7f79184442/vector_storage/vectors/chunk_0.mmap"
+    },
+    {
+     "rss_kb": 32476,
+     "anon_kb": 0,
+     "swap_kb": 0,
+     "name": "/qdrant/storage/collections/nomad_knowledge_base/0/wal/closed-0"
+    },
+    {
+     "rss_kb": 26628,
+     "anon_kb": 0,
+     "swap_kb": 0,
+     "name": "/qdrant/storage/collections/nomad_knowledge_base/0/wal/open-2"
+    },
+    {
+     "rss_kb": 24592,
+     "anon_kb": 1512,
+     "swap_kb": 0,
+     "name": "/qdrant/qdrant"
+    },
+    {
+     "rss_kb": 1384,
+     "anon_kb": 24,
+     "swap_kb": 0,
+     "name": "/usr/lib/x86_64-linux-gnu/libc.so.6"
+    },
+    {
+     "rss_kb": 1024,
+     "anon_kb": 0,
+     "swap_kb": 0,
+     "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/vector_storage/deleted/flags_a.dat"
+    },
+    {
+     "rss_kb": 1024,
+     "anon_kb": 0,
+     "swap_kb": 0,
+     "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/v9q9dp5egg1gdnq1nliog01p-collecti-null/is_null/flags_a.dat"
+    },
+    {
+     "rss_kb": 1024,
+     "anon_kb": 0,
+     "swap_kb": 0,
+     "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/v9q9dp5egg1gdnq1nliog01p-collecti-null/has_values/flags_a.dat"
+    },
+    {
+     "rss_kb": 1024,
+     "anon_kb": 0,
+     "swap_kb": 0,
+     "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/oruua22165nnaekttbgk7mjr-content_-null/is_null/flags_a.dat"
+    },
+    {
+     "rss_kb": 1024,
+     "anon_kb": 0,
+     "swap_kb": 0,
+     "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/oruua22165nnaekttbgk7mjr-content_-null/has_values/flags_a.dat"
+    },
+    {
+     "rss_kb": 1024,
+     "anon_kb": 0,
+     "swap_kb": 0,
+     "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/iq3pc4b51u0ag4sikkn0redg-active-null/is_null/flags_a.dat"
+    },
+    {
+     "rss_kb": 1024,
+     "anon_kb": 0,
+     "swap_kb": 0,
+     "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/iq3pc4b51u0ag4sikkn0redg-active-null/has_values/flags_a.dat"
+    }
+   ],
+   "modes": [
+    {
+     "mode": "default",
+     "params": null,
+     "n_queries": 200,
+     "passA": {
+      "n": 200,
+      "p50_ms": 14.07875306904316,
+      "p95_ms": 47.67893352545798,
+      "p99_ms": 95.94311701133793,
+      "mean_ms": 19.569281516596675,
+      "max_ms": 175.47938041388988,
+      "server_p50_ms": 10.515942,
+      "server_p95_ms": 33.71793805
+     },
+     "passB": {
+      "n": 200,
+      "p50_ms": 13.051103334873915,
+      "p95_ms": 43.73532361350953,
+      "p99_ms": 76.76269458606711,
+      "mean_ms": 18.9604819053784,
+      "max_ms": 255.03910426050425,
+      "server_p50_ms": 9.538601,
+      "server_p95_ms": 25.679303299999983
+     },
+     "passA_majflt_per_q": 16.135,
+     "passA_read_MB_per_q": 0.48420864,
+     "passB_majflt_per_q": 0.0,
+     "passB_read_MB_per_q": 0.0,
+     "cpu_ms_per_q_passB": 10.37461,
+     "cpu_user_ms_per_q_passB": 10.148545,
+     "load_before": [
+      "143.26",
+      "113.80",
+      "80.37"
+     ],
+     "load_after": [
+      "139.88",
+      "113.59",
+      "80.48"
+     ],
+     "recall@10": 1.0,
+     "recall@10_min": 1.0,
+     "recall@15": 1.0,
+     "recall@15_min": 1.0,
+     "mean_hits": 14.395,
+     "rss_after_MB": 259.817472
+    }
+   ],
+   "snap_end": {
+    "status.VmHWM": 270110720,
+    "status.VmRSS": 259817472,
+    "status.RssAnon": 36196352,
+    "status.RssFile": 223621120,
+    "status.RssShmem": 0,
+    "status.VmSwap": 0,
+    "status.Threads": 27,
+    "minflt": 18522,
+    "majflt": 40859,
+    "io.rchar": 791339,
+    "io.wchar": 84452,
+    "io.syscr": 473,
+    "io.syscw": 2189,
+    "io.read_bytes": 317538816,
+    "io.write_bytes": 74307,
+    "io.cancelled_write_bytes": 0,
+    "cgmem.current": 224690176,
+    "cgmem.anon": 36466688,
+    "cgmem.file": 184721408,
+    "cgmem.shmem": 0,
+    "cgmem.file_mapped": 178982912,
+    "cgmem.file_dirty": 0,
+    "cgmem.inactive_file": 164556800,
+    "cgmem.active_file": 20172800,
+    "cgmem.pgfault": 60769,
+    "cgmem.pgmajfault": 40876,
+    "cgev.low": 0,
+    "cgev.high": 0,
+    "cgev.max": 0,
+    "cgev.oom": 0,
+    "cgev.oom_kill": 0,
+    "cgev.oom_group_kill": 0,
+    "cgcpu.usage_usec": 5030298,
+    "cgcpu.user_usec": 4249612,
+    "cgcpu.system_usec": 780686,
+    "cgcpu.nr_throttled": 0,
+    "cgcpu.throttled_usec": 0,
+    "loadavg": [
+     "135.16",
+     "113.05",
+     "80.49"
+    ],
+    "host.MemFree": 4844077056,
+    "host.MemAvailable": 13401849856,
+    "host.Cached": 9054097408,
+    "host.SwapFree": 520822784
+   }
+  }
+ ],
+ "snap_restart_main_cap": {
+  "status.VmHWM": 240771072,
+  "status.VmRSS": 233152512,
+  "status.RssAnon": 53809152,
+  "status.RssFile": 179343360,
+  "status.RssShmem": 0,
+  "status.VmSwap": 0,
+  "status.Threads": 26,
+  "minflt": 18650,
+  "majflt": 191,
+  "io.rchar": 791339,
+  "io.wchar": 3113,
+  "io.syscr": 473,
+  "io.syscw": 83,
+  "io.read_bytes": 9600512,
+  "io.write_bytes": 74206,
+  "io.cancelled_write_bytes": 0,
+  "cgmem.current": 58011648,
+  "cgmem.anon": 54079488,
+  "cgmem.file": 905216,
+  "cgmem.shmem": 0,
+  "cgmem.file_mapped": 888832,
+  "cgmem.file_dirty": 0,
+  "cgmem.inactive_file": 4096,
+  "cgmem.active_file": 905216,
+  "cgmem.pgfault": 20333,
+  "cgmem.pgmajfault": 192,
+  "cgev.low": 0,
+  "cgev.high": 0,
+  "cgev.max": 0,
+  "cgev.oom": 0,
+  "cgev.oom_kill": 0,
+  "cgev.oom_group_kill": 0,
+  "cgcpu.usage_usec": 267084,
+  "cgcpu.user_usec": 163104,
+  "cgcpu.system_usec": 103979,
+  "cgcpu.nr_throttled": 0,
+  "cgcpu.throttled_usec": 0,
+  "loadavg": [
+   "135.16",
+   "113.05",
+   "80.49"
+  ],
+  "host.MemFree": 5070622720,
+  "host.MemAvailable": 14045270016,
+  "host.Cached": 9582903296,
+  "host.SwapFree": 519696384
+ },
+ "smaps_restart_main_cap": [
+  {
+   "rss_kb": 50792,
+   "anon_kb": 50792,
+   "swap_kb": 0,
+   "name": "[anon]"
+  },
+  {
+   "rss_kb": 32768,
+   "anon_kb": 0,
+   "swap_kb": 0,
+   "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/vector_storage/vectors/chunk_0.mmap"
+  },
+  {
+   "rss_kb": 32768,
+   "anon_kb": 0,
+   "swap_kb": 0,
+   "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/3774dec7-2d63-468e-9891-6b7f79184442/vector_storage/vectors/chunk_0.mmap"
+  },
+  {
+   "rss_kb": 32596,
+   "anon_kb": 0,
+   "swap_kb": 0,
+   "name": "/qdrant/storage/collections/nomad_knowledge_base/0/wal/closed-0"
+  },
+  {
+   "rss_kb": 26628,
+   "anon_kb": 0,
+   "swap_kb": 0,
+   "name": "/qdrant/storage/collections/nomad_knowledge_base/0/wal/open-2"
+  },
+  {
+   "rss_kb": 24612,
+   "anon_kb": 1512,
+   "swap_kb": 0,
+   "name": "/qdrant/qdrant"
+  },
+  {
+   "rss_kb": 1364,
+   "anon_kb": 24,
+   "swap_kb": 0,
+   "name": "/usr/lib/x86_64-linux-gnu/libc.so.6"
+  },
+  {
+   "rss_kb": 1328,
+   "anon_kb": 56,
+   "swap_kb": 0,
+   "name": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33"
+  },
+  {
+   "rss_kb": 1024,
+   "anon_kb": 0,
+   "swap_kb": 0,
+   "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/vector_storage/deleted/flags_a.dat"
+  },
+  {
+   "rss_kb": 1024,
+   "anon_kb": 0,
+   "swap_kb": 0,
+   "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/v9q9dp5egg1gdnq1nliog01p-collecti-null/is_null/flags_a.dat"
+  },
+  {
+   "rss_kb": 1024,
+   "anon_kb": 0,
+   "swap_kb": 0,
+   "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/v9q9dp5egg1gdnq1nliog01p-collecti-null/has_values/flags_a.dat"
+  },
+  {
+   "rss_kb": 1024,
+   "anon_kb": 0,
+   "swap_kb": 0,
+   "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/oruua22165nnaekttbgk7mjr-content_-null/is_null/flags_a.dat"
+  },
+  {
+   "rss_kb": 1024,
+   "anon_kb": 0,
+   "swap_kb": 0,
+   "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/oruua22165nnaekttbgk7mjr-content_-null/has_values/flags_a.dat"
+  },
+  {
+   "rss_kb": 1024,
+   "anon_kb": 0,
+   "swap_kb": 0,
+   "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/aa57bec2-299e-47a3-89fc-e46e44891df3/payload_index/iq3pc4b51u0ag4sikkn0redg-active-null/is_null/flags_a.dat"
+  }
+ ],
+ "nomad_ensure": {
+  "PUT_index_source_s": 0.04046676401048899,
+  "PUT_index_content_type_s": 0.00984884425997734,
+  "PUT_index_collection_s": 0.011062473058700562,
+  "PUT_index_active_s": 0.011046336963772774,
+  "setPayload_backfill_s": 0.02931052353233099,
+  "setPayload_status": 200
+ },
+ "nomad_ensure_2nd": {
+  "PUT_index_source_s": 0.011899235658347607,
+  "PUT_index_content_type_s": 0.008905411697924137,
+  "PUT_index_collection_s": 0.008739735931158066,
+  "PUT_index_active_s": 0.00852761510759592,
+  "setPayload_backfill_s": 0.006053771823644638,
+  "setPayload_status": 200
+ },
+ "info_after_steady": {
+  "status": "green",
+  "optimizer_status": "ok",
+  "indexed_vectors_count": 0,
+  "points_count": 10600,
+  "segments_count": 2,
+  "config": {
+   "params": {
+    "vectors": {
+     "size": 768,
+     "distance": "Cosine"
+    },
+    "shard_number": 1,
+    "replication_factor": 1,
+    "write_consistency_factor": 1,
+    "on_disk_payload": true
+   },
+   "hnsw_config": {
+    "m": 16,
+    "ef_construct": 100,
+    "full_scan_threshold": 10000,
+    "max_indexing_threads": 0,
+    "on_disk": false
+   },
+   "optimizer_config": {
+    "deleted_threshold": 0.2,
+    "vacuum_min_vector_number": 1000,
+    "default_segment_number": 0,
+    "max_segment_size": null,
+    "memmap_threshold": null,
+    "indexing_threshold": 0,
+    "flush_interval_sec": 5,
+    "max_optimization_threads": null
+   },
+   "wal_config": {
+    "wal_capacity_mb": 32,
+    "wal_segments_ahead": 0,
+    "wal_retain_closed": 1
+   },
+   "quantization_config": null
+  },
+  "payload_schema": {
+   "content_type": {
+    "data_type": "keyword",
+    "points": 10600
+   },
+   "source": {
+    "data_type": "keyword",
+    "points": 10600
+   },
+   "collection": {
+    "data_type": "keyword",
+    "points": 0
+   },
+   "active": {
+    "data_type": "bool",
+    "points": 10600
+   }
+  }
+ },
+ "snap_after_steady": {
+  "status.VmHWM": 240771072,
+  "status.VmRSS": 202534912,
+  "status.RssAnon": 35868672,
+  "status.RssFile": 166666240,
+  "status.RssShmem": 0,
+  "status.VmSwap": 0,
+  "status.Threads": 26,
+  "minflt": 21399,
+  "majflt": 1409,
+  "io.rchar": 791339,
+  "io.wchar": 66011,
+  "io.syscr": 473,
+  "io.syscw": 1262,
+  "io.read_bytes": 16798720,
+  "io.write_bytes": 14288054,
+  "io.cancelled_write_bytes": 0,
+  "cgmem.current": 47288320,
+  "cgmem.anon": 36130816,
+  "cgmem.file": 8167424,
+  "cgmem.shmem": 0,
+  "cgmem.file_mapped": 6746112,
+  "cgmem.file_dirty": 0,
+  "cgmem.inactive_file": 4501504,
+  "cgmem.active_file": 3674112,
+  "cgmem.pgfault": 24298,
+  "cgmem.pgmajfault": 1410,
+  "cgev.low": 0,
+  "cgev.high": 0,
+  "cgev.max": 0,
+  "cgev.oom": 0,
+  "cgev.oom_kill": 0,
+  "cgev.oom_group_kill": 0,
+  "cgcpu.usage_usec": 751559,
+  "cgcpu.user_usec": 465683,
+  "cgcpu.system_usec": 285875,
+  "cgcpu.nr_throttled": 0,
+  "cgcpu.throttled_usec": 0,
+  "loadavg": [
+   "123.23",
+   "111.23",
+   "80.24"
+  ],
+  "host.MemFree": 4129984512,
+  "host.MemAvailable": 13305225216,
+  "host.Cached": 11117887488,
+  "host.SwapFree": 515813376
+ },
+ "log_warnings": [
+  "2026-10-02T00:33:45.873065Z  WARN qdrant: There is a potential issue with the filesystem for storage path ./storage. Details: Unrecognized filesystem - cannot guarantee data safety"
+ ],
+ "unstick": {
+  "before": {
+   "snap": {
+    "status.VmHWM": 240771072,
+    "status.VmRSS": 202027008,
+    "status.RssAnon": 35868672,
+    "status.RssFile": 166158336,
+    "status.RssShmem": 0,
+    "status.VmSwap": 0,
+    "status.Threads": 26,
+    "minflt": 21399,
+    "majflt": 1409,
+    "io.rchar": 791339,
+    "io.wchar": 66011,
+    "io.syscr": 473,
+    "io.syscw": 1262,
+    "io.read_bytes": 16798720,
+    "io.write_bytes": 14288054,
+    "io.cancelled_write_bytes": 0,
+    "cgmem.current": 47017984,
+    "cgmem.anon": 36130816,
+    "cgmem.file": 8167424,
+    "cgmem.shmem": 0,
+    "cgmem.file_mapped": 6746112,
+    "cgmem.file_dirty": 0,
+    "cgmem.inactive_file": 4501504,
+    "cgmem.active_file": 3674112,
+    "cgmem.pgfault": 24298,
+    "cgmem.pgmajfault": 1410,
+    "cgev.low": 0,
+    "cgev.high": 0,
+    "cgev.max": 0,
+    "cgev.oom": 0,
+    "cgev.oom_kill": 0,
+    "cgev.oom_group_kill": 0,
+    "cgcpu.usage_usec": 751559,
+    "cgcpu.user_usec": 465683,
+    "cgcpu.system_usec": 285875,
+    "cgcpu.nr_throttled": 0,
+    "cgcpu.throttled_usec": 0,
+    "loadavg": [
+     "123.23",
+     "111.23",
+     "80.24"
+    ],
+    "host.MemFree": 3684605952,
+    "host.MemAvailable": 12883394560,
+    "host.Cached": 11449028608,
+    "host.SwapFree": 515813376
+   },
+   "storage_apparent": 292076031,
+   "storage_allocated": 117243904,
+   "buckets": {
+    "wal": {
+     "apparent": 100663313,
+     "allocated": 64659456,
+     "files": 4
+    },
+    "id_tracker": {
+     "apparent": 307400,
+     "allocated": 364544,
+     "files": 4
+    },
+    "payload_storage": {
+     "apparent": 69272130,
+     "allocated": 17147904,
+     "files": 10
+    },
+    "segment_other": {
+     "apparent": 488,
+     "allocated": 20480,
+     "files": 4
+    },
+    "payload_index": {
+     "apparent": 52629292,
+     "allocated": 2015232,
+     "files": 72
+    },
+    "vectors_original": {
+     "apparent": 69202132,
+     "allocated": 32802816,
+     "files": 10
+    },
+    "collection_meta": {
+     "apparent": 919,
+     "allocated": 35840,
+     "files": 7
+    }
+   }
+  },
+  "patch": {
+   "body": {
+    "optimizers_config": {
+     "indexing_threshold": 10000
+    }
+   },
+   "response": {
+    "result": true,
+    "status": "ok",
+    "time": 0.024761038
+   }
+  },
+  "series": [
+   {
+    "t": 0.2782330708578229,
+    "status": "yellow",
+    "segments": 2,
+    "indexed": 0,
+    "rss_anon": 35909632,
+    "rss_file": 167116800,
+    "hwm": 240771072,
+    "cg_current": 49651712,
+    "storage_allocated": 117327872,
+    "storage_apparent": 389760420,
+    "cpu_usec": 765233
+   },
+   {
+    "t": 5.031955529935658,
+    "status": "yellow",
+    "segments": 3,
+    "indexed": 0,
+    "rss_anon": 41279488,
+    "rss_file": 302329856,
+    "hwm": 359030784,
+    "cg_current": 113156096,
+    "storage_allocated": 168852480,
+    "storage_apparent": 435485207,
+    "cpu_usec": 2438970
+   },
+   {
+    "t": 9.515658061951399,
+    "status": "yellow",
+    "segments": 3,
+    "indexed": 0,
+    "rss_anon": 39153664,
+    "rss_file": 270385152,
+    "hwm": 359030784,
+    "cg_current": 103690240,
+    "storage_allocated": 169360384,
+    "storage_apparent": 435485204,
+    "cpu_usec": 7100523
+   },
+   {
+    "t": 14.005552930757403,
+    "status": "yellow",
+    "segments": 3,
+    "indexed": 0,
+    "rss_anon": 39284736,
+    "rss_file": 262934528,
+    "hwm": 359030784,
+    "cg_current": 101548032,
+    "storage_allocated": 169360384,
+    "storage_apparent": 435485204,
+    "cpu_usec": 14564784
+   },
+   {
+    "t": 18.406933543272316,
+    "status": "yellow",
+    "segments": 3,
+    "indexed": 0,
+    "rss_anon": 39202816,
+    "rss_file": 243314688,
+    "hwm": 359030784,
+    "cg_current": 95612928,
+    "storage_allocated": 169470976,
+    "storage_apparent": 435485204,
+    "cpu_usec": 20746382
+   },
+   {
+    "t": 23.006078309379518,
+    "status": "yellow",
+    "segments": 3,
+    "indexed": 0,
+    "rss_anon": 39825408,
+    "rss_file": 245833728,
+    "hwm": 359030784,
+    "cg_current": 98963456,
+    "storage_allocated": 169488384,
+    "storage_apparent": 436049040,
+    "cpu_usec": 25298395
+   },
+   {
+    "t": 33.02967781946063,
+    "status": "green",
+    "segments": 2,
+    "indexed": 10600,
+    "rss_anon": 39489536,
+    "rss_file": 136396800,
+    "hwm": 359030784,
+    "cg_current": 100077568,
+    "storage_allocated": 117596160,
+    "storage_apparent": 244637598,
+    "cpu_usec": 25373842
+   }
+  ],
+  "seconds": 33.029688187874854,
+  "after": {
+   "snap": {
+    "status.VmHWM": 359030784,
+    "status.VmRSS": 149499904,
+    "status.RssAnon": 31649792,
+    "status.RssFile": 117850112,
+    "status.RssShmem": 0,
+    "status.VmSwap": 0,
+    "status.Threads": 27,
+    "minflt": 26141,
+    "majflt": 29129,
+    "io.rchar": 1016217,
+    "io.wchar": 963179,
+    "io.syscr": 530,
+    "io.syscw": 2009,
+    "io.read_bytes": 158042624,
+    "io.write_bytes": 71361910,
+    "io.cancelled_write_bytes": 0,
+    "cgmem.current": 82038784,
+    "cgmem.anon": 31920128,
+    "cgmem.file": 47144960,
+    "cgmem.shmem": 0,
+    "cgmem.file_mapped": 43610112,
+    "cgmem.file_dirty": 0,
+    "cgmem.inactive_file": 9945088,
+    "cgmem.active_file": 37203968,
+    "cgmem.pgfault": 56762,
+    "cgmem.pgmajfault": 29130,
+    "cgev.low": 0,
+    "cgev.high": 0,
+    "cgev.max": 0,
+    "cgev.oom": 0,
+    "cgev.oom_kill": 0,
+    "cgev.oom_group_kill": 0,
+    "cgcpu.usage_usec": 25392053,
+    "cgcpu.user_usec": 23966797,
+    "cgcpu.system_usec": 1425255,
+    "cgcpu.nr_throttled": 0,
+    "cgcpu.throttled_usec": 0,
+    "loadavg": [
+     "99.35",
+     "106.49",
+     "80.25"
+    ],
+    "host.MemFree": 4366880768,
+    "host.MemAvailable": 13199503360,
+    "host.Cached": 9351438336,
+    "host.SwapFree": 179400704
+   },
+   "storage_apparent": 244637598,
+   "storage_allocated": 117596160,
+   "buckets": {
+    "wal": {
+     "apparent": 100663313,
+     "allocated": 64659456,
+     "files": 4
+    },
+    "segment_other": {
+     "apparent": 578,
+     "allocated": 20480,
+     "files": 4
+    },
+    "payload_index": {
+     "apparent": 38178313,
+     "allocated": 1819648,
+     "files": 69
+    },
+    "vectors_original": {
+     "apparent": 35649748,
+     "allocated": 32793600,
+     "files": 9
+    },
+    "payload_storage": {
+     "apparent": 69272130,
+     "allocated": 17115136,
+     "files": 10
+    },
+    "id_tracker": {
+     "apparent": 308736,
+     "allocated": 351232,
+     "files": 3
+    },
+    "hnsw": {
+     "apparent": 563500,
+     "allocated": 592896,
+     "files": 3
+    },
+    "collection_meta": {
+     "apparent": 923,
+     "allocated": 35840,
+     "files": 7
+    }
+   },
+   "info": {
+    "status": "green",
+    "optimizer_status": "ok",
+    "indexed_vectors_count": 10600,
+    "points_count": 10600,
+    "segments_count": 2,
+    "config": {
+     "params": {
+      "vectors": {
+       "size": 768,
+       "distance": "Cosine"
+      },
+      "shard_number": 1,
+      "replication_factor": 1,
+      "write_consistency_factor": 1,
+      "on_disk_payload": true
+     },
+     "hnsw_config": {
+      "m": 16,
+      "ef_construct": 100,
+      "full_scan_threshold": 10000,
+      "max_indexing_threads": 0,
+      "on_disk": false
+     },
+     "optimizer_config": {
+      "deleted_threshold": 0.2,
+      "vacuum_min_vector_number": 1000,
+      "default_segment_number": 0,
+      "max_segment_size": null,
+      "memmap_threshold": null,
+      "indexing_threshold": 10000,
+      "flush_interval_sec": 5,
+      "max_optimization_threads": null
+     },
+     "wal_config": {
+      "wal_capacity_mb": 32,
+      "wal_segments_ahead": 0,
+      "wal_retain_closed": 1
+     },
+     "quantization_config": null
+    },
+    "payload_schema": {
+     "content_type": {
+      "data_type": "keyword",
+      "points": 10600
+     },
+     "active": {
+      "data_type": "bool",
+      "points": 10600
+     },
+     "collection": {
+      "data_type": "keyword",
+      "points": 0
+     },
+     "source": {
+      "data_type": "keyword",
+      "points": 10600
+     }
+    }
+   },
+   "smaps": [
+    {
+     "rss_kb": 32768,
+     "anon_kb": 0,
+     "swap_kb": 0,
+     "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/fd259531-3eae-43d4-a4f2-2c9ec1c86360/vector_storage/vectors/chunk_0.mmap"
+    },
+    {
+     "rss_kb": 32192,
+     "anon_kb": 0,
+     "swap_kb": 0,
+     "name": "/qdrant/storage/collections/nomad_knowledge_base/0/wal/closed-0"
+    },
+    {
+     "rss_kb": 29136,
+     "anon_kb": 29136,
+     "swap_kb": 0,
+     "name": "[anon]"
+    },
+    {
+     "rss_kb": 24220,
+     "anon_kb": 1512,
+     "swap_kb": 0,
+     "name": "/qdrant/qdrant"
+    },
+    {
+     "rss_kb": 19244,
+     "anon_kb": 0,
+     "swap_kb": 0,
+     "name": "/qdrant/storage/collections/nomad_knowledge_base/0/wal/open-2"
+    },
+    {
+     "rss_kb": 1064,
+     "anon_kb": 24,
+     "swap_kb": 0,
+     "name": "/usr/lib/x86_64-linux-gnu/libc.so.6"
+    },
+    {
+     "rss_kb": 1024,
+     "anon_kb": 0,
+     "swap_kb": 0,
+     "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/fd259531-3eae-43d4-a4f2-2c9ec1c86360/vector_storage/deleted/flags_a.dat"
+    },
+    {
+     "rss_kb": 752,
+     "anon_kb": 0,
+     "swap_kb": 0,
+     "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/fd259531-3eae-43d4-a4f2-2c9ec1c86360/payload_index/877mf55q880bgee56kolanof-source-map/point_to_values.bin"
+    },
+    {
+     "rss_kb": 660,
+     "anon_kb": 0,
+     "swap_kb": 0,
+     "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/fd259531-3eae-43d4-a4f2-2c9ec1c86360/payload_index/v9q9dp5egg1gdnq1nliog01p-collecti-null/is_null/flags_a.dat"
+    },
+    {
+     "rss_kb": 600,
+     "anon_kb": 56,
+     "swap_kb": 0,
+     "name": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33"
+    },
+    {
+     "rss_kb": 584,
+     "anon_kb": 0,
+     "swap_kb": 0,
+     "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/fd259531-3eae-43d4-a4f2-2c9ec1c86360/payload_index/iq3pc4b51u0ag4sikkn0redg-active-null/has_values/flags_a.dat"
+    },
+    {
+     "rss_kb": 552,
+     "anon_kb": 0,
+     "swap_kb": 0,
+     "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/fd259531-3eae-43d4-a4f2-2c9ec1c86360/vector_index/links_compressed.bin"
+    },
+    {
+     "rss_kb": 456,
+     "anon_kb": 0,
+     "swap_kb": 0,
+     "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/fd259531-3eae-43d4-a4f2-2c9ec1c86360/payload_index/v9q9dp5egg1gdnq1nliog01p-collecti-null/has_values/flags_a.dat"
+    },
+    {
+     "rss_kb": 372,
+     "anon_kb": 0,
+     "swap_kb": 0,
+     "name": "/qdrant/storage/collections/nomad_knowledge_base/0/segments/fd259531-3eae-43d4-a4f2-2c9ec1c86360/payload_index/iq3pc4b51u0ag4sikkn0redg-active-bool/falses/flags_a.dat"
+    }
+   ]
+  },
+  "peak_storage_allocated": 169488384,
+  "peak_rss_anon": 41279488,
+  "peak_hwm": 359030784
+ },
+ "finished": "2026-10-01 20:34:48",
+ "load_end": [
+  "99.35",
+  "106.49",
+  "80.25"
+ ],
+ "status": "ok"
+}

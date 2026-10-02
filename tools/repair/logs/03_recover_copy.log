@@ -1,0 +1,50 @@
+[11:58:04] == 03 start; load 11.05 9.79 11.28
+[11:58:04] dataset created
+[11:58:04] -- phase 1: rest of the old store (everything except broken big segment, temp_segments, *.deleted)
+[11:58:25] copied /mnt/disk2/Stash/Nomad/qdrant -> /mnt/nvme/appdata/nomad-qdrant-recovered: 39 big files (1308 MB), skipped(already ok) 0
+[11:58:31] copied /mnt/disk3/Stash/Nomad/qdrant -> /mnt/nvme/appdata/nomad-qdrant-recovered: 12 big files (402 MB), skipped(already ok) 0
+[11:58:31] -- phase 2: big segment storages from the leftover builder folder (disk3)
+[11:58:46]   /mnt/disk3/Stash/Nomad/qdrant/collections/nomad_knowledge_base/0/temp_segments.HOLD-builder-DO-NOT-DELETE/segment_builder_n3vl4Q/payload_storage: copied 50 big files (1686 MB), skipped 0
+[11:59:01]   /mnt/disk3/Stash/Nomad/qdrant/collections/nomad_knowledge_base/0/temp_segments.HOLD-builder-DO-NOT-DELETE/segment_builder_n3vl4Q/payload_storage: copied 100 big files (3363 MB), skipped 0
+[11:59:17]   /mnt/disk3/Stash/Nomad/qdrant/collections/nomad_knowledge_base/0/temp_segments.HOLD-builder-DO-NOT-DELETE/segment_builder_n3vl4Q/payload_storage: copied 150 big files (5041 MB), skipped 0
+[11:59:31]   /mnt/disk3/Stash/Nomad/qdrant/collections/nomad_knowledge_base/0/temp_segments.HOLD-builder-DO-NOT-DELETE/segment_builder_n3vl4Q/payload_storage: copied 200 big files (6719 MB), skipped 0
+[11:59:45]   /mnt/disk3/Stash/Nomad/qdrant/collections/nomad_knowledge_base/0/temp_segments.HOLD-builder-DO-NOT-DELETE/segment_builder_n3vl4Q/payload_storage: copied 250 big files (8397 MB), skipped 0
+[11:59:48] copied /mnt/disk3/Stash/Nomad/qdrant/collections/nomad_knowledge_base/0/temp_segments.HOLD-builder-DO-NOT-DELETE/segment_builder_n3vl4Q/payload_storage -> /mnt/nvme/appdata/nomad-qdrant-recovered/collections/nomad_knowledge_base/0/segments/c98bf53f-759c-4d00-9749-5b1c1fcf4033/payload_storage: 261 big files (8766 MB), skipped(already ok) 0
+[11:59:58]   /mnt/disk3/Stash/Nomad/qdrant/collections/nomad_knowledge_base/0/temp_segments.HOLD-builder-DO-NOT-DELETE/segment_builder_n3vl4Q/vector_storage: copied 50 big files (1677 MB), skipped 0
+[12:00:09]   /mnt/disk3/Stash/Nomad/qdrant/collections/nomad_knowledge_base/0/temp_segments.HOLD-builder-DO-NOT-DELETE/segment_builder_n3vl4Q/vector_storage: copied 100 big files (3355 MB), skipped 0
+[12:00:21]   /mnt/disk3/Stash/Nomad/qdrant/collections/nomad_knowledge_base/0/temp_segments.HOLD-builder-DO-NOT-DELETE/segment_builder_n3vl4Q/vector_storage: copied 150 big files (5032 MB), skipped 0
+[12:00:31]   /mnt/disk3/Stash/Nomad/qdrant/collections/nomad_knowledge_base/0/temp_segments.HOLD-builder-DO-NOT-DELETE/segment_builder_n3vl4Q/vector_storage: copied 200 big files (6710 MB), skipped 0
+[12:00:42]   /mnt/disk3/Stash/Nomad/qdrant/collections/nomad_knowledge_base/0/temp_segments.HOLD-builder-DO-NOT-DELETE/segment_builder_n3vl4Q/vector_storage: copied 250 big files (8388 MB), skipped 0
+[12:01:04]   /mnt/disk3/Stash/Nomad/qdrant/collections/nomad_knowledge_base/0/temp_segments.HOLD-builder-DO-NOT-DELETE/segment_builder_n3vl4Q/vector_storage: copied 300 big files (10065 MB), skipped 0
+[12:01:32]   /mnt/disk3/Stash/Nomad/qdrant/collections/nomad_knowledge_base/0/temp_segments.HOLD-builder-DO-NOT-DELETE/segment_builder_n3vl4Q/vector_storage: copied 350 big files (11743 MB), skipped 0
+[12:01:35] copied /mnt/disk3/Stash/Nomad/qdrant/collections/nomad_knowledge_base/0/temp_segments.HOLD-builder-DO-NOT-DELETE/segment_builder_n3vl4Q/vector_storage -> /mnt/nvme/appdata/nomad-qdrant-recovered/collections/nomad_knowledge_base/0/segments/c98bf53f-759c-4d00-9749-5b1c1fcf4033/vector_storage: 366 big files (12280 MB), skipped(already ok) 0
+[12:01:35] -- phase 3: id table conversion + segment metadata
+wrote mutable_id_tracker.mappings 83772717
+wrote mutable_id_tracker.versions 31913416
+wrote segment.json 243
+wrote version.info 5
+points: 3989177
+[12:02:05] -- phase 4: collection config offline edit (no automatic HNSW build before dedupe)
+before: {'indexing_threshold': 10000, 'deleted_threshold': 0.2}
+after:  {'indexing_threshold': 0, 'deleted_threshold': 1.0}
+[12:02:05] -- checks
+segments:
+06da005f-72f4-4f3e-ab23-7dd730fcdea3
+0a76d187-149f-49ff-92b4-4ab051ccbaf6
+45b910d0-6686-44d5-9aa6-3ed2a49f4928
+56e53ccd-8788-418f-8a9c-e6fc0f0abf91
+80473795-7932-4c77-8a9e-d462bfe5f678
+ab7b7ef9-3d3f-4c83-9dfa-04dd525dd9f6
+b9592fa7-9cba-4ca7-8a40-af49953ddc1e
+bf688751-269c-4faa-9097-1257128c1c84
+c98bf53f-759c-4d00-9749-5b1c1fcf4033
+wal files: 29
+22G	/mnt/nvme/appdata/nomad-qdrant-recovered
+NAME                                  USED  AVAIL
+nvme/appdata/nomad-qdrant-recovered  21.1G   185G
+payload_storage/tracker.dat 67108864 vs builder 67108864
+payload_storage/bitmask.dat 8486912 vs builder 8486912
+payload_storage/gaps.dat 49728 vs builder 49728
+vector_storage/vectors/status.dat 8 vs builder 8
+vector chunks: 366 (builder 366); payload pages: 259 (builder 259)
+[12:02:05] == 03 done
