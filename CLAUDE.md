@@ -24,6 +24,13 @@ Read README.md for the design. Traps that already cost a debugging round:
   Qdrant only alongside its own Ollama, and indexes its own docs exactly once, when the AI
   server is saved; jobs that fail then are never retried. Reconcile installs Qdrant, waits
   for `/api/rag/health`, and only then saves the URL.
+- **Qdrant's storage (`/data/qdrant`) must be on a real local disk, never `/mnt/user`.** On
+  the user-share FUSE layer its optimizer stalled and its id table was never flushed, which
+  cost the whole index until it was rebuilt by hand. NOMAD puts Qdrant under `<Content>/qdrant`,
+  so the template has its own Path for it. Before touching a sick Qdrant read
+  `docs/qdrant-storage-and-recovery.md` (the rules and the recovery recipe, tools in `tools/repair/`).
+  `QDRANT_CPUSET`/`QDRANT_NICE` are applied by a loop in the entrypoint (`docker update` plus
+  `renice` per thread); never pin to Scrypted's CPUs on beastnas (5,6,7,13,14,15).
 - **Indexing is gated by pausing a BullMQ queue, not by patching NOMAD.** `nomad-embed gate`
   (started by the entrypoint) pauses `file-embeddings` outside `EMBED_WINDOW`; the pause flag
   lives in Redis and `bullmq` only exists inside `nomad_admin`, so the tool runs node there.

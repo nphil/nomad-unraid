@@ -25,7 +25,7 @@ Plain language first, technical detail after.
 
 1. **`/data/qdrant` must be a real local disk path, never `/mnt/user/...`.** On Unraid use a pool path such
    as `/mnt/cache/appdata/nomad-qdrant`. NOMAD puts Qdrant's files in `<Content path>/qdrant`; the template
-   needs its own Path entry for `/data/qdrant` (proposal at the end). Qdrant itself warns at start-up about
+   needs its own Path entry for `/data/qdrant` (it has one now). Qdrant itself warns at start-up about
    FUSE ("may cause data corruption due to caching issues"); in `docker logs nomad_qdrant` that line is the
    signal.
 2. **Never start a Qdrant on a copy of the store that has leftovers in `collections/*/0/temp_segments`
@@ -35,13 +35,12 @@ Plain language first, technical detail after.
    memory:** a segment whose `mutable_id_tracker.mappings` is hours older than its vector chunk files is
    the warning sign (`ls -l --time-style=full-iso collections/*/0/segments/*/mutable_id_tracker.mappings`).
    If in doubt, export the points through the scroll API first, while the process is still up.
-4. **Every recreate of the Nomad container wipes what was hot-applied** (`/usr/local/bin/nomad-embed` and
-   the `nomad-embed gate` process). The Redis pause flag and the parked libraries survive. Re-run
-   `nomad-embed-hot-apply.sh apply` after a recreate, or publish an image that contains the gate.
+4. **The nightly gate lives in the image now** (`nomad-embed gate`, started by the entrypoint), so a recreate keeps it.
+   The Redis pause flag and the parked libraries survive too. Check with `docker exec Nomad nomad-embed status`.
 5. **After a host-wide overload (swap full) the inner containers can lose `docker exec`:** `docker exec Nomad docker exec
    nomad_redis ...` fails with "error adding pid ... to cgroups ... cgroup.procs: no such file or directory" and
    `nomad_admin` shows unhealthy, although the apps still answer. A plain `docker stop Nomad` + `docker start Nomad`
-   (about a minute, Qdrant and Redis save on the way down) fixes it; then re-apply the gate (rule 4).
+   (about a minute, Qdrant and Redis save on the way down) fixes it; the gate restarts with the container (rule 4).
 6. **Snapshots of this dataset are cheap in steady state but expensive around a rebuild.** A rebuild pinned
    21 GiB in one snapshot; ordinary nightly churn is small (see the numbers). Check `zfs list -o name,used,usedbysnapshots`
    after any re-index.
@@ -85,9 +84,8 @@ Checks before it went live (scratch Qdrant, capped at 4 GB): the point count was
 payload and vector; 42 of 42 random points matched the raw vectors in the chunk files; 600 of 600 sampled
 vectors of the stale segment were byte-identical to the builder's.
 
-The repair scripts are not part of this repo; they are kept in the Cody workspace under `tmp/nomadindex/repair/`:
-`03_recover_copy.sh` (builds the store), `recover_convert.py` (the conversion above, about 40 lines), `04_recover_validate.sh`,
-`05_recover_swap.sh`; the gate script `nomad-embed-hot-apply.sh` sits one level up, in `tmp/`.
+The repair scripts, logs and result summaries are in [`tools/repair/`](../tools/repair/README.md) (runbook order in
+its README); the research behind the indexing work is in [`docs/research/`](research/README.md).
 
 ## Numbers (2026-10-02)
 
@@ -117,17 +115,13 @@ held), and a 74 MB scratch folder. NVMe pool free space went from 195 GiB to 237
 3.4 GiB and 38.1 GiB. Only the live store (18.9 GiB, dataset `nomad-qdrant-recovered`) remains. The empty `qdrant`
 folder on the share stays: it is the mount point of the container's `/data/qdrant`.
 
-## Proposed changes to this repo (not applied)
+## Changes made to this repo after the recovery
 
-`unraid/nomad.xml`: add a Path entry so the database never lands on the user share by default:
-
-```xml
-<Config Name="Vector database (Qdrant)" Target="/data/qdrant" Default="/mnt/cache/appdata/nomad-qdrant" Mode="rw" Description="NOMAD's AI search database. Must be a real disk path on a fast pool, never /mnt/user/...: the FUSE user share stalled its housekeeping and cost it its index once. Rebuilding the content costs days of GPU time." Type="Path" Display="always" Required="true" Mask="false">/mnt/cache/appdata/nomad-qdrant</Config>
-```
-
-`README.md` mount table: a row `/data/qdrant | Qdrant's vector database | Fast local disk, not a network or FUSE share`.
-`CLAUDE.md` trap list: "**Qdrant's storage (`/data/qdrant`) must be on a real disk.** On the Unraid user
-share (FUSE) its optimizer stalled and an id table was never flushed; see `docs/qdrant-storage-and-recovery.md`."
+- `unraid/nomad.xml` has a "Vector database (Qdrant)" Path for `/data/qdrant` (default
+  `/mnt/cache/appdata/nomad-qdrant`, never `/mnt/user`), so the database does not land on the user share by default.
+- The README mount table has a `/data/qdrant` row and `CLAUDE.md` has the matching trap note.
+- `QDRANT_CPUSET` and `QDRANT_NICE` (template variables, empty by default) pin and deprioritise Qdrant; the entrypoint
+  re-applies them every minute with `docker update --cpuset-cpus` and a per-thread `renice`.
 
 ## Follow-ups worth a decision (not done)
 
@@ -143,5 +137,6 @@ share (FUSE) its optimizer stalled and an id table was never flushed; see `docs/
   database (rows from 2026-09-22 with 0 chunks) but have no points in Qdrant, and the old store did not have them
   either (checked in its index of source names before anything was changed). NOMAD's own scan noticed and queued
   them; they are embedded in the next nightly windows. This was not caused by the repair.
-- **Make the nightly gate permanent** by publishing the image that contains it (`nomad-embed gate` is
-  currently hot-applied and lost on every recreate).
+- **The nightly gate and Qdrant's CPU limits are now permanent.** The gate ships in the image
+  (`nomad-embed gate`, started by the entrypoint), and `QDRANT_CPUSET` / `QDRANT_NICE` are applied by the
+  entrypoint every minute, so a recreate no longer loses them.

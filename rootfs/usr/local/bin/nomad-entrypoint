@@ -10,6 +10,8 @@ log() { echo "[nomad] $*"; }
 : "${AI_URL:=}"
 : "${UPDATE_WINDOW:=03:00-05:00}"
 : "${EMBED_WINDOW:=02:00-05:00}"
+: "${QDRANT_CPUSET:=}"
+: "${QDRANT_NICE:=}"
 PUBLIC_URL="${PUBLIC_URL%/}"
 export TZ PUBLIC_URL NOMAD_VERSION EMBED_WINDOW
 
@@ -374,13 +376,40 @@ reconcile || log "reconcile failed; retrying in 10 minutes"
 ( while sleep 600; do reconcile || log "reconcile failed; retrying in 10 minutes"; done ) &
 RECONCILE_PID=$!
 
+# --- Qdrant's share of the host. Indexing is heavy, and the host has other tenants, so
+# QDRANT_CPUSET limits which CPUs the search database may run on and QDRANT_NICE lowers its
+# priority. Both are lost whenever NOMAD recreates the container or Qdrant restarts, so a
+# once-a-minute loop re-applies them (the container's cpuset survives a plain restart;
+# niceness never does). `docker top` lists the container's processes by their ids in this
+# container's namespace, and every thread has its own niceness, so each one is checked.
+tune_qdrant() {
+  [ -n "$QDRANT_CPUSET$QDRANT_NICE" ] || return 0
+  docker inspect nomad_qdrant >/dev/null 2>&1 || return 0
+  if [ -n "$QDRANT_CPUSET" ] && [ "$(docker inspect nomad_qdrant --format '{{.HostConfig.CpusetCpus}}')" != "$QDRANT_CPUSET" ]; then
+    docker update --cpuset-cpus "$QDRANT_CPUSET" nomad_qdrant >/dev/null \
+      && log "Qdrant limited to CPUs $QDRANT_CPUSET" \
+      || log "could not limit Qdrant to CPUs $QDRANT_CPUSET (check QDRANT_CPUSET)"
+  fi
+  [[ "$QDRANT_NICE" =~ ^[0-9]+$ ]] || return 0
+  local pid t fixed=0
+  for pid in $(docker top nomad_qdrant -o pid 2>/dev/null | tail -n +2); do
+    for t in /proc/$pid/task/*; do
+      [ "$(sed 's/.*) //' "$t/stat" 2>/dev/null | cut -d' ' -f17)" = "$QDRANT_NICE" ] && continue
+      renice "$QDRANT_NICE" -p "${t##*/}" >/dev/null 2>&1 && fixed=$((fixed + 1))
+    done
+  done
+  [ "$fixed" -eq 0 ] || log "Qdrant priority set to nice $QDRANT_NICE ($fixed threads)"
+}
+( while :; do tune_qdrant; sleep 60; done ) &
+QDRANT_TUNE_PID=$!
+
 # --- clean shutdown. The daemon stops every container itself (MySQL gets its full grace
 # period) and remembers they were running, so all of them come back on the next start.
 # Stopping them one by one with `docker stop` would mark them as deliberately stopped,
 # and apps NOMAD installed would then stay down.
 shutdown() {
   log "stopping"
-  kill "$RECONCILE_PID" "$EMBED_GATE_PID" "$CADDY_PID" 2>/dev/null
+  kill "$RECONCILE_PID" "$EMBED_GATE_PID" "$QDRANT_TUNE_PID" "$CADDY_PID" 2>/dev/null
   kill -TERM "$DOCKERD_PID" 2>/dev/null
   wait "$DOCKERD_PID" 2>/dev/null
   exit "${1:-0}"

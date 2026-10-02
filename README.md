@@ -44,6 +44,7 @@ docker run -d --name nomad --privileged --stop-timeout 120 -p 8085:80 \
 | `/config` | Database, settings, generated secrets | Fast disk; back it up |
 | `/var/lib/docker` | The private daemon's images and containers | Fast disk; rebuildable, leave it out of snapshots and backups |
 | `/data` | ZIM libraries, maps, courses, uploads | Big disk; tens to hundreds of GB |
+| `/data/qdrant` | The search index (Qdrant), about 20 GiB per few million chunks | **A real disk or pool path, never `/mnt/user`** (see [the incident](docs/qdrant-storage-and-recovery.md)); without its own mount it lands inside `/data` |
 
 | Variable | Default | What it does |
 | --- | --- | --- |
@@ -52,6 +53,8 @@ docker run -d --name nomad --privileged --stop-timeout 120 -p 8085:80 \
 | `UPDATE_WINDOW` | `03:00-05:00` | When installed apps may update themselves, local time. |
 | `EMBED_WINDOW` | `02:00-05:00` | When NOMAD may index knowledge-base libraries on the AI server, local time. `always` turns the limit off. See [Batch indexing](#batch-indexing). |
 | `TZ` | `UTC` | Time zone, which both windows use. |
+| `QDRANT_CPUSET` | *(empty)* | CPUs the search database (Qdrant) may use, e.g. `0-4,8-12`, so indexing leaves the rest of the host alone. Re-applied every minute. |
+| `QDRANT_NICE` | *(empty)* | Lowers Qdrant's CPU priority (1 to 19; `10` is a good value). Re-applied every minute, because a restart resets it. |
 
 `--privileged` is required: the private Docker daemon needs it. For comparison, NOMAD's
 normal install hands the admin container the host's Docker socket, which is the same
