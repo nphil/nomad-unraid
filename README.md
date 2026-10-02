@@ -55,6 +55,7 @@ docker run -d --name nomad --privileged --stop-timeout 120 -p 8085:80 \
 | `TZ` | `UTC` | Time zone, which both windows use. |
 | `QDRANT_CPUSET` | *(empty)* | CPUs the search database (Qdrant) may use, e.g. `0-4,8-12`, so indexing leaves the rest of the host alone. Re-applied every minute. |
 | `QDRANT_NICE` | *(empty)* | Lowers Qdrant's CPU priority (1 to 19; `10` is a good value). Re-applied every minute, because a restart resets it. |
+| `MIN_CHUNK_CHARS` | `21` | Skips ZIM chunks shorter than this that carry nothing (a number, a tail fragment, or only the page title) instead of embedding them. `0` turns it off. See [Skipping scrap chunks](#skipping-scrap-chunks-min_chunk_chars). |
 
 `--privileged` is required: the private Docker daemon needs it. For comparison, NOMAD's
 normal install hands the admin container the host's Docker socket, which is the same
@@ -169,7 +170,8 @@ bug and belongs upstream.
 
 ## Patches to NOMAD
 
-NOMAD itself is meant to run completely unmodified (see above), with one narrow exception.
+NOMAD itself is meant to run completely unmodified (see above), with two narrow exceptions.
+The first is a bug fix.
 With `AI_URL` pointed at a non-Ollama server (llama-swap, LM Studio, vLLM, ...), NOMAD's
 admin container calls `POST /api/embed` before every single knowledge-base embedding and
 only falls back to the OpenAI-compatible `/v1/embeddings` after that 404s. Against a real
@@ -193,6 +195,28 @@ risk corrupting code it no longer recognises. At that point `patch_embed_fallbac
 and its call in `nomad-entrypoint` can simply be deleted.
 
 [1279]: https://github.com/Crosstalk-Solutions/project-nomad/issues/1279
+
+### Skipping scrap chunks (`MIN_CHUNK_CHARS`)
+
+The second patch is an ingest filter, not a bug fix. NOMAD embeds every chunk the ZIM
+extractor yields, however tiny. On a four-million-chunk index 16 % of the points were 20
+characters or fewer: the vote and answer counts of StackExchange tag pages (`11 1`), tail
+fragments of longer texts (`media files.`), and stubs whose text is only the page title
+(`1633 deaths`). Each cost a GPU embedding, none ever answers a question, and a number or a
+title has no meaning on its own in the search.
+
+`patch_min_chunk` in `nomad-entrypoint` (a self-checking text patch to `nomad_admin`'s
+`rag_service.js`, same safety rules as above) skips such a chunk before it is embedded. It
+skips a ZIM chunk only when its text is shorter than `MIN_CHUNK_CHARS` (default `21`, so 20
+characters or fewer) **and** it is number-only or empty, or is a tail of a longer text (not
+the first chunk), or equals the article or section title. Short real text stays, for
+example a drug's brand name under a "Brand names" heading. Uploads and NOMAD's own docs are
+never filtered. `MIN_CHUNK_CHARS=0` switches the filter off.
+
+The filter only affects new indexing. To clear an index that already has such chunks, use
+[`tools/repair/scrap_plan.py`](tools/repair/scrap_plan.py) (lists what the same rules would
+remove) and [`scrap_delete.py`](tools/repair/scrap_delete.py), after a snapshot of the
+Qdrant dataset.
 
 ## Updates
 

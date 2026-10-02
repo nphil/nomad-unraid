@@ -36,6 +36,13 @@ Read README.md for the design. Traps that already cost a debugging round:
   lives in Redis and `bullmq` only exists inside `nomad_admin`, so the tool runs node there.
   Alpine's `date` ignores `TZ` unless `tzdata` is installed (the Dockerfile does that;
   `nomad-embed` asks node when it is missing, for containers built before). Queued jobs sit in `paused`, not `wait`, so `wait=0` means nothing while paused.
+- **Two narrow text patches to `nomad_admin`, both self-checking** (exact match or one log line
+  and no change): `patch_embed_fallback` (`ollama_service.js`) and `patch_min_chunk`
+  (`rag_service.js`, ingest filter behind `MIN_CHUNK_CHARS`, default 21). The filter only
+  skips ZIM chunks under the limit that are number-only, a tail (index > 0) or exactly the
+  page title; short real text (a drug's brand name) stays. `tools/repair/scrap_plan.py`
+  applies the same rules to an existing index. `MIN_CHUNK_CHARS` reaches `nomad_admin`
+  through the compose template.
 - Test an image on a real host before pushing: a push to `main` touching the image
   publishes a release.
 

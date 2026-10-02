@@ -50,3 +50,14 @@ Reusable on their own: `verify_search.py`, `new_points_check.py`, `snapdiff.py`,
   the executed plan is summarised in `results/dedupe_plan.json`), a sample of vectors and texts,
   and the first NVMe move (`01_precopy.sh`, `01b_copy_big.sh`, `02_cutover.sh`), which the recovery
   superseded. Their logs are in `logs/`.
+
+## Removing scrap chunks (2026-10-02, after the repair)
+
+| File | What it does |
+| --- | --- |
+| `scrap_plan.py` | Lists chunks of 20 characters or fewer, sorts them into number-only/empty (A), tail fragments (B), title-only stubs (C) and short real text (D, kept), and writes the A+B+C ids and a summary with 30 random samples per class. Reads only. |
+| `scrap_delete.py` | Deletes those ids in batches of 2,000, idempotent. Take a ZFS snapshot of the Qdrant dataset first and destroy it after verification. |
+| `search_compare.py` | `snap <tag>` / `diff <a> <b>`: the 8 NOMAD-style searches before and after (top 15 hits, latency, point count, status). |
+
+These write to `$WORK` (default `./scrap-work`) and run on the Unraid host like the scripts above. The image's
+ingest filter (`MIN_CHUNK_CHARS`, see the main README) applies the same A/B/C rules to new indexing.
