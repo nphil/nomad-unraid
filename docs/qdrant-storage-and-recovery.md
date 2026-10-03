@@ -132,11 +132,16 @@ folder on the share stays: it is the mount point of the container's `/data/qdran
   copy were deleted (98.2 % of the nopic text sits inside maxi's version of the same article; chunk-for-chunk only 85 %,
   because maxi's image text shifts chunk boundaries). 1,386 points of nopic-only articles stay. nopic is parked with
   `nomad-embed exclude`, the ZIM file stays in Kiwix.
-- **Disk is not reclaimed yet.** Qdrant only rewrites a block when more than `deleted_threshold` of it is deleted
-  (default 0.2); the big block is 25.6 % deleted now, so `deleted_threshold` is parked at 0.5 to stop an unattended
-  rewrite. Rewriting it rebuilds the HNSW graph, which Qdrant aborts after 150 minutes; at host load 50 it did not finish.
+- **Disk reclaim: done 2026-10-02.** Qdrant only rewrites a block when more than `deleted_threshold` of it is deleted
+  (default 0.2); the big block was 25.6 % deleted and the threshold had been parked at 0.5 to stop an unattended rewrite.
+  At a quiet host load (about 20-30) the threshold was set to 0.1 and `hnsw` `max_indexing_threads` to 6 (CPU set
+  unchanged). The rewrite ran 21:15-22:47 ET (92 min, inside Qdrant's 150-minute cap; an earlier try at load 50 was
+  aborted) while searches kept answering (server time 2-300 ms, first query slowest). The dataset went from 20.6 GB
+  (`du`) / 18.7 GB (ZFS) to 16.0 GB / 14.5 GB; it peaked at 32.8 GB (ZFS) during the rewrite, so keep 15 GB free for
+  the next one. Settings are back to the defaults: `deleted_threshold` 0.2, `max_indexing_threads` 2. The collection is
+  green with the same 2,423,877 points and 5 segments.
   Two traps: a `PATCH /collections/...` of the optimizer config **blocks all searches on that collection until the running
-  optimization ends** (restore settings only when `/optimizations` shows nothing ongoing), and if it hangs, stop
+  optimization ends** (change settings only when `/optimizations` shows nothing ongoing), and if it hangs, stop
   `nomad_qdrant`, edit `collections/<name>/config.json` and start it (about 10 s).
 - **Seven small libraries have no chunks at all.** `canadian_prepper_bugoutroll`, `canadian-prepper_preppingfood`,
   `freecodecamp`, `lrnselfreliance`, `urban-prepper`, `zimgit-knots` and `zimgit-water` are marked "indexed" in NOMAD's
