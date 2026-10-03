@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Delete the points listed in $WORK/scrap_ids.txt (from scrap_plan.py) from NOMAD's Qdrant collection.
+"""Delete the points listed in $IDS (default $WORK/scrap_ids.txt, from scrap_plan.py or dup_library_plan.py) from NOMAD's Qdrant collection.
 
   flock /tmp/agents-heavy.lock nice -n 15 ionice -c3 python3 scrap_delete.py [batch=2000] [pause_seconds=1]
 
@@ -22,7 +22,7 @@ def q(path, body=None):
     return json.loads(subprocess.check_output(cmd + ["http://127.0.0.1:6333" + path]))
 
 
-ids = [l.strip() for l in open(f"{WORK}/scrap_ids.txt") if l.strip()]
+ids = [l.strip() for l in open(os.environ.get("IDS", f"{WORK}/scrap_ids.txt")) if l.strip()]
 before = q(f"/collections/{COL}")["result"]["points_count"]
 print(f"{len(ids)} ids planned; collection has {before} points", flush=True)
 t0 = time.time()

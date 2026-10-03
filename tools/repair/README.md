@@ -61,3 +61,6 @@ Reusable on their own: `verify_search.py`, `new_points_check.py`, `snapdiff.py`,
 
 These write to `$WORK` (default `./scrap-work`) and run on the Unraid host like the scripts above. The image's
 ingest filter (`MIN_CHUNK_CHARS`, see the main README) applies the same A/B/C rules to new indexing.
+
+Also: `dup_library_plan.py A B` lists the points of library B whose article also exists in library A (for `IDS=... scrap_delete.py`),
+and `dup_library_check.py A B` samples how well A covers B chunk for chunk.

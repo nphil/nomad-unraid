@@ -1,0 +1,666 @@
+{
+ "tag": "after3",
+ "time": "2026-10-02 20:30:32",
+ "status": "green",
+ "points": 2423877,
+ "indexed": 3250893,
+ "segments": 5,
+ "queries": {
+  "how long should I boil water to make it safe to drink": {
+   "first_ms": 289.0,
+   "warm_median_ms": 95.7,
+   "server_median_ms": 1.69,
+   "hits": [
+    {
+     "key": "outdoors.stackexchange.com_en_all_2026-08.zim|questions/1117/how-long-does-water-need-to-be-boiled-for-to-kill-all-bacteria-viruses|How long does water need to be boiled for to kill all bacteria / viruses?|0",
+     "title": "How long does water need to be boiled for to kill all bacteria / viruses?",
+     "score": 0.8299
+    },
+    {
+     "key": "outdoors.stackexchange.com_en_all_2026-08.zim|questions/13636/how-do-you-boil-water-without-a-proper-container|How do you boil water without a proper container?|1",
+     "title": "How do you boil water without a proper container?",
+     "score": 0.8127
+    },
+    {
+     "key": "outdoors.stackexchange.com_en_all_2026-08.zim|questions/28203/some-dilemmas-concerning-use-of-uv-water-treatment-vs-water-filter|Some dilemmas concerning use of UV water treatment vs water filter|3",
+     "title": "Some dilemmas concerning use of UV water treatment vs water filter",
+     "score": 0.8104
+    },
+    {
+     "key": "100r.co_en_all_2026-08.zim|100r.co/site/water.html|Treating water|0",
+     "title": "100R",
+     "score": 0.8083
+    },
+    {
+     "key": "100r.co_en_all_2026-08.zim|100r.co/site/off_the_grid.html|Treating water|0",
+     "title": "100R",
+     "score": 0.8083
+    },
+    {
+     "key": "outdoors.stackexchange.com_en_all_2026-08.zim|questions/815/do-iodine-water-treatment-tablets-have-negative-effects|Do iodine water treatment tablets have negative effects?|2",
+     "title": "Do iodine water treatment tablets have negative effects?",
+     "score": 0.7981
+    },
+    {
+     "key": "cooking.stackexchange.com_en_all_2026-07.zim|questions/47479/can-i-boil-water-to-temperature-lower-than-100-celsius-212-fahrenheit-to-make-|Can I boil water to temperature lower than 100 Celsius / 212 Fahrenheit to make a tea?|1",
+     "title": "Can I boil water to temperature lower than 100 Celsius / 212 Fahrenheit to make a tea?",
+     "score": 0.7968
+    },
+    {
+     "key": "cooking.stackexchange.com_en_all_2026-07.zim|questions/47479/can-i-boil-water-to-temperature-lower-than-100-celsius-212-fahrenheit-to-make-|Can I boil water to temperature lower than 100 Celsius / 212 Fahrenheit to make a tea?|2",
+     "title": "Can I boil water to temperature lower than 100 Celsius / 212 Fahrenheit to make a tea?",
+     "score": 0.7922
+    },
+    {
+     "key": "outdoors.stackexchange.com_en_all_2026-08.zim|questions/1117/how-long-does-water-need-to-be-boiled-for-to-kill-all-bacteria-viruses|How long does water need to be boiled for to kill all bacteria / viruses?|1",
+     "title": "How long does water need to be boiled for to kill all bacteria / viruses?",
+     "score": 0.7914
+    },
+    {
+     "key": "cooking.stackexchange.com_en_all_2026-07.zim|questions/18353/is-it-safe-to-reuse-loose-tea-leaves-the-next-day-what-precautions-need-to-be-|Is it safe to reuse loose tea leaves the next day? What precautions need to be taken for storing tea for reuse?|4",
+     "title": "Is it safe to reuse loose tea leaves the next day? What precautions need to be taken for storing tea for reuse?",
+     "score": 0.7906
+    },
+    {
+     "key": "outdoors.stackexchange.com_en_all_2026-08.zim|questions/1117/how-long-does-water-need-to-be-boiled-for-to-kill-all-bacteria-viruses|How long does water need to be boiled for to kill all bacteria / viruses?|3",
+     "title": "How long does water need to be boiled for to kill all bacteria / viruses?",
+     "score": 0.7886
+    },
+    {
+     "key": "outdoors.stackexchange.com_en_all_2026-08.zim|questions/1117/how-long-does-water-need-to-be-boiled-for-to-kill-all-bacteria-viruses|How long does water need to be boiled for to kill all bacteria / viruses?|2",
+     "title": "How long does water need to be boiled for to kill all bacteria / viruses?",
+     "score": 0.788
+    },
+    {
+     "key": "wikipedia_en_medicine_maxi_2026-01.zim|Portable_water_purification|Portable water purification|2",
+     "title": "Portable water purification",
+     "score": 0.7871
+    },
+    {
+     "key": "wikipedia_en_medicine_maxi_2026-01.zim|Boil-water_advisory|Boil-water advisory|0",
+     "title": "Boil-water advisory",
+     "score": 0.7844
+    },
+    {
+     "key": "outdoors.stackexchange.com_en_all_2026-08.zim|questions/7/what-is-the-safest-way-to-purify-water|Ensuring safety|3",
+     "title": "What is the safest way to purify water?",
+     "score": 0.7839
+    }
+   ]
+  },
+  "how do I wire a three-way light switch": {
+   "first_ms": 234.4,
+   "warm_median_ms": 102.2,
+   "server_median_ms": 1.81,
+   "hits": [
+    {
+     "key": "diy.stackexchange.com_en_all_2026-08.zim|questions/72107/how-do-i-wire-a-three-way-switch-with-two-lights|How do I wire a three way switch with two lights?|0",
+     "title": "How do I wire a three way switch with two lights?",
+     "score": 0.8645
+    },
+    {
+     "key": "diy.stackexchange.com_en_all_2026-08.zim|questions/21822/how-do-i-wire-3-way-switches-where-the-power-comes-in-at-the-light|How do I wire 3 way switches where the power comes in at the light?|0",
+     "title": "How do I wire 3 way switches where the power comes in at the light?",
+     "score": 0.8549
+    },
+    {
+     "key": "diy.stackexchange.com_en_all_2026-08.zim|questions/203368/how-to-wire-a-3-way-switch-that-was-a-light-fan-and-now-only-a-light-way-to-ma|How to wire a 3 way switch that was a light fan and now only a light. Way to many may wires in one box, not sure how to connect|0",
+     "title": "How to wire a 3 way switch that was a light fan and now only a light. Way to many may wires in one box, not sure how to connect",
+     "score": 0.8416
+    },
+    {
+     "key": "diy.stackexchange.com_en_all_2026-08.zim|questions/216239/multiple-3-way-switch-wiring|Multiple 3 Way Switch wiring|3",
+     "title": "Multiple 3 Way Switch wiring",
+     "score": 0.8407
+    },
+    {
+     "key": "diy.stackexchange.com_en_all_2026-08.zim|questions/157336/need-help-wiring-a-3-way-switch|Need help wiring a 3 way switch|0",
+     "title": "Need help wiring a 3 way switch",
+     "score": 0.8402
+    },
+    {
+     "key": "diy.stackexchange.com_en_all_2026-08.zim|questions/58030/troubleshooting-3-way-switch|Troubleshooting 3-way switch|1",
+     "title": "Troubleshooting 3-way switch",
+     "score": 0.8381
+    },
+    {
+     "key": "ifixit_en_all_2025-12.zim|Guide/Three-way+Switch+Replacement/140172|Three-way Switch Replacement|0",
+     "title": "Three-way Switch Replacement",
+     "score": 0.837
+    },
+    {
+     "key": "diy.stackexchange.com_en_all_2026-08.zim|questions/123691/current-3-way-switch-setup-how-do-i-add-a-string-of-lights-to-switch-with-powe|Current 3 way switch setup - how do I add a string of lights to switch with power|0",
+     "title": "Current 3 way switch setup - how do I add a string of lights to switch with power",
+     "score": 0.8351
+    },
+    {
+     "key": "diy.stackexchange.com_en_all_2026-08.zim|questions/109697/converting-to-a-3-way-switch-with-a-2-wire-cable|Converting to a 3-way switch with a 2 wire cable|0",
+     "title": "Converting to a 3-way switch with a 2 wire cable",
+     "score": 0.8333
+    },
+    {
+     "key": "diy.stackexchange.com_en_all_2026-08.zim|questions/130290/adding-light-to-existing-3-way-switch-configuration|Adding Light to Existing 3-Way Switch Configuration|0",
+     "title": "Adding Light to Existing 3-Way Switch Configuration",
+     "score": 0.8331
+    },
+    {
+     "key": "diy.stackexchange.com_en_all_2026-08.zim|questions/139481/3-way-switches-with-switch-load-at-each-end|3 way switches with switch load at each end|0",
+     "title": "3 way switches with switch load at each end",
+     "score": 0.8321
+    },
+    {
+     "key": "diy.stackexchange.com_en_all_2026-08.zim|questions/292039/add-an-additional-light-to-the-end-of-a-standard-three-way-switch-light-config|Add an additional light to the end of a standard three-way switch/light configuration|0",
+     "title": "Add an additional light to the end of a standard three-way switch/light configuration",
+     "score": 0.832
+    },
+    {
+     "key": "diy.stackexchange.com_en_all_2026-08.zim|questions/229/how-do-i-wire-a-3-way-light-switch|How do I wire a 3 way light switch?|0",
+     "title": "How do I wire a 3 way light switch?",
+     "score": 0.8312
+    },
+    {
+     "key": "diy.stackexchange.com_en_all_2026-08.zim|questions/10123/how-can-i-add-a-single-pole-switch-next-to-a-3-way-switch|How can I add a single pole switch next to a 3-way switch?|2",
+     "title": "How can I add a single pole switch next to a 3-way switch?",
+     "score": 0.8311
+    },
+    {
+     "key": "diy.stackexchange.com_en_all_2026-08.zim|questions/148878/how-to-wire-new-1-way-switch-from-2-existing-3-way-switches|How to Wire New 1 Way Switch From 2 Existing 3 Way Switches|0",
+     "title": "How to Wire New 1 Way Switch From 2 Existing 3 Way Switches",
+     "score": 0.8306
+    }
+   ]
+  },
+  "why does my linear voltage regulator get so hot": {
+   "first_ms": 252.8,
+   "warm_median_ms": 93.8,
+   "server_median_ms": 1.78,
+   "hits": [
+    {
+     "key": "electronics.stackexchange.com_en_all_2026-08.zim|questions/18478/my-linear-voltage-regulator-is-overheating-very-fast|My linear voltage regulator is overheating very fast|0",
+     "title": "My linear voltage regulator is overheating very fast",
+     "score": 0.8308
+    },
+    {
+     "key": "electronics.stackexchange.com_en_all_2026-08.zim|questions/201876/damaging-a-linear-regulator-applying-a-voltage-to-the-output|Damaging a linear regulator applying a voltage to the output|0",
+     "title": "Damaging a linear regulator applying a voltage to the output",
+     "score": 0.8061
+    },
+    {
+     "key": "electronics.stackexchange.com_en_all_2026-08.zim|questions/18478/my-linear-voltage-regulator-is-overheating-very-fast|My linear voltage regulator is overheating very fast|10",
+     "title": "My linear voltage regulator is overheating very fast",
+     "score": 0.806
+    },
+    {
+     "key": "electronics.stackexchange.com_en_all_2026-08.zim|questions/115801/lm337-negative-voltage-regulator-gets-very-hot-is-this-normal|LM337 negative voltage regulator gets very hot, is this normal?|0",
+     "title": "LM337 negative voltage regulator gets very hot, is this normal?",
+     "score": 0.7921
+    },
+    {
+     "key": "arduino.stackexchange.com_en_all_2026-07.zim|questions/79516/uno-doesnt-get-enough-power-from-5v-barrel-connector-why|Power Dissipation|0",
+     "title": "Uno doesn\u2019t get enough power from 5v barrel connector. Why?",
+     "score": 0.78
+    },
+    {
+     "key": "electronics.stackexchange.com_en_all_2026-08.zim|questions/366114/the-l7805-got-hot-when-connected-to-atmega8|The L7805 got hot when connected to ATMega8?|1",
+     "title": "The L7805 got hot when connected to ATMega8?",
+     "score": 0.7771
+    },
+    {
+     "key": "electronics.stackexchange.com_en_all_2026-08.zim|questions/136102/can-i-put-2-voltage-regulators-5v-in-parallel-to-dissipate-the-heat-better|Can I put 2 voltage regulators (5V) in parallel to dissipate the heat better?|1",
+     "title": "Can I put 2 voltage regulators (5V) in parallel to dissipate the heat better?",
+     "score": 0.7722
+    },
+    {
+     "key": "electronics.stackexchange.com_en_all_2026-08.zim|questions/397723/voltage-regulator-and-transistor-get-extremely-hot|Voltage regulator and transistor get extremely hot|0",
+     "title": "Voltage regulator and transistor get extremely hot",
+     "score": 0.7714
+    },
+    {
+     "key": "electronics.stackexchange.com_en_all_2026-08.zim|questions/289306/linear-regulators-ripple-rejection|Linear Regulators & Ripple Rejection|1",
+     "title": "Linear Regulators & Ripple Rejection",
+     "score": 0.7704
+    },
+    {
+     "key": "electronics.stackexchange.com_en_all_2026-08.zim|questions/227965/high-voltage-linear-regulator-output-not-staying-constant|High Voltage Linear Regulator Output Not Staying Constant|0",
+     "title": "High Voltage Linear Regulator Output Not Staying Constant",
+     "score": 0.7685
+    },
+    {
+     "key": "electronics.stackexchange.com_en_all_2026-08.zim|questions/156967/opamp-voltage-doubler-unstable-after-extended-operation|Opamp Voltage Doubler Unstable (After Extended Operation)|1",
+     "title": "Opamp Voltage Doubler Unstable (After Extended Operation)",
+     "score": 0.7678
+    },
+    {
+     "key": "electronics.stackexchange.com_en_all_2026-08.zim|questions/134822/lm317-basic-voltage-regulator-why-does-it-get-hot-when-not-connected|LM317, basic voltage regulator, why does it get hot when not connected?|0",
+     "title": "LM317, basic voltage regulator, why does it get hot when not connected?",
+     "score": 0.7672
+    },
+    {
+     "key": "electronics.stackexchange.com_en_all_2026-08.zim|questions/131802/linear-regulated-supply-from-noisy-input-voltage|Linear regulated supply from noisy input voltage|2",
+     "title": "Linear regulated supply from noisy input voltage",
+     "score": 0.766
+    },
+    {
+     "key": "electronics.stackexchange.com_en_all_2026-08.zim|questions/294835/linear-voltage-regulator-outputs-3-6-volt-instead-of-5-0-volt|Linear voltage regulator outputs 3.6 volt instead of 5.0 volt|1",
+     "title": "Linear voltage regulator outputs 3.6 volt instead of 5.0 volt",
+     "score": 0.7657
+    },
+    {
+     "key": "electronics.stackexchange.com_en_all_2026-08.zim|questions/364510/hot-tl783-is-the-diode-shorting-the-regulator|Hot TL783 - is the diode shorting the regulator?|0",
+     "title": "Hot TL783 - is the diode shorting the regulator?",
+     "score": 0.7656
+    }
+   ]
+  },
+  "how to replace the battery in an iPhone 8": {
+   "first_ms": 233.7,
+   "warm_median_ms": 98.9,
+   "server_median_ms": 2.38,
+   "hits": [
+    {
+     "key": "ifixit_en_all_2025-12.zim|Guide/iPad+8+Battery+Replacement/150929|iPad 8 Battery Replacement|0",
+     "title": "iPad 8 Battery Replacement",
+     "score": 0.8241
+    },
+    {
+     "key": "ifixit_en_all_2025-12.zim|Guide/BLU+Life+X8+Battery+Replacement/98277|BLU Life X8 Battery Replacement|0",
+     "title": "BLU Life X8 Battery Replacement",
+     "score": 0.8183
+    },
+    {
+     "key": "ifixit_en_all_2025-12.zim|Guide/iPad+8+LTE+Battery+Replacement/150943|iPad 8 LTE Battery Replacement|0",
+     "title": "iPad 8 LTE Battery Replacement",
+     "score": 0.8145
+    },
+    {
+     "key": "ifixit_en_all_2025-12.zim|Guide/HTC+Windows+Phone+8S+Battery+Replacement/43466|HTC Windows Phone 8S Battery Replacement|0",
+     "title": "HTC Windows Phone 8S Battery Replacement",
+     "score": 0.8131
+    },
+    {
+     "key": "ifixit_en_all_2025-12.zim|Guide/Mi+8+Explorer+Battery+Replacement/152690|Mi 8 Explorer Battery Replacement|0",
+     "title": "Mi 8 Explorer Battery Replacement",
+     "score": 0.8129
+    },
+    {
+     "key": "ifixit_en_all_2025-12.zim|Guide/OnePlus+8+Battery+Replacement/159267|OnePlus 8 Battery Replacement|0",
+     "title": "OnePlus 8 Battery Replacement",
+     "score": 0.8064
+    },
+    {
+     "key": "ifixit_en_all_2025-12.zim|Guide/Battery+Disconnection/100871|Battery Disconnection|0",
+     "title": "Battery Disconnection",
+     "score": 0.8015
+    },
+    {
+     "key": "ifixit_en_all_2025-12.zim|Guide/Samsung+Galaxy+S8+Active+Battery+Replacement/119333|Samsung Galaxy S8 Active Battery Replacement|0",
+     "title": "Samsung Galaxy S8 Active Battery Replacement",
+     "score": 0.8008
+    },
+    {
+     "key": "ifixit_en_all_2025-12.zim|Device/iPhone_8_Plus|Techniques|0",
+     "title": "iPhone 8 Plus",
+     "score": 0.8008
+    },
+    {
+     "key": "ifixit_en_all_2025-12.zim|Guide/Xiaomi+Mi+8+Battery+Replacement/127348|Xiaomi Mi 8 Battery Replacement|0",
+     "title": "Xiaomi Mi 8 Battery Replacement",
+     "score": 0.7991
+    },
+    {
+     "key": "ifixit_en_all_2025-12.zim|Guide/Apple+Watch+-+Series+8+Battery+Replacement/157362|Apple Watch - Series 8 Battery Replacement|0",
+     "title": "Apple Watch - Series 8 Battery Replacement",
+     "score": 0.798
+    },
+    {
+     "key": "ifixit_en_all_2025-12.zim|Guide/Samsung+Galaxy+S8+Battery+Replacement/90309|Samsung Galaxy S8 Battery Replacement|0",
+     "title": "Samsung Galaxy S8 Battery Replacement",
+     "score": 0.7957
+    },
+    {
+     "key": "ifixit_en_all_2025-12.zim|Guide/Google+Pixel+8+Pro+Battery+Replacement/165774|Google Pixel 8 Pro Battery Replacement|0",
+     "title": "Google Pixel 8 Pro Battery Replacement",
+     "score": 0.7957
+    },
+    {
+     "key": "ifixit_en_all_2025-12.zim|Guide/Huawei+P8+Lite+Battery+Replacement/61805|Huawei P8 Lite Battery Replacement|0",
+     "title": "Huawei P8 Lite Battery Replacement",
+     "score": 0.7956
+    },
+    {
+     "key": "ifixit_en_all_2025-12.zim|Guide/OnePlus+8+Pro+Battery+Replacement/181819|OnePlus 8 Pro Battery Replacement|0",
+     "title": "OnePlus 8 Pro Battery Replacement",
+     "score": 0.7954
+    }
+   ]
+  },
+  "what are the symptoms of high blood pressure": {
+   "first_ms": 216.6,
+   "warm_median_ms": 98.0,
+   "server_median_ms": 1.98,
+   "hits": [
+    {
+     "key": "wikipedia_en_medicine_maxi_2026-01.zim|Labile_hypertension|Labile hypertension|1",
+     "title": "Labile hypertension",
+     "score": 0.8383
+    },
+    {
+     "key": "medlineplus.gov_en_all_2025-01.zim|medlineplus.gov/bloodpressuremedicines.html|What is high blood pressure?|0",
+     "title": "Blood Pressure Medicines | MedlinePlus",
+     "score": 0.8214
+    },
+    {
+     "key": "wikipedia_en_medicine_maxi_2026-01.zim|Hypertension|Hypertension|1",
+     "title": "Hypertension",
+     "score": 0.8159
+    },
+    {
+     "key": "wikipedia_en_medicine_maxi_2026-01.zim|Hypertensive_crisis|Hypertensive crisis|0",
+     "title": "Hypertensive crisis",
+     "score": 0.8116
+    },
+    {
+     "key": "wikipedia_en_medicine_maxi_2026-01.zim|Hypertension|Hypertension|0",
+     "title": "Hypertension",
+     "score": 0.811
+    },
+    {
+     "key": "medlineplus.gov_en_all_2025-01.zim|medlineplus.gov/ency/article/007329.htm|High blood pressure in infants: MedlinePlus Medical Encyclopedia|1",
+     "title": "High blood pressure in infants: MedlinePlus Medical Encyclopedia",
+     "score": 0.8074
+    },
+    {
+     "key": "medlineplus.gov_en_all_2025-01.zim|medlineplus.gov/ency/article/000495.htm|Acute nephritic syndrome: MedlinePlus Medical Encyclopedia|1",
+     "title": "Acute nephritic syndrome: MedlinePlus Medical Encyclopedia",
+     "score": 0.7984
+    },
+    {
+     "key": "medlineplus.gov_en_all_2025-01.zim|medlineplus.gov/howtopreventhighbloodpressure.html|How is high blood pressure diagnosed?|0",
+     "title": "How to Prevent High Blood Pressure: MedlinePlus",
+     "score": 0.7983
+    },
+    {
+     "key": "medlineplus.gov_en_all_2025-01.zim|medlineplus.gov/highbloodpressureinpregnancy.html|What are the symptoms of high blood pressure in pregnancy?|0",
+     "title": "High Blood Pressure in Pregnancy | Preeclampsia | MedlinePlus",
+     "score": 0.7977
+    },
+    {
+     "key": "wikipedia_en_medicine_maxi_2026-01.zim|Hypertensive_emergency|Hypertensive emergency|0",
+     "title": "Hypertensive emergency",
+     "score": 0.7973
+    },
+    {
+     "key": "medlineplus.gov_en_all_2025-01.zim|medlineplus.gov/highbloodpressure.html|How is high blood pressure diagnosed?|0",
+     "title": "High Blood Pressure | Hypertension | MedlinePlus",
+     "score": 0.7961
+    },
+    {
+     "key": "medlineplus.gov_en_all_2025-01.zim|medlineplus.gov/ency/quiz/000468_38.htm|Is High Blood Pressure Affecting Your Health?: MedlinePlus Medical Encyclopedia|0",
+     "title": "Is High Blood Pressure Affecting Your Health?: MedlinePlus Medical Encyclopedia",
+     "score": 0.7905
+    },
+    {
+     "key": "medlineplus.gov_en_all_2025-01.zim|medlineplus.gov/ency/quiz/000468_38.htm?quiz=1|Is High Blood Pressure Affecting Your Health?: MedlinePlus Medical Encyclopedia|0",
+     "title": "Is High Blood Pressure Affecting Your Health?: MedlinePlus Medical Encyclopedia",
+     "score": 0.7901
+    },
+    {
+     "key": "medlineplus.gov_en_all_2025-01.zim|medlineplus.gov/genetics/condition/hypertension/|Description|0",
+     "title": "Hypertension: MedlinePlus Genetics",
+     "score": 0.7868
+    },
+    {
+     "key": "medlineplus.gov_en_all_2025-01.zim|medlineplus.gov/lab-tests/measuring-blood-pressure/|What is it used for?|0",
+     "title": "Measuring Blood Pressure: MedlinePlus Medical Test",
+     "score": 0.7835
+    }
+   ]
+  },
+  "python list comprehension tutorial": {
+   "first_ms": 277.1,
+   "warm_median_ms": 99.7,
+   "server_median_ms": 2.85,
+   "hits": [
+    {
+     "key": "wikibooks_en_all_maxi_2026-01.zim|How_to_Think_Like_a_Computer_Scientist:_Learning_with_Python_2nd_Edition/Print_version|How to Think Like a Computer Scientist: Learning with Python 2nd Edition/Print version|73",
+     "title": "How to Think Like a Computer Scientist: Learning with Python 2nd Edition/Print version",
+     "score": 0.7792
+    },
+    {
+     "key": "wikibooks_en_all_maxi_2026-01.zim|How_to_Think_Like_a_Computer_Scientist:_Learning_with_Python_2nd_Edition/Recursion_and_exceptions|How to Think Like a Computer Scientist: Learning with Python 2nd Edition/Recursion and exceptions|4",
+     "title": "How to Think Like a Computer Scientist: Learning with Python 2nd Edition/Recursion and exceptions",
+     "score": 0.7685
+    },
+    {
+     "key": "wikibooks_en_all_maxi_2026-01.zim|Erlang_Programming/List_Comprehensions|Erlang Programming/List Comprehensions|0",
+     "title": "Erlang Programming/List Comprehensions",
+     "score": 0.7524
+    },
+    {
+     "key": "devdocs_en_python_2026-08.zim|tutorial/datastructures|5.1.3. List Comprehensions|0",
+     "title": "5. Data Structures",
+     "score": 0.7524
+    },
+    {
+     "key": "wikibooks_en_all_maxi_2026-01.zim|How_to_Think_Like_a_Computer_Scientist:_Learning_with_Python_2nd_Edition/Lists|How to Think Like a Computer Scientist: Learning with Python 2nd Edition/Lists|0",
+     "title": "How to Think Like a Computer Scientist: Learning with Python 2nd Edition/Lists",
+     "score": 0.7493
+    },
+    {
+     "key": "wikiversity_en_all_maxi_2026-02.zim|Python_Concepts/List_Comprehension|Python Concepts/List Comprehension|5",
+     "title": "Python Concepts/List Comprehension",
+     "score": 0.7403
+    },
+    {
+     "key": "wikiversity_en_all_maxi_2026-02.zim|Python_Programming/Lists|Python Programming/Lists|2",
+     "title": "Python Programming/Lists",
+     "score": 0.7396
+    },
+    {
+     "key": "devdocs_en_python_2026-08.zim|howto/functional|Generator expressions and list comprehensions|0",
+     "title": "Functional Programming HOWTO",
+     "score": 0.7384
+    },
+    {
+     "key": "devdocs_en_python_2026-08.zim|reference/expressions|6.2.5. Displays for lists, sets and dictionaries|0",
+     "title": "6. Expressions",
+     "score": 0.7353
+    },
+    {
+     "key": "wikibooks_en_all_maxi_2026-01.zim|Python_Programming/Lists|Python Programming/Lists|0",
+     "title": "Python Programming/Lists",
+     "score": 0.7331
+    },
+    {
+     "key": "wikibooks_en_all_maxi_2026-01.zim|Erlang_Programming/Printable_version|Erlang Programming/Printable version|11",
+     "title": "Erlang Programming/Printable version",
+     "score": 0.732
+    },
+    {
+     "key": "devdocs_en_python_2026-08.zim|tutorial/datastructures|5.1.4. Nested List Comprehensions|0",
+     "title": "5. Data Structures",
+     "score": 0.7307
+    },
+    {
+     "key": "wikiversity_en_all_maxi_2026-02.zim|Python_Concepts/List_Comprehension|Python Concepts/List Comprehension|0",
+     "title": "Python Concepts/List Comprehension",
+     "score": 0.7264
+    },
+    {
+     "key": "wikiversity_en_all_maxi_2026-02.zim|Python_Programming/Collection|Python Programming/Collection|34",
+     "title": "Python Programming/Collection",
+     "score": 0.7223
+    },
+    {
+     "key": "wikibooks_en_all_maxi_2026-01.zim|Think_Python/Lists|Think Python/Lists|0",
+     "title": "Think Python/Lists",
+     "score": 0.7216
+    }
+   ]
+  },
+  "who was Napoleon Bonaparte": {
+   "first_ms": 237.3,
+   "warm_median_ms": 92.1,
+   "server_median_ms": 1.6,
+   "hits": [
+    {
+     "key": "wikibooks_en_all_nopic_2026-01.zim|Modern_History/Napoleon_Bonaparte|Modern History/Napoleon Bonaparte|0",
+     "title": "Modern History/Napoleon Bonaparte",
+     "score": 0.8423
+    },
+    {
+     "key": "wikipedia_en_all_maxi_2026-02.zim|1806_in_France|1806 in France|1",
+     "title": "1806 in France",
+     "score": 0.785
+    },
+    {
+     "key": "wikipedia_en_all_maxi_2026-02.zim|1811_in_France|1811 in France|1",
+     "title": "1811 in France",
+     "score": 0.7689
+    },
+    {
+     "key": "gutenberg_en_lcc-u_2026-03.zim|A History of the Coldstream Guards, from 1815 to 1895.58852|INTRODUCTION.|0",
+     "title": "A History of the Coldstream Guards, from 1815 to 1895",
+     "score": 0.7621
+    },
+    {
+     "key": "wikipedia_en_all_maxi_2026-02.zim|1800s_(decade)|1800s (decade)|0",
+     "title": "1800s (decade)",
+     "score": 0.7594
+    },
+    {
+     "key": "wikibooks_en_all_maxi_2026-01.zim|European_History/Age_Of_Revolutions|European History/Age Of Revolutions|2",
+     "title": "European History/Age Of Revolutions",
+     "score": 0.7437
+    },
+    {
+     "key": "gutenberg_en_lcc-u_2026-03.zim|Historical Record of the Thirty-sixth, or the Herefordshire Regiment of Foot: containing an account of the formation of the regiment in 1701, and of its subsequent services to 1852.66598|HISTORICAL RECORD|59",
+     "title": "Historical Record of the Thirty-sixth, or the Herefordshire Regiment of Foot: containing an account of the formation of the regiment in 1701, and of its subsequent services to 1852",
+     "score": 0.7428
+    },
+    {
+     "key": "wikipedia_en_all_maxi_2026-02.zim|1851_French_coup_d'\u00e9tat|1851 French coup d'\u00e9tat|0",
+     "title": "1851 French coup d'\u00e9tat",
+     "score": 0.7391
+    },
+    {
+     "key": "gutenberg_en_lcc-u_2026-03.zim|Soldiers and Sailors.57903|Soldiers and Sailors|110",
+     "title": "Soldiers and Sailors",
+     "score": 0.7368
+    },
+    {
+     "key": "wikibooks_en_all_maxi_2026-01.zim|Brief_History_of_Europe/Print_version|Brief History of Europe/Print version|79",
+     "title": "Brief History of Europe/Print version",
+     "score": 0.7346
+    },
+    {
+     "key": "wikipedia_en_all_maxi_2026-02.zim|1815_in_the_United_Kingdom|1815 in the United Kingdom|1",
+     "title": "1815 in the United Kingdom",
+     "score": 0.7315
+    },
+    {
+     "key": "wikipedia_en_all_maxi_2026-02.zim|1814_in_France|1814 in France|2",
+     "title": "1814 in France",
+     "score": 0.7288
+    },
+    {
+     "key": "wikibooks_en_all_maxi_2026-01.zim|European_History/Napoleon_Bonaparte_and_the_Rise_of_Nationalism|European History/Napoleon Bonaparte and the Rise of Nationalism|0",
+     "title": "European History/Napoleon Bonaparte and the Rise of Nationalism",
+     "score": 0.7284
+    },
+    {
+     "key": "wikibooks_en_all_maxi_2026-01.zim|European_History/Print_version|European History/Print version|64",
+     "title": "European History/Print version",
+     "score": 0.7265
+    },
+    {
+     "key": "wikibooks_en_all_maxi_2026-01.zim|Brief_History_of_Europe/Late_modern_period_until_1914|Brief History of Europe/Late modern period until 1914|5",
+     "title": "Brief History of Europe/Late modern period until 1914",
+     "score": 0.725
+    }
+   ]
+  },
+  "how do I season a cast iron skillet": {
+   "first_ms": 191.5,
+   "warm_median_ms": 94.3,
+   "server_median_ms": 1.32,
+   "hits": [
+    {
+     "key": "cooking.stackexchange.com_en_all_2026-07.zim|questions/5860/does-cast-iron-have-a-coating-from-the-manufacturer|Does cast iron have a coating from the manufacturer?|1",
+     "title": "Does cast iron have a coating from the manufacturer?",
+     "score": 0.845
+    },
+    {
+     "key": "cooking.stackexchange.com_en_all_2026-07.zim|questions/116634/preventing-flash-rust-after-tempering-a-carbon-steel-wok|Preventing flash rust after tempering a carbon steel wok|3",
+     "title": "Preventing flash rust after tempering a carbon steel wok",
+     "score": 0.8337
+    },
+    {
+     "key": "cooking.stackexchange.com_en_all_2026-07.zim|questions/117073/should-i-use-or-avoid-flaxseed-oil-when-seasoning-cast-iron-pan|Should I use or avoid flaxseed oil when seasoning cast iron pan?|2",
+     "title": "Should I use or avoid flaxseed oil when seasoning cast iron pan?",
+     "score": 0.8315
+    },
+    {
+     "key": "cooking.stackexchange.com_en_all_2026-07.zim|questions/641/what-s-the-best-way-to-season-a-cast-iron-skillet|What's the best way to season a cast iron skillet?|0",
+     "title": "What's the best way to season a cast iron skillet?",
+     "score": 0.8261
+    },
+    {
+     "key": "ifixit_en_all_2025-12.zim|Guide/How+to+Fix+Sticky+Surfaces+on+a+Cast+Iron+Skillet/141955|How to Fix Sticky Surfaces on a Cast Iron Skillet|0",
+     "title": "How to Fix Sticky Surfaces on a Cast Iron Skillet",
+     "score": 0.8246
+    },
+    {
+     "key": "cooking.stackexchange.com_en_all_2026-07.zim|questions/109822/are-those-skillets-damaged|Are those skillets damaged?|1",
+     "title": "Are those skillets damaged?",
+     "score": 0.8195
+    },
+    {
+     "key": "cooking.stackexchange.com_en_all_2026-07.zim|questions/95649/the-more-i-season-the-worse-it-gets-with-my-cast-iron|The more I season, the worse it gets with my cast iron|2",
+     "title": "The more I season, the worse it gets with my cast iron",
+     "score": 0.8181
+    },
+    {
+     "key": "cooking.stackexchange.com_en_all_2026-07.zim|questions/46131/can-i-season-cast-iron-without-using-an-oven|Can I season cast iron *without* using an oven?|0",
+     "title": "Can I season cast iron *without* using an oven?",
+     "score": 0.8174
+    },
+    {
+     "key": "cooking.stackexchange.com_en_all_2026-07.zim|questions/57500/how-do-you-clean-and-season-a-cast-iron-pot|How do you clean and season a cast iron pot?|1",
+     "title": "How do you clean and season a cast iron pot?",
+     "score": 0.816
+    },
+    {
+     "key": "cooking.stackexchange.com_en_all_2026-07.zim|questions/108703/i-bought-a-cast-iron-skillet-and-after-washing-it-and-then-heating-it-i-got-a-|I bought a cast iron skillet and after washing it and then heating it I got a color like rust|1",
+     "title": "I bought a cast iron skillet and after washing it and then heating it I got a color like rust",
+     "score": 0.8114
+    },
+    {
+     "key": "cooking.stackexchange.com_en_all_2026-07.zim|questions/129255/how-can-i-remove-the-pits-from-the-bottom-of-my-cast-iron-skillet|How can I remove the pits from the bottom of my cast iron skillet?|3",
+     "title": "How can I remove the pits from the bottom of my cast iron skillet?",
+     "score": 0.8094
+    },
+    {
+     "key": "cooking.stackexchange.com_en_all_2026-07.zim|questions/88691/cast-iron-skillet|cast iron skillet|0",
+     "title": "cast iron skillet",
+     "score": 0.8093
+    },
+    {
+     "key": "cooking.stackexchange.com_en_all_2026-07.zim|questions/11592/stripping-seasoning-from-cast-iron|Stripping seasoning from cast iron|3",
+     "title": "Stripping seasoning from cast iron",
+     "score": 0.8079
+    },
+    {
+     "key": "ifixit_en_all_2025-12.zim|Guide/How+to+Strip+and+Recoat+a+Cast+Iron+Skillet/148430|How to Strip and Recoat a Cast Iron Skillet|0",
+     "title": "How to Strip and Recoat a Cast Iron Skillet",
+     "score": 0.8075
+    },
+    {
+     "key": "cooking.stackexchange.com_en_all_2026-07.zim|questions/64413/how-do-i-recover-from-overheating-my-cast-iron-skillet|How do I recover from overheating my cast-iron skillet?|2",
+     "title": "How do I recover from overheating my cast-iron skillet?",
+     "score": 0.8071
+    }
+   ]
+  }
+ }
+}

@@ -53,17 +53,19 @@ def snap(tag):
     for s, v in vectors().items():
         body = {"vector": v, "limit": 15, "score_threshold": 0.3, "with_payload": {"include": ["source", "article_path", "article_title", "section_title", "chunk_index"]},
                 "filter": {"must_not": [{"key": "active", "match": {"value": False}}]}}
-        ms, hits = [], None
+        ms, sv, hits = [], [], None
         for _ in range(6):
             t = time.time()
-            hits = qdrant(f"/collections/{COL}/points/search", body)["result"]
-            ms.append((time.time() - t) * 1000)
-        res["queries"][s] = {"first_ms": round(ms[0], 1), "warm_median_ms": round(st.median(ms[1:]), 1),
+            r = qdrant(f"/collections/{COL}/points/search", body)
+            hits = r["result"]
+            ms.append((time.time() - t) * 1000); sv.append(r["time"] * 1000)
+        res["queries"][s] = {"first_ms": round(ms[0], 1), "warm_median_ms": round(st.median(ms[1:]), 1), "server_median_ms": round(st.median(sv[1:]), 2),
                              "hits": [{"key": key(h), "title": h["payload"].get("article_title"), "score": round(h["score"], 4)} for h in hits]}
     json.dump(res, open(f"{WORK}/search_{tag}.json", "w"), indent=1)
     warm = [q["warm_median_ms"] for q in res["queries"].values()]
+    srv = [q["server_median_ms"] for q in res["queries"].values()]
     print(f"{tag}: {res['status']} points={res['points']} indexed={res['indexed']} segments={res['segments']} "
-          f"warm median of medians {st.median(warm):.1f} ms, max {max(warm):.1f} ms")
+          f"server-side median {st.median(srv):.1f} ms, max {max(srv):.1f} ms; client (nsenter+curl) median {st.median(warm):.1f} ms")
 
 
 def diff(a, b):
@@ -72,7 +74,7 @@ def diff(a, b):
     for s in A["queries"]:
         ka = [h["key"] for h in A["queries"][s]["hits"]]; kb = [h["key"] for h in B["queries"][s]["hits"]]
         print(f"- {s[:48]:48} same top1: {ka[:1] == kb[:1]}  top5 overlap {len(set(ka[:5]) & set(kb[:5]))}/5  top15 overlap {len(set(ka) & set(kb))}/15  "
-              f"hits {len(ka)}->{len(kb)}  ms {A['queries'][s]['warm_median_ms']}->{B['queries'][s]['warm_median_ms']}")
+              f"hits {len(ka)}->{len(kb)}  server ms {A['queries'][s].get('server_median_ms')}->{B['queries'][s].get('server_median_ms')}  (client ms {A['queries'][s]['warm_median_ms']}->{B['queries'][s]['warm_median_ms']})")
         if ka[:1] != kb[:1]:
             print(f"    before top1: {A['queries'][s]['hits'][0]['title']!r}\n    after  top1: {B['queries'][s]['hits'][0]['title']!r}")
 

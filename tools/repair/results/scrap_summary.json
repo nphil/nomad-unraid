@@ -1,0 +1,1398 @@
+{
+ "max_chars": 20,
+ "tiny_total": 548519,
+ "to_delete": 530302,
+ "kept_short_real_text": 18217,
+ "by_class": {
+  "A number-only or empty": 480979,
+  "D short real text (kept)": 18217,
+  "C title-only stub": 45085,
+  "B tail fragment of a longer text": 4238
+ },
+ "by_length_bucket": {
+  "A 1-5": 207242,
+  "A 11-15": 69688,
+  "A 16-20": 12528,
+  "A 6-10": 191521,
+  "B 1-5": 822,
+  "B 11-15": 1162,
+  "B 16-20": 1237,
+  "B 6-10": 1017,
+  "C 1-5": 1464,
+  "C 11-15": 19146,
+  "C 16-20": 19232,
+  "C 6-10": 5243,
+  "D 1-5": 1107,
+  "D 11-15": 5153,
+  "D 16-20": 5675,
+  "D 6-10": 6282
+ },
+ "by_library": {
+  "A number-only or empty": [
+   [
+    "diy.stackexchange.com_en_all_2026-08.zim",
+    83043
+   ],
+   [
+    "raspberrypi.stackexchange.com_en_all_2026-08.zim",
+    81322
+   ],
+   [
+    "mechanics.stackexchange.com_en_all_2026-08.zim",
+    78990
+   ],
+   [
+    "cooking.stackexchange.com_en_all_2026-07.zim",
+    63307
+   ],
+   [
+    "arduino.stackexchange.com_en_all_2026-07.zim",
+    53769
+   ],
+   [
+    "gardening.stackexchange.com_en_all_2026-08.zim",
+    45590
+   ],
+   [
+    "robotics.stackexchange.com_en_all_2026-08.zim",
+    31810
+   ],
+   [
+    "outdoors.stackexchange.com_en_all_2026-08.zim",
+    17092
+   ],
+   [
+    "ham.stackexchange.com_en_all_2026-08.zim",
+    14308
+   ],
+   [
+    "woodworking.stackexchange.com_en_all_2026-08.zim",
+    11016
+   ],
+   [
+    "wikipedia_en_all_maxi_2026-02.zim",
+    344
+   ],
+   [
+    "electronics.stackexchange.com_en_all_2026-08.zim",
+    231
+   ],
+   [
+    "wikipedia_en_medicine_maxi_2026-01.zim",
+    33
+   ],
+   [
+    "ifixit_en_all_2025-12.zim",
+    24
+   ],
+   [
+    "wikibooks_en_all_maxi_2026-01.zim",
+    23
+   ],
+   [
+    "wikibooks_en_all_nopic_2026-01.zim",
+    22
+   ],
+   [
+    "gutenberg_en_lcc-s_2026-03.zim",
+    22
+   ],
+   [
+    "wikiversity_en_all_maxi_2026-02.zim",
+    11
+   ],
+   [
+    "devdocs_en_docker_2026-07.zim",
+    8
+   ],
+   [
+    "gutenberg_en_lcc-u_2026-03.zim",
+    7
+   ],
+   [
+    "medlineplus.gov_en_all_2025-01.zim",
+    3
+   ],
+   [
+    "devdocs_en_python_2026-08.zim",
+    1
+   ],
+   [
+    "devdocs_en_html_2026-07.zim",
+    1
+   ],
+   [
+    "devdocs_en_javascript_2026-07.zim",
+    1
+   ],
+   [
+    "wikipedia_en_100_mini_2026-01.zim",
+    1
+   ]
+  ],
+  "D short real text (kept)": [
+   [
+    "medlineplus.gov_en_all_2025-01.zim",
+    14223
+   ],
+   [
+    "ifixit_en_all_2025-12.zim",
+    1756
+   ],
+   [
+    "gutenberg_en_lcc-s_2026-03.zim",
+    944
+   ],
+   [
+    "gutenberg_en_lcc-u_2026-03.zim",
+    358
+   ],
+   [
+    "devdocs_en_javascript_2026-07.zim",
+    263
+   ],
+   [
+    "robotics.stackexchange.com_en_all_2026-08.zim",
+    179
+   ],
+   [
+    "based.cooking_en_all_2026-08.zim",
+    128
+   ],
+   [
+    "devdocs_en_css_2026-07.zim",
+    57
+   ],
+   [
+    "raspberrypi.stackexchange.com_en_all_2026-08.zim",
+    45
+   ],
+   [
+    "devdocs_en_docker_2026-07.zim",
+    30
+   ],
+   [
+    "devdocs_en_react_2026-05.zim",
+    28
+   ],
+   [
+    "100r.co_en_all_2026-08.zim",
+    25
+   ],
+   [
+    "arduino.stackexchange.com_en_all_2026-07.zim",
+    25
+   ],
+   [
+    "diy.stackexchange.com_en_all_2026-08.zim",
+    20
+   ],
+   [
+    "cd3wdproject.org_en_all_2025-11.zim",
+    19
+   ],
+   [
+    "wikiversity_en_all_maxi_2026-02.zim",
+    18
+   ],
+   [
+    "devdocs_en_python_2026-08.zim",
+    14
+   ],
+   [
+    "electronics.stackexchange.com_en_all_2026-08.zim",
+    13
+   ],
+   [
+    "devdocs_en_node_2026-08.zim",
+    13
+   ],
+   [
+    "outdoors.stackexchange.com_en_all_2026-08.zim",
+    12
+   ],
+   [
+    "devdocs_en_git_2026-07.zim",
+    10
+   ],
+   [
+    "gardening.stackexchange.com_en_all_2026-08.zim",
+    8
+   ],
+   [
+    "cooking.stackexchange.com_en_all_2026-07.zim",
+    7
+   ],
+   [
+    "mechanics.stackexchange.com_en_all_2026-08.zim",
+    5
+   ],
+   [
+    "wikipedia_en_all_maxi_2026-02.zim",
+    3
+   ],
+   [
+    "wikibooks_en_all_maxi_2026-01.zim",
+    3
+   ],
+   [
+    "wikibooks_en_all_nopic_2026-01.zim",
+    3
+   ],
+   [
+    "ham.stackexchange.com_en_all_2026-08.zim",
+    2
+   ],
+   [
+    "devdocs_en_html_2026-07.zim",
+    2
+   ],
+   [
+    "woodworking.stackexchange.com_en_all_2026-08.zim",
+    1
+   ],
+   [
+    "www.ready.gov_en_2024-12.zim",
+    1
+   ],
+   [
+    "libretexts.org_en_human_2026-07.zim",
+    1
+   ],
+   [
+    "libretexts.org_en_med_2025-01.zim",
+    1
+   ]
+  ],
+  "C title-only stub": [
+   [
+    "wikipedia_en_all_maxi_2026-02.zim",
+    20343
+   ],
+   [
+    "wikipedia_en_medicine_maxi_2026-01.zim",
+    17486
+   ],
+   [
+    "ifixit_en_all_2025-12.zim",
+    6458
+   ],
+   [
+    "wikipedia_en_100_mini_2026-01.zim",
+    676
+   ],
+   [
+    "wikibooks_en_all_maxi_2026-01.zim",
+    43
+   ],
+   [
+    "wikibooks_en_all_nopic_2026-01.zim",
+    43
+   ],
+   [
+    "wikiversity_en_all_maxi_2026-02.zim",
+    31
+   ],
+   [
+    "devdocs_en_git_2026-07.zim",
+    4
+   ],
+   [
+    "devdocs_en_css_2026-07.zim",
+    1
+   ]
+  ],
+  "B tail fragment of a longer text": [
+   [
+    "electronics.stackexchange.com_en_all_2026-08.zim",
+    524
+   ],
+   [
+    "diy.stackexchange.com_en_all_2026-08.zim",
+    425
+   ],
+   [
+    "wikibooks_en_all_maxi_2026-01.zim",
+    409
+   ],
+   [
+    "wikibooks_en_all_nopic_2026-01.zim",
+    404
+   ],
+   [
+    "wikipedia_en_medicine_maxi_2026-01.zim",
+    400
+   ],
+   [
+    "wikipedia_en_all_maxi_2026-02.zim",
+    390
+   ],
+   [
+    "ifixit_en_all_2025-12.zim",
+    287
+   ],
+   [
+    "wikiversity_en_all_maxi_2026-02.zim",
+    216
+   ],
+   [
+    "robotics.stackexchange.com_en_all_2026-08.zim",
+    209
+   ],
+   [
+    "raspberrypi.stackexchange.com_en_all_2026-08.zim",
+    172
+   ],
+   [
+    "gutenberg_en_lcc-s_2026-03.zim",
+    139
+   ],
+   [
+    "cooking.stackexchange.com_en_all_2026-07.zim",
+    135
+   ],
+   [
+    "mechanics.stackexchange.com_en_all_2026-08.zim",
+    126
+   ],
+   [
+    "arduino.stackexchange.com_en_all_2026-07.zim",
+    119
+   ],
+   [
+    "gardening.stackexchange.com_en_all_2026-08.zim",
+    67
+   ],
+   [
+    "medlineplus.gov_en_all_2025-01.zim",
+    46
+   ],
+   [
+    "gutenberg_en_lcc-u_2026-03.zim",
+    40
+   ],
+   [
+    "outdoors.stackexchange.com_en_all_2026-08.zim",
+    38
+   ],
+   [
+    "woodworking.stackexchange.com_en_all_2026-08.zim",
+    33
+   ],
+   [
+    "ham.stackexchange.com_en_all_2026-08.zim",
+    24
+   ],
+   [
+    "devdocs_en_python_2026-08.zim",
+    9
+   ],
+   [
+    "nhs.uk_en_medicines_2025-12.zim",
+    5
+   ],
+   [
+    "devdocs_en_css_2026-07.zim",
+    5
+   ],
+   [
+    "100r.co_en_all_2026-08.zim",
+    4
+   ],
+   [
+    "devdocs_en_react_2026-05.zim",
+    3
+   ],
+   [
+    "devdocs_en_node_2026-08.zim",
+    3
+   ],
+   [
+    "devdocs_en_html_2026-07.zim",
+    2
+   ],
+   [
+    "devdocs_en_javascript_2026-07.zim",
+    2
+   ],
+   [
+    "devdocs_en_bash_2026-04.zim",
+    1
+   ],
+   [
+    "devdocs_en_git_2026-07.zim",
+    1
+   ]
+  ]
+ },
+ "samples": {
+  "A number-only or empty": [
+   {
+    "lib": "cooking.stackexchange.com_en_all_2026-07.zim",
+    "chars": 5,
+    "text": "1 1 1",
+    "article": "questions/tagged/cast-iron_page=21",
+    "section": "Paper towel gets completely dark after I wipe my Dutch oven",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "diy.stackexchange.com_en_all_2026-08.zim",
+    "chars": 1,
+    "text": "1",
+    "article": "questions/tagged/electrical-grounding_page=58",
+    "section": "Sub panel grounding",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "diy.stackexchange.com_en_all_2026-08.zim",
+    "chars": 9,
+    "text": "251 1 3 5",
+    "article": "questions/tagged/insulation_page=19",
+    "section": "Air Seal recessed cans without attic access",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "raspberrypi.stackexchange.com_en_all_2026-08.zim",
+    "chars": 4,
+    "text": "11 1",
+    "article": "questions/tagged/connection_page=14",
+    "section": "Can't make an SSH connection to Raspberry Pi",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "diy.stackexchange.com_en_all_2026-08.zim",
+    "chars": 9,
+    "text": "195 1 2 7",
+    "article": "questions/tagged/installation_page=4",
+    "section": "Should a curtain drain be covered/back filled?",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "robotics.stackexchange.com_en_all_2026-08.zim",
+    "chars": 4,
+    "text": "63 5",
+    "article": "questions/tagged/inverse-kinematics_page=5",
+    "section": "Compute Maximum End Effector Velocity Along Path",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "diy.stackexchange.com_en_all_2026-08.zim",
+    "chars": 8,
+    "text": "457 6 15",
+    "article": "questions/tagged/cleaning_page=35",
+    "section": "Quick Shine polish left haze on floor",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "cooking.stackexchange.com_en_all_2026-07.zim",
+    "chars": 13,
+    "text": "1,368 1 19 35",
+    "article": "questions/tagged/storage-method_page=22",
+    "section": "Is it advisable to cook cilantro or mint leaves and store them, instead of blanching them?",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "robotics.stackexchange.com_en_all_2026-08.zim",
+    "chars": 5,
+    "text": "141 4",
+    "article": "questions/tagged/ekf_page=3",
+    "section": "Confused with EKF Localization",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "wikipedia_en_all_maxi_2026-02.zim",
+    "chars": 7,
+    "text": "10.5195",
+    "article": "10.5195",
+    "section": "10.5195",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "raspberrypi.stackexchange.com_en_all_2026-08.zim",
+    "chars": 7,
+    "text": "209 1 5",
+    "article": "questions/tagged/wpa_page=2",
+    "section": "Issue connecting to internet after proper wifi configuration",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "robotics.stackexchange.com_en_all_2026-08.zim",
+    "chars": 4,
+    "text": "13 2",
+    "article": "questions/tagged/raspberry-pi_page=7",
+    "section": "ROS1 to ROS2 in Burger",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "mechanics.stackexchange.com_en_all_2026-08.zim",
+    "chars": 10,
+    "text": "541 1 6 17",
+    "article": "questions/tagged/alternator_page=23",
+    "section": "Device that prevents vehicle from draining accessory batteries?",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "cooking.stackexchange.com_en_all_2026-07.zim",
+    "chars": 16,
+    "text": "7,355 67 165 217",
+    "article": "questions/tagged/spices_page=15",
+    "section": "How to know how many tablespoons of seeds correspond to 1 table spoon of its ground form?",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "arduino.stackexchange.com_en_all_2026-07.zim",
+    "chars": 4,
+    "text": "11 1",
+    "article": "questions/tagged/serial_page=61",
+    "section": "STM32 Bluepill with Arduino IDE can not blink LEDs with a few pins",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "arduino.stackexchange.com_en_all_2026-07.zim",
+    "chars": 6,
+    "text": "31 1 2",
+    "article": "questions/tagged/linux_page=2",
+    "section": "No ttyACM0 nor ttyUSB0",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "arduino.stackexchange.com_en_all_2026-07.zim",
+    "chars": 1,
+    "text": "1",
+    "article": "questions/tagged/battery_page=15",
+    "section": "Arduino YUN Rev. 2 power supply",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "cooking.stackexchange.com_en_all_2026-07.zim",
+    "chars": 7,
+    "text": "143 1 6",
+    "article": "questions/tagged/coffee_page=14",
+    "section": "Why not stir the french press using a metal spoon?",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "raspberrypi.stackexchange.com_en_all_2026-08.zim",
+    "chars": 5,
+    "text": "101 2",
+    "article": "questions/tagged/pi-zero-w_page=38",
+    "section": "5-second increment pauses on Pi Zero W",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "diy.stackexchange.com_en_all_2026-08.zim",
+    "chars": 3,
+    "text": "101",
+    "article": "questions/tagged/insulation_page=95",
+    "section": "Thermal insulation on concrete and bricks: should I level the bricks before gluing with PU foam",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "diy.stackexchange.com_en_all_2026-08.zim",
+    "chars": 16,
+    "text": "11,124 20 81 121",
+    "article": "questions/tagged/french-drain_page=3",
+    "section": "How close is too close, when digging below foundation level?",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "diy.stackexchange.com_en_all_2026-08.zim",
+    "chars": 6,
+    "text": "11 1 2",
+    "article": "questions/tagged/circuit-breaker_page=73",
+    "section": "Can I wire both a 50 amp hot tub and 50 amp RV plug in the same box?",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "diy.stackexchange.com_en_all_2026-08.zim",
+    "chars": 5,
+    "text": "101 1",
+    "article": "questions/tagged/hardware_page=13",
+    "section": "A device that can see through hollow wood panel to find a hole in plaster covered wall?",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "mechanics.stackexchange.com_en_all_2026-08.zim",
+    "chars": 17,
+    "text": "15,810 73 164 255",
+    "article": "questions/tagged/gasket_page=2",
+    "section": "Reusing a Metal Water Pump Gasket",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "mechanics.stackexchange.com_en_all_2026-08.zim",
+    "chars": 6,
+    "text": "61 1 2",
+    "article": "questions/tagged/ford_page=9",
+    "section": "Car leaks oil when driving, Oil from exhaust pipe",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "robotics.stackexchange.com_en_all_2026-08.zim",
+    "chars": 7,
+    "text": "211 2 5",
+    "article": "Highest Voted 'flight-controller' Questions",
+    "section": "Tuning a cascaded attitude and attitude rate PID controller",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "arduino.stackexchange.com_en_all_2026-07.zim",
+    "chars": 4,
+    "text": "21 1",
+    "article": "questions/tagged/avrdude_page=4",
+    "section": "Arduino nano stk500_getsync() attempt 1 of 10: not in sync: resp=0xe1",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "diy.stackexchange.com_en_all_2026-08.zim",
+    "chars": 14,
+    "text": "2,345 17 71 84",
+    "article": "questions/tagged/doors_page=64",
+    "section": "How do I build an \"internal frame\" for a reclaimed wood door?",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "cooking.stackexchange.com_en_all_2026-07.zim",
+    "chars": 11,
+    "text": "431 4 10 21",
+    "article": "questions/tagged/substitutions_page=99",
+    "section": "Soy and sesame sauce alternatives when frying fish?",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "ham.stackexchange.com_en_all_2026-08.zim",
+    "chars": 7,
+    "text": "225 2 6",
+    "article": "questions_page=62",
+    "section": "What are contests? What do I need to know about them being new to ham radio?",
+    "chunk": "0/1"
+   }
+  ],
+  "D short real text (kept)": [
+   {
+    "lib": "medlineplus.gov_en_all_2025-01.zim",
+    "chars": 14,
+    "text": "Find an Expert",
+    "article": "Older Adult Mental Health: MedlinePlus",
+    "section": "Resources",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "gutenberg_en_lcc-s_2026-03.zim",
+    "chars": 7,
+    "text": "English",
+    "article": "Herbert Fox",
+    "section": "Herbert Fox",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "medlineplus.gov_en_all_2025-01.zim",
+    "chars": 16,
+    "text": "Tests of IGHMBP2",
+    "article": "IGHMBP2 gene: MedlinePlus Genetics",
+    "section": "Tests Listed in the Genetic Testing Registry",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "medlineplus.gov_en_all_2025-01.zim",
+    "chars": 14,
+    "text": "Genes Genetics",
+    "article": "COL7A1 gene: MedlinePlus Genetics",
+    "section": "MEDICAL ENCYCLOPEDIA",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "ifixit_en_all_2025-12.zim",
+    "chars": 11,
+    "text": "Service PDF",
+    "article": "Dell Vostro 15 3549",
+    "section": "Additional Resources",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "ifixit_en_all_2025-12.zim",
+    "chars": 19,
+    "text": "Amazon Product Page",
+    "article": "Sanyo VPC-X1200",
+    "section": "Additional Information",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "medlineplus.gov_en_all_2025-01.zim",
+    "chars": 6,
+    "text": "PubMed",
+    "article": "SCNN1A gene: MedlinePlus Genetics",
+    "section": "Scientific Articles on PubMed",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "medlineplus.gov_en_all_2025-01.zim",
+    "chars": 6,
+    "text": "PubMed",
+    "article": "HDAC4 gene: MedlinePlus Genetics",
+    "section": "Scientific Articles on PubMed",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "medlineplus.gov_en_all_2025-01.zim",
+    "chars": 8,
+    "text": "Xifaxan®",
+    "article": "Rifaximin: MedlinePlus Drug Information",
+    "section": "Brand names",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "ifixit_en_all_2025-12.zim",
+    "chars": 16,
+    "text": "639 g / 1.41 lbs",
+    "article": "SteelSeries Apex 3 TKL",
+    "section": "Weight",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "medlineplus.gov_en_all_2025-01.zim",
+    "chars": 14,
+    "text": "Find an Expert",
+    "article": "Primary Ovarian Insufficiency | POI | MedlinePlus",
+    "section": "Resources",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "medlineplus.gov_en_all_2025-01.zim",
+    "chars": 17,
+    "text": "NCBI Gene ClinVar",
+    "article": "KRT16 gene: MedlinePlus Genetics",
+    "section": "Gene and Variant Databases",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "medlineplus.gov_en_all_2025-01.zim",
+    "chars": 6,
+    "text": "PubMed",
+    "article": "Alpha thalassemia: MedlinePlus Genetics",
+    "section": "Scientific Articles on PubMed",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "medlineplus.gov_en_all_2025-01.zim",
+    "chars": 4,
+    "text": "rash",
+    "article": "Pegaspargase Injection: MedlinePlus Drug Information",
+    "section": "Symptoms of overdose may include:",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "ifixit_en_all_2025-12.zim",
+    "chars": 6,
+    "text": "Screen",
+    "article": "Phone",
+    "section": "Replacement Guides",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "medlineplus.gov_en_all_2025-01.zim",
+    "chars": 18,
+    "text": "No links available",
+    "article": "Dry Mouth: MedlinePlus",
+    "section": "See, Play and Learn",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "medlineplus.gov_en_all_2025-01.zim",
+    "chars": 17,
+    "text": "Genetic Disorders",
+    "article": "Mitochondrial DNA: MedlinePlus Genetics",
+    "section": "Related Health Topics",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "medlineplus.gov_en_all_2025-01.zim",
+    "chars": 6,
+    "text": "Images",
+    "article": "Eye Diseases | Glaucoma | MedlinePlus",
+    "section": "See, Play and Learn",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "medlineplus.gov_en_all_2025-01.zim",
+    "chars": 4,
+    "text": "PKLR",
+    "article": "Pyruvate kinase deficiency: MedlinePlus Genetics",
+    "section": "Learn more about the gene associated with Pyruvate kinase deficiency",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "medlineplus.gov_en_all_2025-01.zim",
+    "chars": 19,
+    "text": "Pancreatic Diseases",
+    "article": "Pancreatitis | MedlinePlus",
+    "section": "Related Health Topics",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "medlineplus.gov_en_all_2025-01.zim",
+    "chars": 6,
+    "text": "PubMed",
+    "article": "5-alpha reductase deficiency: MedlinePlus Genetics",
+    "section": "Scientific Articles on PubMed",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "medlineplus.gov_en_all_2025-01.zim",
+    "chars": 6,
+    "text": "PubMed",
+    "article": "Progressive familial intrahepatic cholestasis: MedlinePlus Genetics",
+    "section": "Scientific Articles on PubMed",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "gutenberg_en_lcc-s_2026-03.zim",
+    "chars": 7,
+    "text": "English",
+    "article": "William Macdonald",
+    "section": "William Macdonald",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "medlineplus.gov_en_all_2025-01.zim",
+    "chars": 14,
+    "text": "Related Issues",
+    "article": "Vitamins: MedlinePlus",
+    "section": "Learn More",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "medlineplus.gov_en_all_2025-01.zim",
+    "chars": 17,
+    "text": "NCBI Gene ClinVar",
+    "article": "JAK3 gene: MedlinePlus Genetics",
+    "section": "Gene and Variant Databases",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "medlineplus.gov_en_all_2025-01.zim",
+    "chars": 13,
+    "text": "Heart Attacks",
+    "article": "Heart Attack | Myocardial Infarction | MedlinePlus",
+    "section": "NIH MedlinePlus Magazine",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "medlineplus.gov_en_all_2025-01.zim",
+    "chars": 5,
+    "text": "TRPM6",
+    "article": "Hypomagnesemia with secondary hypocalcemia: MedlinePlus Genetics",
+    "section": "Learn more about the gene associated with Hypomagnesemia with secondary hypocalcemia",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "ifixit_en_all_2025-12.zim",
+    "chars": 9,
+    "text": "14-q010dx",
+    "article": "HP Chromebook 14-Q010DX",
+    "section": "Product Name",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "medlineplus.gov_en_all_2025-01.zim",
+    "chars": 6,
+    "text": "PubMed",
+    "article": "Krabbe disease: MedlinePlus Genetics",
+    "section": "Scientific Articles on PubMed",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "medlineplus.gov_en_all_2025-01.zim",
+    "chars": 14,
+    "text": "Genes Genetics",
+    "article": "KCNQ1OT1 gene: MedlinePlus Genetics",
+    "section": "MEDICAL ENCYCLOPEDIA",
+    "chunk": "0/1"
+   }
+  ],
+  "C title-only stub": [
+   {
+    "lib": "ifixit_en_all_2025-12.zim",
+    "chars": 10,
+    "text": "NEC NP3250",
+    "article": "NEC NP3250",
+    "section": "NEC NP3250",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "wikipedia_en_all_maxi_2026-02.zim",
+    "chars": 16,
+    "text": "17 E. 2. stat. 3",
+    "article": "17 E. 2. stat. 3",
+    "section": "17 E. 2. stat. 3",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "wikipedia_en_all_maxi_2026-02.zim",
+    "chars": 15,
+    "text": "103740 Budinger",
+    "article": "103740 Budinger",
+    "section": "103740 Budinger",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "wikipedia_en_medicine_maxi_2026-01.zim",
+    "chars": 13,
+    "text": "Ala of sacrum",
+    "article": "Ala of sacrum",
+    "section": "Ala of sacrum",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "wikipedia_en_all_maxi_2026-02.zim",
+    "chars": 17,
+    "text": "(58175) 1990 SE15",
+    "article": "(58175) 1990 SE15",
+    "section": "(58175) 1990 SE15",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "wikipedia_en_medicine_maxi_2026-01.zim",
+    "chars": 18,
+    "text": "Dialkyltryptamines",
+    "article": "Dialkyltryptamines",
+    "section": "Dialkyltryptamines",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "ifixit_en_all_2025-12.zim",
+    "chars": 18,
+    "text": "Dell Latitude 5531",
+    "article": "Dell Latitude 5531",
+    "section": "Dell Latitude 5531",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "wikipedia_en_all_maxi_2026-02.zim",
+    "chars": 19,
+    "text": "(535025) 2014 WT509",
+    "article": "(535025) 2014 WT509",
+    "section": "(535025) 2014 WT509",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "wikipedia_en_medicine_maxi_2026-01.zim",
+    "chars": 13,
+    "text": "Telogen phase",
+    "article": "Telogen phase",
+    "section": "Telogen phase",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "wikipedia_en_medicine_maxi_2026-01.zim",
+    "chars": 19,
+    "text": "Timolol/pilocarpine",
+    "article": "Timolol/pilocarpine",
+    "section": "Timolol/pilocarpine",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "wikipedia_en_medicine_maxi_2026-01.zim",
+    "chars": 17,
+    "text": "Lobes of the lung",
+    "article": "Lobes of the lung",
+    "section": "Lobes of the lung",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "wikipedia_en_all_maxi_2026-02.zim",
+    "chars": 7,
+    "text": "(X)HTML",
+    "article": "(X)HTML",
+    "section": "(X)HTML",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "ifixit_en_all_2025-12.zim",
+    "chars": 8,
+    "text": "MSI GE60",
+    "article": "MSI GE60",
+    "section": "MSI GE60",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "wikipedia_en_medicine_maxi_2026-01.zim",
+    "chars": 10,
+    "text": "Peyohuasca",
+    "article": "Peyohuasca",
+    "section": "Peyohuasca",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "wikipedia_en_all_maxi_2026-02.zim",
+    "chars": 19,
+    "text": "(535030) 2014 WJ510",
+    "article": "(535030) 2014 WJ510",
+    "section": "(535030) 2014 WJ510",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "wikipedia_en_medicine_maxi_2026-01.zim",
+    "chars": 15,
+    "text": "Lambskin condom",
+    "article": "Lambskin condom",
+    "section": "Lambskin condom",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "wikipedia_en_medicine_maxi_2026-01.zim",
+    "chars": 14,
+    "text": "ATC code G02BB",
+    "article": "ATC code G02BB",
+    "section": "ATC code G02BB",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "wikipedia_en_medicine_maxi_2026-01.zim",
+    "chars": 19,
+    "text": "Annulus abdominalis",
+    "article": "Annulus abdominalis",
+    "section": "Annulus abdominalis",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "wikipedia_en_all_maxi_2026-02.zim",
+    "chars": 13,
+    "text": "14318 Buzinov",
+    "article": "14318 Buzinov",
+    "section": "14318 Buzinov",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "wikipedia_en_medicine_maxi_2026-01.zim",
+    "chars": 16,
+    "text": "Gait recognition",
+    "article": "Gait recognition",
+    "section": "Gait recognition",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "ifixit_en_all_2025-12.zim",
+    "chars": 16,
+    "text": "Epson V11H331020",
+    "article": "Epson V11H331020",
+    "section": "Epson V11H331020",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "wikipedia_en_all_maxi_2026-02.zim",
+    "chars": 14,
+    "text": "10 H. 6. st. 2",
+    "article": "10 H. 6. st. 2",
+    "section": "10 H. 6. st. 2",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "wikipedia_en_all_maxi_2026-02.zim",
+    "chars": 16,
+    "text": "(35282) 1996 SC7",
+    "article": "(35282) 1996 SC7",
+    "section": "(35282) 1996 SC7",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "ifixit_en_all_2025-12.zim",
+    "chars": 16,
+    "text": "Epson EB-1940WC2",
+    "article": "Epson EB-1940WC2",
+    "section": "Epson EB-1940WC2",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "wikipedia_en_all_maxi_2026-02.zim",
+    "chars": 9,
+    "text": "110 flour",
+    "article": "110 flour",
+    "section": "110 flour",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "wikipedia_en_all_maxi_2026-02.zim",
+    "chars": 14,
+    "text": "13327 Reitsema",
+    "article": "13327 Reitsema",
+    "section": "13327 Reitsema",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "ifixit_en_all_2025-12.zim",
+    "chars": 14,
+    "text": "Epson EMP-822H",
+    "article": "Epson EMP-822H",
+    "section": "Epson EMP-822H",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "ifixit_en_all_2025-12.zim",
+    "chars": 14,
+    "text": "ECOVACS CEN361",
+    "article": "ECOVACS CEN361",
+    "section": "ECOVACS CEN361",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "wikipedia_en_all_maxi_2026-02.zim",
+    "chars": 16,
+    "text": "(23522) 1992 WC9",
+    "article": "(23522) 1992 WC9",
+    "section": "(23522) 1992 WC9",
+    "chunk": "0/1"
+   },
+   {
+    "lib": "wikipedia_en_medicine_maxi_2026-01.zim",
+    "chars": 18,
+    "text": "Route of infection",
+    "article": "Route of infection",
+    "section": "Route of infection",
+    "chunk": "0/1"
+   }
+  ],
+  "B tail fragment of a longer text": [
+   {
+    "lib": "wikibooks_en_all_nopic_2026-01.zim",
+    "chars": 11,
+    "text": "edia files.",
+    "article": "KiCad/Installing on macOS",
+    "section": "KiCad/Installing on macOS",
+    "chunk": "1/2"
+   },
+   {
+    "lib": "electronics.stackexchange.com_en_all_2026-08.zim",
+    "chars": 8,
+    "text": "circuit?",
+    "article": "Small signal models of MOS amplifiers",
+    "section": "Small signal models of MOS amplifiers",
+    "chunk": "4/5"
+   },
+   {
+    "lib": "diy.stackexchange.com_en_all_2026-08.zim",
+    "chars": 12,
+    "text": "e weber 21 3",
+    "article": "Why is there a large walled off space in the middle of my basement?",
+    "section": "Why is there a large walled off space in the middle of my basement?",
+    "chunk": "1/2"
+   },
+   {
+    "lib": "raspberrypi.stackexchange.com_en_all_2026-08.zim",
+    "chars": 5,
+    "text": "11:41",
+    "article": "Network or shutdown issues on my Arch Pi",
+    "section": "Network or shutdown issues on my Arch Pi",
+    "chunk": "1/2"
+   },
+   {
+    "lib": "raspberrypi.stackexchange.com_en_all_2026-08.zim",
+    "chars": 16,
+    "text": "kylestarr 31 1 2",
+    "article": "Pi 4: No Composite Video Out",
+    "section": "Pi 4: No Composite Video Out",
+    "chunk": "1/2"
+   },
+   {
+    "lib": "raspberrypi.stackexchange.com_en_all_2026-08.zim",
+    "chars": 17,
+    "text": "l 22 '15 at 05:09",
+    "article": "Installing Kali Pi using all available storage space?",
+    "section": "Installing Kali Pi using all available storage space?",
+    "chunk": "1/2"
+   },
+   {
+    "lib": "diy.stackexchange.com_en_all_2026-08.zim",
+    "chars": 12,
+    "text": "'20 at 23:34",
+    "article": "Added new light to circuit but it turns on when switch is off",
+    "section": "Added new light to circuit but it turns on when switch is off",
+    "chunk": "3/4"
+   },
+   {
+    "lib": "wikibooks_en_all_nopic_2026-01.zim",
+    "chars": 4,
+    "text": "les.",
+    "article": "Trigonometry/Vectors in the Plane",
+    "section": "Trigonometry/Vectors in the Plane",
+    "chunk": "1/2"
+   },
+   {
+    "lib": "wikibooks_en_all_nopic_2026-01.zim",
+    "chars": 6,
+    "text": "files.",
+    "article": "Aros/Developer/Zune/Beginner",
+    "section": "Aros/Developer/Zune/Beginner",
+    "chunk": "5/6"
+   },
+   {
+    "lib": "diy.stackexchange.com_en_all_2026-08.zim",
+    "chars": 4,
+    "text": "5:10",
+    "article": "popcorn ceiling in old building but ceiling looks new- asbestos worries",
+    "section": "popcorn ceiling in old building but ceiling looks new- asbestos worries",
+    "chunk": "1/2"
+   },
+   {
+    "lib": "wikiversity_en_all_maxi_2026-02.zim",
+    "chars": 16,
+    "text": "the media files.",
+    "article": "TESOL/Guided listening and speaking",
+    "section": "TESOL/Guided listening and speaking",
+    "chunk": "1/2"
+   },
+   {
+    "lib": "wikipedia_en_all_maxi_2026-02.zim",
+    "chars": 6,
+    "text": "files.",
+    "article": "13th Mechanized Corps (Soviet Union)",
+    "section": "13th Mechanized Corps (Soviet Union)",
+    "chunk": "3/4"
+   },
+   {
+    "lib": "arduino.stackexchange.com_en_all_2026-07.zim",
+    "chars": 8,
+    "text": "at 13:39",
+    "article": "Save some arduino pins when driving a 4 digits 7 segments display",
+    "section": "Save some arduino pins when driving a 4 digits 7 segments display",
+    "chunk": "2/3"
+   },
+   {
+    "lib": "electronics.stackexchange.com_en_all_2026-08.zim",
+    "chars": 12,
+    "text": "igEmacs 31 4",
+    "article": "What is the common application of a Power Resistor Decade Box?",
+    "section": "What is the common application of a Power Resistor Decade Box?",
+    "chunk": "2/3"
+   },
+   {
+    "lib": "wikibooks_en_all_maxi_2026-01.zim",
+    "chars": 15,
+    "text": "he media files.",
+    "article": "Active Server Pages/Conditionals and Looping",
+    "section": "Active Server Pages/Conditionals and Looping",
+    "chunk": "5/6"
+   },
+   {
+    "lib": "electronics.stackexchange.com_en_all_2026-08.zim",
+    "chars": 18,
+    "text": "ization techniques",
+    "article": "How to create a safe UART communication protocol?",
+    "section": "How to create a safe UART communication protocol?",
+    "chunk": "2/3"
+   },
+   {
+    "lib": "arduino.stackexchange.com_en_all_2026-07.zim",
+    "chars": 16,
+    "text": "! #SOreadytohelp",
+    "article": "User briosheje",
+    "section": "User briosheje",
+    "chunk": "1/2"
+   },
+   {
+    "lib": "diy.stackexchange.com_en_all_2026-08.zim",
+    "chars": 14,
+    "text": "Schwartz 111 6",
+    "article": "Inverter Power draw from 12V battery",
+    "section": "Inverter Power draw from 12V battery",
+    "chunk": "3/4"
+   },
+   {
+    "lib": "robotics.stackexchange.com_en_all_2026-08.zim",
+    "chars": 13,
+    "text": "Brown 328 1 7",
+    "article": "Is Lego Mindstorm a good start?",
+    "section": "Is Lego Mindstorm a good start?",
+    "chunk": "1/2"
+   },
+   {
+    "lib": "electronics.stackexchange.com_en_all_2026-08.zim",
+    "chars": 16,
+    "text": "er with an LM317",
+    "article": "Battery Charger From DC Motor",
+    "section": "Battery Charger From DC Motor",
+    "chunk": "3/4"
+   },
+   {
+    "lib": "wikibooks_en_all_maxi_2026-01.zim",
+    "chars": 10,
+    "text": "dia files.",
+    "article": "Issues in Interdisciplinarity 2019-20/Evidence in the Afterlife",
+    "section": "Issues in Interdisciplinarity 2019-20/Evidence in the Afterlife",
+    "chunk": "3/4"
+   },
+   {
+    "lib": "electronics.stackexchange.com_en_all_2026-08.zim",
+    "chars": 17,
+    "text": "n 27 '14 at 16:59",
+    "article": "Is a computer mouse considered an embedded system?",
+    "section": "Is a computer mouse considered an embedded system?",
+    "chunk": "3/4"
+   },
+   {
+    "lib": "raspberrypi.stackexchange.com_en_all_2026-08.zim",
+    "chars": 19,
+    "text": "Nov 11 '20 at 09:48",
+    "article": "Install LTE stick from Huwei 3772h on Raspberry PI with suisse telecom",
+    "section": "Install LTE stick from Huwei 3772h on Raspberry PI with suisse telecom",
+    "chunk": "1/2"
+   },
+   {
+    "lib": "wikipedia_en_all_maxi_2026-02.zim",
+    "chars": 19,
+    "text": "or the media files.",
+    "article": "1861 Vermont gubernatorial election",
+    "section": "1861 Vermont gubernatorial election",
+    "chunk": "1/2"
+   },
+   {
+    "lib": "wikibooks_en_all_nopic_2026-01.zim",
+    "chars": 4,
+    "text": "les.",
+    "article": "English Property Law/Housing",
+    "section": "English Property Law/Housing",
+    "chunk": "1/2"
+   },
+   {
+    "lib": "electronics.stackexchange.com_en_all_2026-08.zim",
+    "chars": 17,
+    "text": "hna Chaitanya 3 3",
+    "article": "Voltage range of a differential pressure sensor px26, and opamp saturation",
+    "section": "Voltage range of a differential pressure sensor px26, and opamp saturation",
+    "chunk": "2/3"
+   },
+   {
+    "lib": "wikiversity_en_all_maxi_2026-02.zim",
+    "chars": 12,
+    "text": "media files.",
+    "article": "Honours thesis in psychology/Marking criteria guidelines",
+    "section": "Honours thesis in psychology/Marking criteria guidelines",
+    "chunk": "1/2"
+   },
+   {
+    "lib": "ifixit_en_all_2025-12.zim",
+    "chars": 17,
+    "text": "tation 0 comments",
+    "article": "Samsung Galaxy Note Edge Rear Facing Camera Replacement",
+    "section": "Samsung Galaxy Note Edge Rear Facing Camera Replacement",
+    "chunk": "1/2"
+   },
+   {
+    "lib": "wikiversity_en_all_maxi_2026-02.zim",
+    "chars": 6,
+    "text": "files.",
+    "article": "Web Science/Part1: Foundations of the web/Domain Name System",
+    "section": "Web Science/Part1: Foundations of the web/Domain Name System",
+    "chunk": "1/2"
+   },
+   {
+    "lib": "wikiversity_en_all_maxi_2026-02.zim",
+    "chars": 12,
+    "text": "media files.",
+    "article": "Federal Writers' Project – Life Histories/2020/Fall/105i/Section 026/John Kelly Edwards",
+    "section": "Federal Writers' Project – Life Histories/2020/Fall/105i/Section 026/John Kelly Edwards",
+    "chunk": "3/4"
+   }
+  ]
+ }
+}

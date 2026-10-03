@@ -125,13 +125,19 @@ folder on the share stays: it is the mount point of the container's `/data/qdran
 
 ## Follow-ups worth a decision (not done)
 
-- **Tiny chunks.** 545,577 chunks (16.7 %) have 20 characters or fewer and 209,508 (6.4 %) have 5 or fewer
-  (tag-listing pages whose text is a single number). They have identical vectors, crowd the index, and
-  never answer a question. A filter on `char_count` in NOMAD's chunker, or deleting them, would shrink the
-  index by about a sixth.
-- **Twin libraries.** `wikibooks_en_all_maxi` (323,495 chunks) and `wikibooks_en_all_nopic` (322,756) hold
-  largely the same text under different sources, so the exact-duplicate rule did not touch them. Dropping
-  one frees about 10 % of the index.
+- **Tiny chunks: done 2026-10-02.** 530,302 scrap chunks (number-only, tail fragments, title-only stubs; 16.2 %) were
+  deleted by id after a snapshot, and NOMAD no longer embeds them (`MIN_CHUNK_CHARS`). 18,217 short real chunks (drug
+  brand names, spec values) were kept. The 8 NOMAD-style searches returned the same top-15 afterwards.
+- **Wikibooks twins: done 2026-10-02.** 322,045 points of `wikibooks_en_all_nopic` whose article also exists in the maxi
+  copy were deleted (98.2 % of the nopic text sits inside maxi's version of the same article; chunk-for-chunk only 85 %,
+  because maxi's image text shifts chunk boundaries). 1,386 points of nopic-only articles stay. nopic is parked with
+  `nomad-embed exclude`, the ZIM file stays in Kiwix.
+- **Disk is not reclaimed yet.** Qdrant only rewrites a block when more than `deleted_threshold` of it is deleted
+  (default 0.2); the big block is 25.6 % deleted now, so `deleted_threshold` is parked at 0.5 to stop an unattended
+  rewrite. Rewriting it rebuilds the HNSW graph, which Qdrant aborts after 150 minutes; at host load 50 it did not finish.
+  Two traps: a `PATCH /collections/...` of the optimizer config **blocks all searches on that collection until the running
+  optimization ends** (restore settings only when `/optimizations` shows nothing ongoing), and if it hangs, stop
+  `nomad_qdrant`, edit `collections/<name>/config.json` and start it (about 10 s).
 - **Seven small libraries have no chunks at all.** `canadian_prepper_bugoutroll`, `canadian-prepper_preppingfood`,
   `freecodecamp`, `lrnselfreliance`, `urban-prepper`, `zimgit-knots` and `zimgit-water` are marked "indexed" in NOMAD's
   database (rows from 2026-09-22 with 0 chunks) but have no points in Qdrant, and the old store did not have them
